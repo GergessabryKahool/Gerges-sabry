@@ -1033,6 +1033,37 @@ src="https://www.facebook.com/tr?id=2163468023801592&ev=PageView&noscript=1"
   <button class="st-btn st-style1 st-color1" type="submit" id="submit">Send message</button>
 </form>
 
+          <script>
+  (function () {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          alert("✅ Message sent successfully!");
+          form.reset();
+        } else {
+          alert("❌ Failed to send. Please try again.");
+        }
+      } catch (err) {
+        alert("❌ Network error. Check your connection.");
+      }
+    });
+  })();
+</script>
+
+
 
           <!-- Start src update date 1-feb -2024 -->
         <!-- <script src="https://smtpjs.com/v3/smtp.js"></script>
