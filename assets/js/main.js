@@ -195,99 +195,110 @@
     });
   }
 
-  /*--------------------------------------------------------------
-    7. Ajax Contact Form And Appointment
-  -- ------------------------------------------------------------*/
-  // Contact Form
-  function formValidation() {
-    var $stAlert = $("#st-alert");
-    var $submitBtn = $("#contact-form #submit");
-    var $name = $("#name");
-    var $subject = $("#subject");
-    var $phone = $("#phone");
-    var $email = $("#email");
-    var $msg = $("#msg");
+/*--------------------------------------------------------------
+  7. Ajax Contact Form And Appointment
+--------------------------------------------------------------*/
+// Contact Form
+function formValidation() {
+  var $stAlert = $("#st-alert");
+  var $submitBtn = $("#contact-form #submit");
+  var $name = $("#name");
+  var $subject = $("#subject");
+  var $phone = $("#phone"); // optional
+  var $email = $("#email");
+  var $msg = $("#msg");
 
-    if ($.exists($submitBtn)) {
-      $stAlert.hide();
-      $submitBtn.on("click", handleSubmit);
+  if ($.exists($submitBtn)) {
+    $stAlert.hide();
+    $submitBtn.on("click", handleSubmit);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    var name = $name.val() || "";
+    var subject = $subject.val() || "";
+    var phone = $phone.length ? ($phone.val() || "") : "";
+    var email = $email.val() || "";
+    var msg = $msg.val() || "";
+
+    // simple email regex
+    var regex =
+      /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,})+$/;
+
+    if (!regex.test(email)) {
+      $stAlert
+        .fadeIn()
+        .html(
+          '<div class="alert alert-danger"><strong>Warning!</strong> Please enter a valid email.</div>'
+        );
+      return;
     }
 
-    function handleSubmit(event) {
-      event.preventDefault();
+    name = $.trim(name);
+    subject = $.trim(subject);
+    phone = $.trim(phone);
+    email = $.trim(email);
+    msg = $.trim(msg);
 
-      var name = $name.val();
-      var subject = $subject.val();
-      var phone = $phone.val();
-      var email = $email.val();
-      var msg = $msg.val();
-      var regex =
-        /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (name !== "" && email !== "" && msg !== "") {
+      // Formspree fields:
+      // email, message, _subject (optional)
+      var dataObj = {
+        name: name,
+        email: email,
+        message: msg,
+        _subject: subject || "New message from portfolio",
+      };
 
-      if (!regex.test(email)) {
-        $stAlert
-          .fadeIn()
-          .html(
-            '<div class="alert alert-danger"><strong>Warning!</strong> Please Enter Valid Email.</div>'
-          );
-        return;
-      }
+      // include phone only if exists and not empty
+      if (phone) dataObj.phone = phone;
 
-      name = $.trim(name);
-      subject = $.trim(subject);
-      phone = $.trim(phone);
-      email = $.trim(email);
-      msg = $.trim(msg);
-
-      if (name !== "" && email !== "" && msg !== "") {
-        var sanitizedValues =
-          "name=" +
-          encodeURIComponent(name) +
-          "&subject=" +
-          encodeURIComponent(subject) +
-          "&phone=" +
-          encodeURIComponent(phone) +
-          "&email=" +
-          encodeURIComponent(email) +
-          "&msg=" +
-          encodeURIComponent(msg);
-
-        $.ajax({
-          type: "POST",
-          url: "https://formspree.io/f/xdaloywd",
-          data: sanitizedValues,
-          success: function () {
-            clearFormFields();
-            $stAlert
-              .fadeIn()
-              .html(
-                '<div class="alert alert-success"><strong>Success!</strong> Email has been sent successfully.</div>'
-              );
-            setTimeout(function () {
-              $stAlert.fadeOut("slow");
-            }, 4000);
-          },
-        });
-      } else {
-        $stAlert
-          .fadeIn()
-          .html(
-            '<div class="alert alert-danger"><strong>Warning!</strong> All fields are required.</div>'
-          );
-      }
-    }
-
-    function clearFormFields() {
-      $name.val("");
-      $subject.val("");
-      $phone.val("");
-      $email.val("");
-      $msg.val("");
+      $.ajax({
+        type: "POST",
+        url: "https://formspree.io/f/xdaloywd",
+        data: dataObj,
+        dataType: "json",
+        headers: { Accept: "application/json" },
+        success: function () {
+          clearFormFields();
+          $stAlert
+            .fadeIn()
+            .html(
+              '<div class="alert alert-success"><strong>Success!</strong> Message has been sent successfully.</div>'
+            );
+          setTimeout(function () {
+            $stAlert.fadeOut("slow");
+          }, 4000);
+        },
+        error: function () {
+          $stAlert
+            .fadeIn()
+            .html(
+              '<div class="alert alert-danger"><strong>Error!</strong> Something went wrong. Please try again.</div>'
+            );
+          setTimeout(function () {
+            $stAlert.fadeOut("slow");
+          }, 4000);
+        },
+      });
+    } else {
+      $stAlert
+        .fadeIn()
+        .html(
+          '<div class="alert alert-danger"><strong>Warning!</strong> Name, Email and Message are required.</div>'
+        );
     }
   }
-  // Start update  contact form script -->
 
-  // <!-- End Update Contact Form Script -->
+  function clearFormFields() {
+    $name.val("");
+    $subject.val("");
+    if ($phone.length) $phone.val("");
+    $email.val("");
+    $msg.val("");
+  }
+}
 
   /*--------------------------------------------------------------
     8. Light Gallery
