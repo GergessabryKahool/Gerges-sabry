@@ -254,7 +254,7 @@
 
         $.ajax({
           type: "POST",
-          url: "assets/php/mail.php",
+          url: "https://formspree.io/f/xdaloywd",
           data: sanitizedValues,
           success: function () {
             clearFormFields();
