@@ -1,21 +1,23 @@
-<?php
+<!-- //STOPED BECS formspree
 
-// Destination email address
-$to = 'girges.sabry@gmail.com';
+// <?php
 
-// Fetching form values from POST data
-$name = $_POST['name'];
-$email = $_POST['email'];
-$subject = $_POST['subject'];
-$msg = $_POST['msg'];
+// // Destination email address
+// $to = 'girges.sabry@gmail.com';
 
-// Email headers
-$headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
-$headers .= 'Reply-To: ' . $email . "\r\n";
-$headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
+// // Fetching form values from POST data
+// $name = $_POST['name'];
+// $email = $_POST['email'];
+// $subject = $_POST['subject'];
+// $msg = $_POST['msg'];
 
-// Constructing the email body
-$output = "Name: " . $name . "\nEmail: " . $email . "\nSubject: " . $subject . "\n\nMessage: " . $msg;
+// // Email headers
+// $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
+// $headers .= 'Reply-To: ' . $email . "\r\n";
+// $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
 
-// Sending the email
-$send = mail($to, $subject, $output, $headers);
+// // Constructing the email body
+// $output = "Name: " . $name . "\nEmail: " . $email . "\nSubject: " . $subject . "\n\nMessage: " . $msg;
+
+// // Sending the email
+// $send = mail($to, $subject, $output, $headers); -->
