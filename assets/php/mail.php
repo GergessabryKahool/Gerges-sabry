@@ -18,4 +18,4 @@ $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
 $output = "Name: " . $name . "\nEmail: " . $email . "\nSubject: " . $subject . "\n\nMessage: " . $msg;
 
 // Sending the email
-$send = mail($to, $subject, $output, $headers); n jhku
+$send = mail($to, $subject, $output, $headers);
