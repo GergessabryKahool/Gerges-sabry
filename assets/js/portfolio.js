@@ -10,12 +10,12 @@
     en: {
       pageTitle: 'Gerges Sabry — Full-Stack Software Engineer',
       navHome: 'Home',
+      navLab: 'Code Lab',
       navAbout: 'About',
       navServices: 'Services',
       navSkills: 'Skills',
       navProjects: 'Projects',
       navExperience: 'Experience',
-      navReviews: 'Reviews',
       navContact: 'Contact',
       brandSub: 'FULL-STACK ENGINEER',
       langBtn: 'عربي',
@@ -24,23 +24,25 @@
       availability: 'Available for Full-Stack Roles & Select Projects',
       heroGreeting: 'Hi, I am',
       heroName: 'Gerges Sabry',
-      heroRolePrefix: 'Building as a',
       roles: [
-        'Full-Stack Software Engineer',
-        'ERP & POS Systems Architect',
-        'Next.js & PostgreSQL Specialist',
+        '"Full-Stack Software Engineer"',
+        '"ERP & POS Systems Architect"',
+        '"Next.js & PostgreSQL Specialist"',
       ],
       heroLead:
-        'I design and ship production-grade web applications, multi-branch ERP & POS systems, double-entry financial backends, and responsive bilingual user interfaces.',
+        'I engineer production-grade web applications, multi-branch ERP & POS systems, double-entry financial backends, and razor-sharp bilingual user interfaces.',
       ctaProjects: 'Explore Featured Work',
       ctaCv: 'Download CV',
-      ctaContact: 'Contact Me',
-      portraitRole: 'Full-Stack Software Engineer',
-      portraitLocation: 'Cairo, Egypt · ART-Vision',
+      ctaLab: 'Open Code Lab',
       metric1Label: 'API Route Modules Shipped',
       metric2Label: 'Versioned SQL Migrations',
       metric3Label: 'Granular RBAC Permissions',
       metric4Label: 'Years Shipping Web Apps',
+
+      labEyebrow: 'Interactive Code Workspace',
+      labTitle: 'Inspect How I Architect Production Systems',
+      labDesc: 'Click through real TypeScript, PostgreSQL ACID triggers, stack config, or run the interactive script below.',
+      labRunBtn: '▶ Run Script',
 
       aboutEyebrow: 'About Me',
       aboutTitle: 'Engineering reliable software from PostgreSQL schema to pixel-sharp UI',
@@ -118,27 +120,21 @@
       projDashCat: 'Full-Stack · Next.js',
       projDashTitle: 'Dash — Operations Dashboard',
       projDashDesc: 'Modern TypeScript and Next.js App Router analytics & management dashboard built with modular UI components.',
-
       projArtCat: 'Corporate · Agency',
       projArtTitle: 'ART-Vision Digital Agency',
       projArtDesc: 'Corporate agency platform with bold visual hierarchy, product showcase, customer accounts, and lead capture.',
-
       projJobviaCat: 'EdTech · Bilingual Platform',
       projJobviaTitle: 'JobviaCourse — Learning Platform',
       projJobviaDesc: 'Online courses marketplace featuring Arabic/English language switching, course explorer, instructor cards, and student dashboard.',
-
       projWisdomCat: 'E-Commerce · Storefront',
       projWisdomTitle: 'Wisdomteller — Books & Media Store',
       projWisdomDesc: 'Editorial dark-theme books and media e-commerce platform with search, user authentication, and cart checkout.',
-
       projBoomCat: 'E-Commerce · Multi-Category',
       projBoomTitle: 'BoomLabels — Retail & Furniture Store',
       projBoomDesc: 'Multi-category online retail storefront with structured category navigation, product comparison, wishlist, and cart.',
-
       projSpaCat: 'Hospitality · Booking',
       projSpaTitle: 'Blue Loutous — Specialty Spa',
       projSpaDesc: 'Luxury skincare and specialty spa web platform featuring tiered beauty & wedding packages and appointment booking.',
-
       projHonorCat: 'E-Commerce · Retail',
       projHonorTitle: 'HonorRanks — Kids Fashion Store',
       projHonorDesc: 'Clean editorial children fashion and toys online store with category collections, wishlist, and responsive merchandising.',
@@ -205,16 +201,18 @@
       cmdEmpty: 'No matching commands found.',
       copiedEmail: 'Email copied to clipboard!',
       copiedPhone: 'Phone number copied to clipboard!',
+      fxOnToast: 'Visual FX enabled ✨',
+      fxOffToast: 'Visual FX minimized',
     },
     ar: {
       pageTitle: 'جرجس صبري — مهندس برمجيات Full-Stack',
       navHome: 'الرئيسية',
+      navLab: 'معمل الكود',
       navAbout: 'نبذة عني',
       navServices: 'الخدمات',
       navSkills: 'المهارات',
       navProjects: 'الأعمال',
       navExperience: 'الخبرات',
-      navReviews: 'آراء العملاء',
       navContact: 'تواصل معي',
       brandSub: 'مهندس برمجيات FULL-STACK',
       langBtn: 'EN',
@@ -223,23 +221,25 @@
       availability: 'متاح لفرص عمل Full-Stack ومشاريع مختارة',
       heroGreeting: 'أهلاً، أنا',
       heroName: 'جرجس صبري',
-      heroRolePrefix: 'أعمل كـ',
       roles: [
-        'مهندس برمجيات Full-Stack',
-        'معماري أنظمة ERP ونقاط البيع',
-        'متخصص Next.js وPostgreSQL',
+        '"مهندس برمجيات Full-Stack"',
+        '"معماري أنظمة ERP وPOS"',
+        '"متخصص Next.js وPostgreSQL"',
       ],
       heroLead:
         'أصمّم وأطوّر تطبيقات ويب إنتاجية متكاملة، وأنظمة ERP ونقاط بيع (POS) متعددة الفروع، ومحركات محاسبة مالية بالقيد المزدوج، وواجهات حديثة متجاوبة بالعربية والإنجليزية.',
       ctaProjects: 'استعرض أبرز الأعمال',
       ctaCv: 'تحميل السيرة الذاتية CV',
-      ctaContact: 'تواصل معي',
-      portraitRole: 'مهندس برمجيات Full-Stack',
-      portraitLocation: 'القاهرة، مصر · ART-Vision',
+      ctaLab: 'افتح معمل الكود',
       metric1Label: 'وحدة API إنتاجية',
       metric2Label: 'ترحيل قاعدة بيانات SQL',
       metric3Label: 'صلاحية دقيقة (RBAC)',
       metric4Label: 'سنوات خبرة تطوير ويب',
+
+      labEyebrow: 'بيئة كود تفاعلية',
+      labTitle: 'تصفح أسلوب هندستي للأنظمة الإنتاجية',
+      labDesc: 'تنقّل بين ملفات TypeScript وتريجرز PostgreSQL وملف المهارات، أو اضغط تشغيل لاختبار السكريبت التفاعلي.',
+      labRunBtn: '▶ تشغيل السكريبت',
 
       aboutEyebrow: 'نبذة عني',
       aboutTitle: 'هندسة برمجيات موثوقة من تصميم قواعد بيانات PostgreSQL حتى أدق تفاصيل الواجهة',
@@ -317,27 +317,21 @@
       projDashCat: 'Full-Stack · Next.js',
       projDashTitle: 'Dash — لوحة تحكم وتحليلات',
       projDashDesc: 'لوحة تحكم حديثة للعمليات والتحليلات مبنية باستخدام Next.js App Router وTypeScript ومكونات معيارية.',
-
       projArtCat: 'شركات · وكالة رقمية',
       projArtTitle: 'ART-Vision — موقع الوكالة الرقمية',
       projArtDesc: 'منصة شركة ووكالة رقمية بهوية بصرية قوية، عرض للمنتجات والخدمات، وحسابات عملاء ونماذج تواصل.',
-
       projJobviaCat: 'تعليم إلكتروني · ثنائي اللغة',
       projJobviaTitle: 'JobviaCourse — منصة الدورات التدريبية',
       projJobviaDesc: 'منصة تعليم إلكتروني تدعم التبديل بين العربية والإنجليزية، استعراض الدورات، لوحة الطالب، وتجربة تعلم تفاعلية.',
-
       projWisdomCat: 'متجر إلكتروني · كتب وميديا',
       projWisdomTitle: 'Wisdomteller — متجر الكتب والميديا',
       projWisdomDesc: 'متجر إلكتروني داكن وأنيق للكتب والمحتوى مع بحث فوري، تسجيل دخول المستخدمين، وسلة مشتريات متكاملة.',
-
       projBoomCat: 'متجر إلكتروني · متعدد الأقسام',
       projBoomTitle: 'BoomLabels — متجر الأثاث والتجزئة',
       projBoomDesc: 'متجر متعدد الفئات مع قائمة تصنيفات منظمة، مقارنة المنتجات، المفضلة، وسلة تسوق متجاوبة.',
-
       projSpaCat: 'خدمات · حجوزات',
       projSpaTitle: 'Blue Loutous — سبا وعناية بالبشرة',
       projSpaDesc: 'موقع راقٍ لمركز سبا وعناية بالبشرة يعرض باقات التجميل والعرائس ونظام حجز المواعيد أونلاين.',
-
       projHonorCat: 'متجر إلكتروني · أزياء أطفال',
       projHonorTitle: 'HonorRanks — متجر أزياء وألعاب الأطفال',
       projHonorDesc: 'متجر عصري لملابس وألعاب الأطفال بتصميم نظيف، تصفح حسب الفئات، قائمة مفضلة، وتجربة شراء سلسة.',
@@ -404,21 +398,26 @@
       cmdEmpty: 'لا توجد أوامر مطابقة.',
       copiedEmail: 'تم نسخ البريد الإلكتروني!',
       copiedPhone: 'تم نسخ رقم الهاتف!',
+      fxOnToast: 'تم تفعيل المؤثرات البصرية ✨',
+      fxOffToast: 'تم تقليل المؤثرات البصرية',
     },
   };
 
   let currentLang = 'en';
   let currentTheme = 'dark';
+  let fxEnabled = !prefersReducedMotion;
 
   try {
     const savedLang = localStorage.getItem('gs-lang');
     if (savedLang === 'ar' || savedLang === 'en') currentLang = savedLang;
     const savedTheme = localStorage.getItem('gs-theme');
     if (savedTheme === 'light' || savedTheme === 'dark') currentTheme = savedTheme;
+    const savedFx = localStorage.getItem('gs-fx');
+    if (savedFx === 'off') fxEnabled = false;
   } catch {}
 
   /* ========================================================================
-     Toast Notification Helper
+     Toast & Clipboard Helper
      ======================================================================== */
   const toastEl = document.getElementById('toast');
   let toastTimer = null;
@@ -441,13 +440,167 @@
       ta.style.opacity = '0';
       document.body.appendChild(ta);
       ta.select();
-      try {
-        document.execCommand('copy');
-        showToast(successMsg);
-      } catch {}
+      try { document.execCommand('copy'); showToast(successMsg); } catch {}
       ta.remove();
     }
   }
+
+  /* ========================================================================
+     Live Cairo Local Clock (Africa/Cairo)
+     ======================================================================== */
+  const clockEl = document.getElementById('cairo-clock');
+  function updateClock() {
+    if (!clockEl) return;
+    try {
+      const time = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Africa/Cairo',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      }).format(new Date());
+      clockEl.textContent = `Cairo · ${time}`;
+    } catch {
+      clockEl.textContent = 'Cairo · UTC+2';
+    }
+  }
+  updateClock();
+  setInterval(updateClock, 30_000);
+
+  /* ========================================================================
+     Interactive Neural / Code-Node Constellation Canvas (60fps GPU-friendly)
+     ======================================================================== */
+  const canvas = document.getElementById('neural-canvas');
+  let canvasRunning = false;
+  let canvasRaf = 0;
+
+  function initNeuralCanvas() {
+    if (!canvas || prefersReducedMotion) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let w = 0;
+    let h = 0;
+    let nodes = [];
+    const pointer = { x: -9999, y: -9999 };
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = w < 640 ? 22 : w < 1024 ? 38 : 58;
+      nodes = Array.from({ length: count }, (_, i) => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.42,
+        vy: (Math.random() - 0.5) * 0.42,
+        r: Math.random() * 1.6 + 1.1,
+        gold: i % 3 === 0,
+      }));
+    }
+
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener(
+      'pointermove',
+      e => { pointer.x = e.clientX; pointer.y = e.clientY; },
+      { passive: true }
+    );
+    window.addEventListener('pointerleave', () => { pointer.x = -9999; pointer.y = -9999; });
+
+    function frame() {
+      if (!canvasRunning || !fxEnabled || document.hidden) {
+        canvasRaf = 0;
+        return;
+      }
+      ctx.clearRect(0, 0, w, h);
+      const isLight = currentTheme === 'light';
+      const maxDist = w < 640 ? 110 : 148;
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        a.x += a.vx;
+        a.y += a.vy;
+        if (a.x < 0 || a.x > w) a.vx *= -1;
+        if (a.y < 0 || a.y > h) a.vy *= -1;
+
+        // Subtle attraction toward cursor
+        const dxp = pointer.x - a.x;
+        const dyp = pointer.y - a.y;
+        const distP = Math.hypot(dxp, dyp);
+        if (distP < 180 && distP > 1) {
+          const alpha = (1 - distP / 180) * (isLight ? 0.3 : 0.42);
+          ctx.strokeStyle = a.gold
+            ? `rgba(224, 179, 84, ${alpha.toFixed(3)})`
+            : `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(pointer.x, pointer.y);
+          ctx.stroke();
+        }
+
+        // Connect neighboring nodes
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * (isLight ? 0.14 : 0.2);
+            ctx.strokeStyle = `rgba(148, 163, 184, ${alpha.toFixed(3)})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+
+        // Draw node
+        ctx.fillStyle = a.gold
+          ? (isLight ? 'rgba(180, 125, 30, 0.55)' : 'rgba(224, 179, 84, 0.85)')
+          : (isLight ? 'rgba(2, 132, 199, 0.5)' : 'rgba(56, 189, 248, 0.85)');
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      canvasRaf = requestAnimationFrame(frame);
+    }
+
+    canvasRunning = true;
+    if (fxEnabled) canvasRaf = requestAnimationFrame(frame);
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && fxEnabled && !canvasRaf) {
+        canvasRaf = requestAnimationFrame(frame);
+      }
+    });
+
+    window.__startNeuralCanvas = () => {
+      if (!canvasRaf && fxEnabled) canvasRaf = requestAnimationFrame(frame);
+    };
+  }
+
+  /* ========================================================================
+     FX Toggle (Navbar Button)
+     ======================================================================== */
+  const fxBtn = document.getElementById('fx-toggle');
+  function applyFx(enabled) {
+    fxEnabled = enabled && !prefersReducedMotion;
+    document.documentElement.classList.toggle('fx-off', !fxEnabled);
+    fxBtn?.classList.toggle('fx-active', fxEnabled);
+    fxBtn?.setAttribute('aria-pressed', String(fxEnabled));
+    try { localStorage.setItem('gs-fx', fxEnabled ? 'on' : 'off'); } catch {}
+    if (fxEnabled && typeof window.__startNeuralCanvas === 'function') {
+      window.__startNeuralCanvas();
+    }
+  }
+  fxBtn?.addEventListener('click', () => {
+    applyFx(!fxEnabled);
+    showToast(fxEnabled ? translations[currentLang].fxOnToast : translations[currentLang].fxOffToast);
+  });
 
   /* ========================================================================
      Hero Typewriter Role Cycler
@@ -481,22 +634,147 @@
       typewriterEl.textContent = target.slice(0, charIndex);
       if (charIndex >= target.length) {
         deleting = true;
-        twTimer = setTimeout(tickTypewriter, 1900);
+        twTimer = setTimeout(tickTypewriter, 1950);
         return;
       }
-      twTimer = setTimeout(tickTypewriter, 52);
+      twTimer = setTimeout(tickTypewriter, 50);
     } else {
       charIndex--;
       typewriterEl.textContent = target.slice(0, Math.max(0, charIndex));
       if (charIndex <= 0) {
         deleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        twTimer = setTimeout(tickTypewriter, 320);
+        twTimer = setTimeout(tickTypewriter, 300);
         return;
       }
-      twTimer = setTimeout(tickTypewriter, 28);
+      twTimer = setTimeout(tickTypewriter, 26);
     }
   }
+
+  /* ========================================================================
+     Interactive VS Code / Cursor Code Lab Showcase
+     ======================================================================== */
+  const ideCodeEl = document.getElementById('ide-code');
+  const ideConsoleEl = document.getElementById('ide-console-body');
+  const ideStatusLang = document.getElementById('ide-status-lang');
+  const ideRunBtn = document.getElementById('ide-run-btn');
+  let activeIdeFile = 'architecture.ts';
+  let runTimers = [];
+
+  const ideFiles = {
+    'architecture.ts': {
+      lang: 'TypeScript 5.8 · UTF-8',
+      code: [
+        `<span class="syn-com">// Nexus ERP POS — Production Full-Stack Request Boundary</span>`,
+        `<span class="syn-kw">export async function</span> <span class="syn-fn">executeCheckout</span>(req: <span class="syn-type">Request</span>) {`,
+        `  <span class="syn-kw">const</span> actor = <span class="syn-kw">await</span> <span class="syn-fn">requirePermission</span>(<span class="syn-str">'sales.create'</span>);`,
+        `  <span class="syn-kw">return</span> <span class="syn-fn">transaction</span>(<span class="syn-kw">async</span> (client) =&gt; {`,
+        `    <span class="syn-kw">await</span> <span class="syn-fn">lockInventoryRows</span>(client, items); <span class="syn-com">// FOR UPDATE</span>`,
+        `    <span class="syn-kw">const</span> sale = <span class="syn-kw">await</span> <span class="syn-fn">postBalancedJournal</span>(client, actor);`,
+        `    <span class="syn-fn">publishRealtime</span>(<span class="syn-str">'sale:completed'</span>, { branchId: sale.branchId });`,
+        `    <span class="syn-kw">return</span> { status: <span class="syn-num">201</span>, saleNumber: sale.saleNumber };`,
+        `  });`,
+        `}`,
+      ],
+      logs: [
+        `<span class="ide-log-cyan">$ npx tsx --test tests/*.test.ts</span>`,
+        `<span class="ide-log-ok">✓</span> 244/244 unit, RBAC &amp; PostgreSQL boundary tests passed (2.7s)`,
+        `<span class="ide-log-gold">✓</span> Atomic transaction + SSE realtime broadcast verified.`,
+      ],
+    },
+    'nexus-erp.sql': {
+      lang: 'PostgreSQL 18 · ACID Trigger',
+      code: [
+        `<span class="syn-com">-- Migration 036: Enforced Double-Entry Balanced Journal Trigger</span>`,
+        `<span class="syn-kw">CREATE CONSTRAINT TRIGGER</span> trg_journal_balanced`,
+        `  <span class="syn-kw">AFTER INSERT OR UPDATE ON</span> journal_entries`,
+        `  <span class="syn-kw">DEFERRABLE INITIALLY DEFERRED</span>`,
+        `  <span class="syn-kw">FOR EACH ROW EXECUTE FUNCTION</span> <span class="syn-fn">enforce_balanced_posted_journal</span>();`,
+        ``,
+        `<span class="syn-com">-- Immutable Append-Only Audit Trail</span>`,
+        `<span class="syn-kw">SELECT</span> sum(debit) = sum(credit) <span class="syn-kw">AS</span> balanced`,
+        `  <span class="syn-kw">FROM</span> journal_lines <span class="syn-kw">WHERE</span> journal_entry_id = NEW.id;`,
+      ],
+      logs: [
+        `<span class="ide-log-cyan">$ npm run test:reports</span>`,
+        `<span class="ide-log-ok">✓</span> Trial Balance, P&amp;L, Balance Sheet &amp; AR/AP Aging reconciled (14/14)`,
+        `<span class="ide-log-gold">✓</span> Zero unbalanced journal entries allowed at DB layer.`,
+      ],
+    },
+    'skills.json': {
+      lang: 'JSON · Stack Manifest',
+      code: [
+        `{`,
+        `  <span class="syn-fn">"engineer"</span>: <span class="syn-str">"Gerges Sabry"</span>,`,
+        `  <span class="syn-fn">"frontend"</span>: [<span class="syn-str">"Next.js 15"</span>, <span class="syn-str">"React 19"</span>, <span class="syn-str">"TypeScript"</span>, <span class="syn-str">"RTL/LTR UX"</span>],`,
+        `  <span class="syn-fn">"backend"</span>: [<span class="syn-str">"Node.js"</span>, <span class="syn-str">"PostgreSQL"</span>, <span class="syn-str">"REST APIs"</span>, <span class="syn-str">"SSE"</span>],`,
+        `  <span class="syn-fn">"security"</span>: [<span class="syn-str">"84-Rule RBAC"</span>, <span class="syn-str">"scrypt"</span>, <span class="syn-str">"AES-256-GCM"</span>, <span class="syn-str">"Ed25519"</span>],`,
+        `  <span class="syn-fn">"qa"</span>: [<span class="syn-str">"Playwright E2E"</span>, <span class="syn-str">"Isolated PG Suites"</span>, <span class="syn-str">"Docker"</span>]`,
+        `}`,
+      ],
+      logs: [
+        `<span class="ide-log-cyan">$ npm run typecheck &amp;&amp; npm run build</span>`,
+        `<span class="ide-log-ok">✓</span> TypeScript: 0 errors · Next.js production bundle: 74 routes compiled.`,
+        `<span class="ide-log-gold">✓</span> Playwright audit: 196/196 views · 0px overflow (320px–1920px).`,
+      ],
+    },
+    'hire-me.sh': {
+      lang: 'Shell · Interactive CLI',
+      code: [
+        `<span class="syn-com">#!/usr/bin/env bash</span>`,
+        `<span class="syn-fn">echo</span> <span class="syn-str">"Initializing collaboration with Gerges Sabry..."</span>`,
+        `LOCATION=<span class="syn-str">"Cairo, Egypt (Remote &amp; Onsite)"</span>`,
+        `EMAIL=<span class="syn-str">"support@gergessabry.xyz"</span>`,
+        `PHONE=<span class="syn-str">"+20 1200871167"</span>`,
+        `FLAGSHIP=<span class="syn-str">"github.com/GergessabryKahool/nexus-erp-pos"</span>`,
+        `<span class="syn-fn">echo</span> <span class="syn-str">"Status: OPEN FOR FULL-STACK ROLES &amp; PROJECTS"</span>`,
+      ],
+      logs: [
+        `<span class="ide-log-cyan">$ ./hire-me.sh</span>`,
+        `<span class="ide-log-ok">✓</span> Availability verified: Open to Full-Stack roles &amp; custom ERP/Web builds`,
+        `<span class="ide-log-gold">✓</span> Direct contact: support@gergessabry.xyz · WhatsApp +20 1200871167`,
+      ],
+    },
+  };
+
+  function renderIdeFile(fileName, autoRun = false) {
+    const file = ideFiles[fileName];
+    if (!file || !ideCodeEl) return;
+    activeIdeFile = fileName;
+    ideCodeEl.innerHTML = file.code
+      .map((line, i) => `<div><span class="ln">${String(i + 1).padStart(2, ' ')}</span>${line || '&nbsp;'}</div>`)
+      .join('');
+    if (ideStatusLang) ideStatusLang.textContent = file.lang;
+    document.querySelectorAll('.ide-file-btn').forEach(btn => {
+      const active = btn.getAttribute('data-ide-file') === fileName;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', String(active));
+    });
+    if (autoRun) runIdeScript();
+  }
+
+  function runIdeScript() {
+    const file = ideFiles[activeIdeFile];
+    if (!file || !ideConsoleEl) return;
+    runTimers.forEach(t => clearTimeout(t));
+    runTimers = [];
+    ideConsoleEl.innerHTML = '';
+    file.logs.forEach((line, idx) => {
+      const delay = prefersReducedMotion ? 0 : idx * 240;
+      const timer = setTimeout(() => {
+        const row = document.createElement('div');
+        row.innerHTML = line;
+        ideConsoleEl.appendChild(row);
+      }, delay);
+      runTimers.push(timer);
+    });
+  }
+
+  document.querySelectorAll('.ide-file-btn').forEach(btn => {
+    btn.addEventListener('click', () => renderIdeFile(btn.getAttribute('data-ide-file') || 'architecture.ts', true));
+  });
+  ideRunBtn?.addEventListener('click', runIdeScript);
+  renderIdeFile('architecture.ts', true);
 
   /* ========================================================================
      Theme & Language Engine
@@ -574,34 +852,56 @@
   });
 
   /* ========================================================================
-     Pointer Aura, Card Spotlight Glow & Hero 3D Tilt (Desktop Fine Pointer)
+     Spring Cursor Ring, Aura, Card Spotlight, Magnetic Buttons & 3D Tilt
      ======================================================================== */
   if (finePointer && !prefersReducedMotion) {
     const aura = document.getElementById('cursor-aura');
-    let auraX = 0;
-    let auraY = 0;
-    let auraVisible = false;
-    let auraRaf = 0;
+    const ring = document.getElementById('cursor-ring');
+    let targetX = -100;
+    let targetY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let pointerActive = false;
+
+    function animateCursor() {
+      if (pointerActive && fxEnabled && !document.hidden) {
+        ringX += (targetX - ringX) * 0.2;
+        ringY += (targetY - ringY) * 0.2;
+        if (ring) ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate3d(-50%, -50%, 0)`;
+        if (aura) aura.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate3d(-50%, -50%, 0)`;
+      }
+      requestAnimationFrame(animateCursor);
+    }
+    requestAnimationFrame(animateCursor);
 
     window.addEventListener(
       'pointermove',
       e => {
-        auraX = e.clientX;
-        auraY = e.clientY;
-        if (!auraVisible && aura) {
-          auraVisible = true;
-          aura.style.opacity = '1';
-        }
-        if (!auraRaf && aura) {
-          auraRaf = requestAnimationFrame(() => {
-            aura.style.transform = `translate3d(${auraX}px, ${auraY}px, 0) translate3d(-50%, -50%, 0)`;
-            auraRaf = 0;
-          });
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if (!pointerActive) {
+          pointerActive = true;
+          ringX = targetX;
+          ringY = targetY;
+          if (aura) aura.style.opacity = '1';
+          if (ring) ring.style.opacity = '1';
         }
       },
       { passive: true }
     );
 
+    document.addEventListener('pointerover', e => {
+      if (ring && e.target instanceof Element && e.target.closest('a, button, input, textarea')) {
+        ring.classList.add('is-hover');
+      }
+    });
+    document.addEventListener('pointerout', e => {
+      if (ring && e.target instanceof Element && e.target.closest('a, button, input, textarea')) {
+        ring.classList.remove('is-hover');
+      }
+    });
+
+    // Card Spotlight Glow
     document.querySelectorAll('.glow-card').forEach(card => {
       card.addEventListener(
         'pointermove',
@@ -614,28 +914,46 @@
       );
     });
 
-    const tiltCard = document.getElementById('hero-tilt');
-    if (tiltCard) {
-      tiltCard.addEventListener(
+    // Magnetic Buttons
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener(
         'pointermove',
         e => {
-          const rect = tiltCard.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width - 0.5;
-          const py = (e.clientY - rect.top) / rect.height - 0.5;
-          const rx = (-py * 9).toFixed(2);
-          const ry = (px * 9).toFixed(2);
-          tiltCard.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.015)`;
+          if (!fxEnabled) return;
+          const rect = btn.getBoundingClientRect();
+          const dx = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+          const dy = ((e.clientY - rect.top) / rect.height - 0.5) * 8;
+          btn.style.transform = `translate3d(${dx.toFixed(1)}px, ${(dy - 2).toFixed(1)}px, 0)`;
         },
         { passive: true }
       );
-      tiltCard.addEventListener('pointerleave', () => {
-        tiltCard.style.transform = '';
+      btn.addEventListener('pointerleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    // 3D Tilt on Hero Portrait Stage
+    const tiltWrap = document.getElementById('hero-tilt');
+    if (tiltWrap) {
+      tiltWrap.addEventListener(
+        'pointermove',
+        e => {
+          if (!fxEnabled) return;
+          const rect = tiltWrap.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width - 0.5;
+          const py = (e.clientY - rect.top) / rect.height - 0.5;
+          tiltWrap.style.transform = `rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) scale(1.015)`;
+        },
+        { passive: true }
+      );
+      tiltWrap.addEventListener('pointerleave', () => {
+        tiltWrap.style.transform = '';
       });
     }
   }
 
   /* ========================================================================
-     Scroll Staggered Reveals & Count-Up KPI Numbers
+     Staggered Scroll Reveals & Count-Up KPIs
      ======================================================================== */
   const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
   if (prefersReducedMotion || !('IntersectionObserver' in window)) {
@@ -665,7 +983,7 @@
       el.textContent = `${target}${suffix}`;
       return;
     }
-    const duration = 1050;
+    const duration = 1100;
     const start = performance.now();
     const step = now => {
       const p = Math.min(1, (now - start) / duration);
@@ -691,32 +1009,6 @@
     );
     countEls.forEach(el => countObserver.observe(el));
   }
-
-  /* ========================================================================
-     Interactive Engineer Terminal Widget
-     ======================================================================== */
-  const terminalOutput = document.getElementById('terminal-output');
-  const terminalOutputs = {
-    whoami: `<span class="t-prompt">$</span> whoami --json\n{\n  <span class="t-key">"name"</span>: <span class="t-val">"Gerges Sabry"</span>,\n  <span class="t-key">"role"</span>: <span class="t-val">"Full-Stack Software Engineer"</span>,\n  <span class="t-key">"company"</span>: <span class="t-val">"ART-Vision"</span>,\n  <span class="t-key">"location"</span>: <span class="t-val">"Cairo, Egypt"</span>\n}`,
-    stack: `<span class="t-prompt">$</span> cat stack.config.ts\n<span class="t-key">frontend</span>: [<span class="t-val">"Next.js 15"</span>, <span class="t-val">"React 19"</span>, <span class="t-val">"TypeScript"</span>]\n<span class="t-key">backend</span>:  [<span class="t-val">"Node.js"</span>, <span class="t-val">"PostgreSQL"</span>, <span class="t-val">"REST & SSE"</span>]\n<span class="t-key">quality</span>:  [<span class="t-val">"Playwright E2E"</span>, <span class="t-val">"RBAC"</span>, <span class="t-val">"Docker"</span>]`,
-    flagship: `<span class="t-prompt">$</span> inspect nexus-erp-pos\n<span class="t-key">repo</span>:       <span class="t-val">github.com/GergessabryKahool/nexus-erp-pos</span>\n<span class="t-key">scale</span>:      <span class="t-val">90+ APIs · 36 SQL migrations · 84 RBAC roles</span>\n<span class="t-key">verified</span>:   <span class="t-val">244+ automated unit, security &amp; E2E checks</span>`,
-    contact: `<span class="t-prompt">$</span> contact --direct\n<span class="t-key">email</span>:    <span class="t-val">support@gergessabry.xyz</span>\n<span class="t-key">phone</span>:    <span class="t-val">+20 1200871167</span>\n<span class="t-key">status</span>:   <span class="t-val">Available for Full-Stack roles &amp; projects</span>`,
-  };
-
-  function selectTerminalCmd(cmd) {
-    if (!terminalOutput || !terminalOutputs[cmd]) return;
-    terminalOutput.innerHTML = terminalOutputs[cmd];
-    document.querySelectorAll('.term-cmd').forEach(btn => {
-      const active = btn.getAttribute('data-term') === cmd;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-pressed', String(active));
-    });
-  }
-
-  document.querySelectorAll('.term-cmd').forEach(btn => {
-    btn.addEventListener('click', () => selectTerminalCmd(btn.getAttribute('data-term') || 'whoami'));
-  });
-  selectTerminalCmd('whoami');
 
   /* ========================================================================
      Flagship Nexus ERP POS Detail Tabs
@@ -767,9 +1059,18 @@
     );
     sections.forEach(sec => secObserver.observe(sec));
   }
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (window.scrollY < 100) {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#home'));
+      }
+    },
+    { passive: true }
+  );
 
   /* ========================================================================
-     Portfolio Filter & Upgraded Lightbox (Next / Prev + Keyboard Arrows)
+     Portfolio Filter & Upgraded Lightbox (Prev/Next + Arrows)
      ======================================================================== */
   const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
   const projectCards = Array.from(document.querySelectorAll('.project-card'));
@@ -811,9 +1112,7 @@
     lightboxImg.alt = card?.querySelector('h3')?.textContent || 'Project Preview';
     lightboxTitle.textContent = card?.querySelector('h3')?.textContent || '';
     lightboxDesc.textContent = card?.querySelector('p')?.textContent || '';
-    if (lightboxCounter) {
-      lightboxCounter.textContent = `${activePreviewIdx + 1} / ${previewItems.length}`;
-    }
+    if (lightboxCounter) lightboxCounter.textContent = `${activePreviewIdx + 1} / ${previewItems.length}`;
   }
 
   function openLightbox(trigger) {
@@ -840,7 +1139,6 @@
   document.querySelectorAll('[data-preview-src]').forEach(btn => {
     btn.addEventListener('click', () => openLightbox(btn));
   });
-
   lightboxPrev?.addEventListener('click', () => renderLightboxAt(activePreviewIdx - 1));
   lightboxNext?.addEventListener('click', () => renderLightboxAt(activePreviewIdx + 1));
   lightboxClose?.addEventListener('click', closeLightbox);
@@ -859,17 +1157,18 @@
   function getCommands() {
     const ar = currentLang === 'ar';
     return [
+      { label: ar ? 'الانتقال إلى: معمل الكود التفاعلي (IDE)' : 'Jump to: Interactive Code Lab (IDE)', hint: '#code-lab', run: () => { location.hash = '#code-lab'; } },
       { label: ar ? 'الانتقال إلى: مشروع Nexus ERP POS' : 'Jump to: Nexus ERP POS Flagship', hint: '#projects', run: () => { location.hash = '#projects'; } },
-      { label: ar ? 'الانتقال إلى: نبذة عني والطرفية التفاعلية' : 'Jump to: About & Engineer Terminal', hint: '#about', run: () => { location.hash = '#about'; } },
+      { label: ar ? 'تشغيل سكريبت hire-me.sh داخل المعمل' : 'Run hire-me.sh inside Code Lab', hint: 'RUN', run: () => { location.hash = '#code-lab'; renderIdeFile('hire-me.sh', true); } },
       { label: ar ? 'الانتقال إلى: المهارات التقنية' : 'Jump to: Technical Stack', hint: '#skills', run: () => { location.hash = '#skills'; } },
-      { label: ar ? 'الانتقال إلى: الخبرات والتعليم' : 'Jump to: Experience & Education', hint: '#experience', run: () => { location.hash = '#experience'; } },
       { label: ar ? 'الانتقال إلى: تواصل معي' : 'Jump to: Contact Form', hint: '#contact', run: () => { location.hash = '#contact'; } },
       { label: ar ? 'تبديل اللغة (عربي / English)' : 'Switch Language (EN / Arabic RTL)', hint: 'LANG', run: () => applyLang(currentLang === 'en' ? 'ar' : 'en') },
       { label: ar ? 'تبديل المظهر (داكن / فاتح)' : 'Toggle Theme (Dark / Light)', hint: 'THEME', run: () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark') },
+      { label: ar ? 'تشغيل / إيقاف المؤثرات البصرية (FX)' : 'Toggle Visual Effects (FX)', hint: 'FX', run: () => applyFx(!fxEnabled) },
       { label: ar ? 'نسخ البريد الإلكتروني (support@gergessabry.xyz)' : 'Copy Email (support@gergessabry.xyz)', hint: 'COPY', run: () => copyText('support@gergessabry.xyz', translations[currentLang].copiedEmail) },
       { label: ar ? 'نسخ رقم الهاتف (+20 1200871167)' : 'Copy Phone (+20 1200871167)', hint: 'COPY', run: () => copyText('+201200871167', translations[currentLang].copiedPhone) },
       { label: ar ? 'فتح مستودع Nexus ERP POS على GitHub' : 'Open Nexus ERP POS on GitHub', hint: 'GITHUB', run: () => window.open('https://github.com/GergessabryKahool/nexus-erp-pos', '_blank', 'noopener,noreferrer') },
-      { label: ar ? 'فتح السيرة الذاتية (Download CV)' : 'Open / Download CV', hint: 'CV', run: () => window.open('https://drive.google.com/file/d/1H2krislh80V8bNEhWDnDR8QcskormqxM/view?usp=drivesdk', '_blank', 'noopener,noreferrer') },
+      { label: ar ? 'تحميل السيرة الذاتية (CV)' : 'Open / Download CV', hint: 'CV', run: () => window.open('https://drive.google.com/file/d/1H2krislh80V8bNEhWDnDR8QcskormqxM/view?usp=drivesdk', '_blank', 'noopener,noreferrer') },
     ];
   }
 
@@ -888,10 +1187,7 @@
       btn.type = 'button';
       btn.className = `cmd-item${idx === 0 ? ' is-selected' : ''}`;
       btn.innerHTML = `<span>${cmd.label}</span><small>${cmd.hint}</small>`;
-      btn.addEventListener('click', () => {
-        closeCmd();
-        cmd.run();
-      });
+      btn.addEventListener('click', () => { closeCmd(); cmd.run(); });
       cmdList.appendChild(btn);
     });
   }
@@ -936,9 +1232,6 @@
     }
   });
 
-  /* ========================================================================
-     Global Keyboard Shortcuts & Copy Triggers
-     ======================================================================== */
   document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -965,9 +1258,6 @@
     });
   });
 
-  /* ========================================================================
-     Header Controls & Initial Hydration
-     ======================================================================== */
   document.getElementById('lang-toggle')?.addEventListener('click', () => {
     applyLang(currentLang === 'en' ? 'ar' : 'en');
   });
@@ -976,8 +1266,11 @@
     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
   });
 
+  // Boot all systems
   applyTheme(currentTheme);
   applyLang(currentLang);
+  applyFx(fxEnabled);
+  initNeuralCanvas();
 
   /* ========================================================================
      Single, Bug-Free Formspree Contact Form Handler
@@ -1001,9 +1294,7 @@
     try {
       const formData = new FormData(form);
       const subject = formData.get('subject');
-      if (typeof subject === 'string' && subject.trim()) {
-        formData.set('_subject', subject.trim());
-      }
+      if (typeof subject === 'string' && subject.trim()) formData.set('_subject', subject.trim());
       const res = await fetch(form.action, {
         method: 'POST',
         body: formData,
