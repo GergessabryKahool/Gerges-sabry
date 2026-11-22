@@ -1,6 +1,11 @@
 (() => {
   'use strict';
 
+  const prefersReducedMotion =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer =
+    window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+
   const translations = {
     en: {
       pageTitle: 'Gerges Sabry — Full-Stack Software Engineer',
@@ -19,7 +24,12 @@
       availability: 'Available for Full-Stack Roles & Select Projects',
       heroGreeting: 'Hi, I am',
       heroName: 'Gerges Sabry',
-      heroRole: 'Full-Stack Software Engineer — Next.js, TypeScript & PostgreSQL',
+      heroRolePrefix: 'Building as a',
+      roles: [
+        'Full-Stack Software Engineer',
+        'ERP & POS Systems Architect',
+        'Next.js & PostgreSQL Specialist',
+      ],
       heroLead:
         'I design and ship production-grade web applications, multi-branch ERP & POS systems, double-entry financial backends, and responsive bilingual user interfaces.',
       ctaProjects: 'Explore Featured Work',
@@ -81,8 +91,15 @@
       projectsDesc: 'From enterprise transactional ERP/POS platforms to e-commerce stores and corporate brand websites.',
       flagshipBadge: 'Flagship Full-Stack System',
       flagshipTitle: 'Nexus ERP POS — Enterprise Commerce & Accounting Suite',
-      flagshipDesc:
-        'A full-stack server-backed business management system covering Retail POS, Cash Shifts, Multi-Warehouse Inventory & Transfers, Purchasing, Restaurant Kitchen Ops, Online Orders & Delivery, Customer Portal, and Double-Entry Financial Accounting (Trial Balance, P&L, Balance Sheet, AR/AP Aging, General Ledger).',
+      flagshipTabOverview: 'Overview',
+      flagshipTabArch: 'Architecture',
+      flagshipTabSec: 'Security & QA',
+      flagshipOverview:
+        'A full-stack server-backed business management system covering Retail POS, Cash Shifts, Multi-Warehouse Inventory & Transfers, Purchasing, Restaurant Kitchen Ops, Online Orders & Delivery, Customer Portal, and Double-Entry Financial Accounting.',
+      flagshipArch:
+        'Powered by Next.js 15 App Router, React 19, TypeScript, and PostgreSQL with 90+ API routes, 36 SQL migrations, balanced posted-journal triggers, advisory row locking for concurrent sales/stock, and a unified Server-Sent Events (SSE) real-time bus.',
+      flagshipSec:
+        'Hardened with 84 RBAC permissions, permanent vs temporary permission isolation, scrypt password hashing, SameSite=Strict HttpOnly sessions, Ed25519 licensing, AES-256-GCM backups, and 244+ automated unit, security, integration & Playwright E2E tests.',
       flagshipStat1: 'API Routes',
       flagshipStat2: 'Migrations',
       flagshipStat3: 'RBAC Rules',
@@ -184,6 +201,10 @@
       infoSocialTitle: 'Connect Online',
       footerCopy: '© 2026 Gerges Sabry. Engineered with clean code.',
       backToTop: 'Back to top ↑',
+      cmdPlaceholder: 'Type a command or jump to a section…',
+      cmdEmpty: 'No matching commands found.',
+      copiedEmail: 'Email copied to clipboard!',
+      copiedPhone: 'Phone number copied to clipboard!',
     },
     ar: {
       pageTitle: 'جرجس صبري — مهندس برمجيات Full-Stack',
@@ -202,7 +223,12 @@
       availability: 'متاح لفرص عمل Full-Stack ومشاريع مختارة',
       heroGreeting: 'أهلاً، أنا',
       heroName: 'جرجس صبري',
-      heroRole: 'مهندس برمجيات Full-Stack — Next.js وTypeScript وPostgreSQL',
+      heroRolePrefix: 'أعمل كـ',
+      roles: [
+        'مهندس برمجيات Full-Stack',
+        'معماري أنظمة ERP ونقاط البيع',
+        'متخصص Next.js وPostgreSQL',
+      ],
       heroLead:
         'أصمّم وأطوّر تطبيقات ويب إنتاجية متكاملة، وأنظمة ERP ونقاط بيع (POS) متعددة الفروع، ومحركات محاسبة مالية بالقيد المزدوج، وواجهات حديثة متجاوبة بالعربية والإنجليزية.',
       ctaProjects: 'استعرض أبرز الأعمال',
@@ -264,8 +290,15 @@
       projectsDesc: 'من أنظمة ERP/POS المحاسبية والمخزنية المتكاملة إلى المتاجر الإلكترونية ومواقع الشركات.',
       flagshipBadge: 'المشروع الرئيسي · Full-Stack ERP',
       flagshipTitle: 'Nexus ERP POS — منظومة إدارة التجارة والمحاسبة المتكاملة',
-      flagshipDesc:
-        'نظام إدارة أعمال متكامل مدعوم بخادم وقاعدة بيانات PostgreSQL يشمل: كاشير التجزئة، الورديات والنقدية، المخازن والتحويلات، المشتريات، المطاعم والمطبخ، طلبات الأونلاين والتوصيل، بوابة العملاء، والمحاسبة بالقيد المزدوج (ميزان المراجعة، الأرباح والخسائر، المركز المالي، أعمار الديون، ودفتر الأستاذ).',
+      flagshipTabOverview: 'نظرة عامة',
+      flagshipTabArch: 'البنية الهندسية',
+      flagshipTabSec: 'الأمان والاختبارات',
+      flagshipOverview:
+        'نظام إدارة أعمال متكامل مدعوم بخادم وقاعدة بيانات PostgreSQL يشمل: كاشير التجزئة، الورديات والنقدية، المخازن والتحويلات، المشتريات، المطاعم والمطبخ، طلبات الأونلاين والتوصيل، بوابة العملاء، والمحاسبة بالقيد المزدوج.',
+      flagshipArch:
+        'مبني بـ Next.js 15 App Router وReact 19 وTypeScript وPostgreSQL مع أكثر من 90 مسار API، و36 ترحيل SQL، وتريجرز اتزان القيود اليومية، وأقفال تزامن للمبيعات والمخزون، وقناة بث لحظي موحدة عبر SSE.',
+      flagshipSec:
+        'مؤمّن بـ 84 صلاحية RBAC مع عزل المنح المؤقتة، وتجزئة كلمات المرور بـ scrypt، وجلسات HttpOnly SameSite=Strict، وتراخيص Ed25519، ونسخ احتياطي مشفر AES-256-GCM، وأكثر من 244 اختبار وحدة وأمان وتكامل وPlaywright.',
       flagshipStat1: 'مسار API',
       flagshipStat2: 'ترحيل SQL',
       flagshipStat3: 'صلاحية RBAC',
@@ -367,6 +400,10 @@
       infoSocialTitle: 'حساباتي الرسمية',
       footerCopy: '© 2026 جرجس صبري. جميع الحقوق محفوظة.',
       backToTop: 'العودة للأعلى ↑',
+      cmdPlaceholder: 'ابحث عن قسم أو أمر سريع…',
+      cmdEmpty: 'لا توجد أوامر مطابقة.',
+      copiedEmail: 'تم نسخ البريد الإلكتروني!',
+      copiedPhone: 'تم نسخ رقم الهاتف!',
     },
   };
 
@@ -378,10 +415,92 @@
     if (savedLang === 'ar' || savedLang === 'en') currentLang = savedLang;
     const savedTheme = localStorage.getItem('gs-theme');
     if (savedTheme === 'light' || savedTheme === 'dark') currentTheme = savedTheme;
-  } catch {
-    // ignore storage errors
+  } catch {}
+
+  /* ========================================================================
+     Toast Notification Helper
+     ======================================================================== */
+  const toastEl = document.getElementById('toast');
+  let toastTimer = null;
+  function showToast(message) {
+    if (!toastEl) return;
+    toastEl.textContent = message;
+    toastEl.classList.add('is-open');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('is-open'), 2600);
   }
 
+  async function copyText(text, successMsg) {
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast(successMsg);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch {}
+      ta.remove();
+    }
+  }
+
+  /* ========================================================================
+     Hero Typewriter Role Cycler
+     ======================================================================== */
+  const typewriterEl = document.getElementById('typewriter-text');
+  let twTimer = null;
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function restartTypewriter() {
+    if (twTimer) clearTimeout(twTimer);
+    if (!typewriterEl) return;
+    const roles = translations[currentLang].roles;
+    if (prefersReducedMotion) {
+      typewriterEl.textContent = roles[0];
+      return;
+    }
+    roleIndex = 0;
+    charIndex = 0;
+    deleting = false;
+    tickTypewriter();
+  }
+
+  function tickTypewriter() {
+    if (!typewriterEl) return;
+    const roles = translations[currentLang].roles;
+    const target = roles[roleIndex % roles.length];
+    if (!deleting) {
+      charIndex++;
+      typewriterEl.textContent = target.slice(0, charIndex);
+      if (charIndex >= target.length) {
+        deleting = true;
+        twTimer = setTimeout(tickTypewriter, 1900);
+        return;
+      }
+      twTimer = setTimeout(tickTypewriter, 52);
+    } else {
+      charIndex--;
+      typewriterEl.textContent = target.slice(0, Math.max(0, charIndex));
+      if (charIndex <= 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        twTimer = setTimeout(tickTypewriter, 320);
+        return;
+      }
+      twTimer = setTimeout(tickTypewriter, 28);
+    }
+  }
+
+  /* ========================================================================
+     Theme & Language Engine
+     ======================================================================== */
   function applyTheme(theme) {
     currentTheme = theme;
     document.documentElement.dataset.theme = theme;
@@ -409,7 +528,7 @@
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (key && Object.prototype.hasOwnProperty.call(t, key)) {
+      if (key && Object.prototype.hasOwnProperty.call(t, key) && typeof t[key] === 'string') {
         el.textContent = t[key];
       }
     });
@@ -425,31 +544,200 @@
     if (themeLabel) {
       themeLabel.textContent = currentTheme === 'dark' ? t.themeLight : t.themeDark;
     }
+
+    restartTypewriter();
+    renderCmdList(cmdInput?.value || '');
   }
 
-  // Initialize theme and language immediately
-  applyTheme(currentTheme);
-  applyLang(currentLang);
-
-  // Header Controls
-  document.getElementById('lang-toggle')?.addEventListener('click', () => {
-    applyLang(currentLang === 'en' ? 'ar' : 'en');
-  });
-
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-  });
-
-  // Sticky Header Shadow
+  /* ========================================================================
+     Scroll Progress Bar, Sticky Header & Back-to-Top Dock
+     ======================================================================== */
   const header = document.getElementById('site-header');
+  const progressBar = document.getElementById('scroll-progress');
+  const backTopBtn = document.getElementById('dock-top');
+
   const onScroll = () => {
-    if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > 12);
+    const y = window.scrollY;
+    header?.classList.toggle('is-scrolled', y > 12);
+    backTopBtn?.classList.toggle('is-visible', y > 420);
+    if (progressBar) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = docHeight > 0 ? Math.min(1, Math.max(0, y / docHeight)) : 0;
+      progressBar.style.transform = `scaleX(${ratio})`;
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Mobile Navigation Drawer
+  backTopBtn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+
+  /* ========================================================================
+     Pointer Aura, Card Spotlight Glow & Hero 3D Tilt (Desktop Fine Pointer)
+     ======================================================================== */
+  if (finePointer && !prefersReducedMotion) {
+    const aura = document.getElementById('cursor-aura');
+    let auraX = 0;
+    let auraY = 0;
+    let auraVisible = false;
+    let auraRaf = 0;
+
+    window.addEventListener(
+      'pointermove',
+      e => {
+        auraX = e.clientX;
+        auraY = e.clientY;
+        if (!auraVisible && aura) {
+          auraVisible = true;
+          aura.style.opacity = '1';
+        }
+        if (!auraRaf && aura) {
+          auraRaf = requestAnimationFrame(() => {
+            aura.style.transform = `translate3d(${auraX}px, ${auraY}px, 0) translate3d(-50%, -50%, 0)`;
+            auraRaf = 0;
+          });
+        }
+      },
+      { passive: true }
+    );
+
+    document.querySelectorAll('.glow-card').forEach(card => {
+      card.addEventListener(
+        'pointermove',
+        e => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${Math.round(e.clientX - rect.left)}px`);
+          card.style.setProperty('--my', `${Math.round(e.clientY - rect.top)}px`);
+        },
+        { passive: true }
+      );
+    });
+
+    const tiltCard = document.getElementById('hero-tilt');
+    if (tiltCard) {
+      tiltCard.addEventListener(
+        'pointermove',
+        e => {
+          const rect = tiltCard.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width - 0.5;
+          const py = (e.clientY - rect.top) / rect.height - 0.5;
+          const rx = (-py * 9).toFixed(2);
+          const ry = (px * 9).toFixed(2);
+          tiltCard.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.015)`;
+        },
+        { passive: true }
+      );
+      tiltCard.addEventListener('pointerleave', () => {
+        tiltCard.style.transform = '';
+      });
+    }
+  }
+
+  /* ========================================================================
+     Scroll Staggered Reveals & Count-Up KPI Numbers
+     ======================================================================== */
+  const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const revObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = Number(entry.target.getAttribute('data-delay') || 0);
+            if (delay) entry.target.style.transitionDelay = `${delay}ms`;
+            entry.target.classList.add('is-visible');
+            revObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+    );
+    revealEls.forEach(el => revObserver.observe(el));
+  }
+
+  const countEls = Array.from(document.querySelectorAll('[data-count]'));
+  function runCountUp(el) {
+    const target = Number(el.getAttribute('data-count') || 0);
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (prefersReducedMotion || !target) {
+      el.textContent = `${target}${suffix}`;
+      return;
+    }
+    const duration = 1050;
+    const start = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = `${target}${suffix}`;
+    };
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window && countEls.length) {
+    const countObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            runCountUp(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    countEls.forEach(el => countObserver.observe(el));
+  }
+
+  /* ========================================================================
+     Interactive Engineer Terminal Widget
+     ======================================================================== */
+  const terminalOutput = document.getElementById('terminal-output');
+  const terminalOutputs = {
+    whoami: `<span class="t-prompt">$</span> whoami --json\n{\n  <span class="t-key">"name"</span>: <span class="t-val">"Gerges Sabry"</span>,\n  <span class="t-key">"role"</span>: <span class="t-val">"Full-Stack Software Engineer"</span>,\n  <span class="t-key">"company"</span>: <span class="t-val">"ART-Vision"</span>,\n  <span class="t-key">"location"</span>: <span class="t-val">"Cairo, Egypt"</span>\n}`,
+    stack: `<span class="t-prompt">$</span> cat stack.config.ts\n<span class="t-key">frontend</span>: [<span class="t-val">"Next.js 15"</span>, <span class="t-val">"React 19"</span>, <span class="t-val">"TypeScript"</span>]\n<span class="t-key">backend</span>:  [<span class="t-val">"Node.js"</span>, <span class="t-val">"PostgreSQL"</span>, <span class="t-val">"REST & SSE"</span>]\n<span class="t-key">quality</span>:  [<span class="t-val">"Playwright E2E"</span>, <span class="t-val">"RBAC"</span>, <span class="t-val">"Docker"</span>]`,
+    flagship: `<span class="t-prompt">$</span> inspect nexus-erp-pos\n<span class="t-key">repo</span>:       <span class="t-val">github.com/GergessabryKahool/nexus-erp-pos</span>\n<span class="t-key">scale</span>:      <span class="t-val">90+ APIs · 36 SQL migrations · 84 RBAC roles</span>\n<span class="t-key">verified</span>:   <span class="t-val">244+ automated unit, security &amp; E2E checks</span>`,
+    contact: `<span class="t-prompt">$</span> contact --direct\n<span class="t-key">email</span>:    <span class="t-val">support@gergessabry.xyz</span>\n<span class="t-key">phone</span>:    <span class="t-val">+20 1200871167</span>\n<span class="t-key">status</span>:   <span class="t-val">Available for Full-Stack roles &amp; projects</span>`,
+  };
+
+  function selectTerminalCmd(cmd) {
+    if (!terminalOutput || !terminalOutputs[cmd]) return;
+    terminalOutput.innerHTML = terminalOutputs[cmd];
+    document.querySelectorAll('.term-cmd').forEach(btn => {
+      const active = btn.getAttribute('data-term') === cmd;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+  }
+
+  document.querySelectorAll('.term-cmd').forEach(btn => {
+    btn.addEventListener('click', () => selectTerminalCmd(btn.getAttribute('data-term') || 'whoami'));
+  });
+  selectTerminalCmd('whoami');
+
+  /* ========================================================================
+     Flagship Nexus ERP POS Detail Tabs
+     ======================================================================== */
+  document.querySelectorAll('.flagship-tab').forEach(tabBtn => {
+    tabBtn.addEventListener('click', () => {
+      const targetId = tabBtn.getAttribute('data-tab-target');
+      document.querySelectorAll('.flagship-tab').forEach(b => {
+        const active = b === tabBtn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      document.querySelectorAll('.flagship-panel').forEach(panel => {
+        panel.hidden = panel.id !== targetId;
+      });
+    });
+  });
+
+  /* ========================================================================
+     Mobile Drawer & Active Section Highlighting
+     ======================================================================== */
   const menuBtn = document.getElementById('menu-toggle');
   const drawer = document.getElementById('mobile-drawer');
   function setDrawer(open) {
@@ -460,23 +748,13 @@
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  menuBtn?.addEventListener('click', () => {
-    const isOpen = drawer?.classList.contains('is-open');
-    setDrawer(!isOpen);
-  });
+  menuBtn?.addEventListener('click', () => setDrawer(!drawer?.classList.contains('is-open')));
+  drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setDrawer(false)));
 
-  drawer?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => setDrawer(false));
-  });
-
-  // Active Navigation Section Highlighting
   const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-  const sections = navLinks
-    .map(link => document.querySelector(link.getAttribute('href') || ''))
-    .filter(Boolean);
-
+  const sections = navLinks.map(link => document.querySelector(link.getAttribute('href') || '')).filter(Boolean);
   if ('IntersectionObserver' in window && sections.length) {
-    const observer = new IntersectionObserver(
+    const secObserver = new IntersectionObserver(
       entries => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
@@ -487,10 +765,12 @@
       },
       { rootMargin: '-35% 0px -55% 0px' }
     );
-    sections.forEach(sec => observer.observe(sec));
+    sections.forEach(sec => secObserver.observe(sec));
   }
 
-  // Portfolio Category Filter
+  /* ========================================================================
+     Portfolio Filter & Upgraded Lightbox (Next / Prev + Keyboard Arrows)
+     ======================================================================== */
   const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
   const projectCards = Array.from(document.querySelectorAll('.project-card'));
 
@@ -509,25 +789,39 @@
     });
   });
 
-  // Accessible Lightbox Modal
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxCounter = document.getElementById('lightbox-counter');
   const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+
+  const previewItems = Array.from(document.querySelectorAll('.project-card .project-thumb-btn[data-preview-src]'));
+  let activePreviewIdx = 0;
   let lastTrigger = null;
 
+  function renderLightboxAt(index) {
+    if (!previewItems.length || !lightboxImg || !lightboxTitle || !lightboxDesc) return;
+    activePreviewIdx = (index + previewItems.length) % previewItems.length;
+    const item = previewItems[activePreviewIdx];
+    const card = item.closest('.project-card');
+    lightboxImg.src = item.getAttribute('data-preview-src') || '';
+    lightboxImg.alt = card?.querySelector('h3')?.textContent || 'Project Preview';
+    lightboxTitle.textContent = card?.querySelector('h3')?.textContent || '';
+    lightboxDesc.textContent = card?.querySelector('p')?.textContent || '';
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${activePreviewIdx + 1} / ${previewItems.length}`;
+    }
+  }
+
   function openLightbox(trigger) {
-    if (!lightbox || !lightboxImg || !lightboxTitle || !lightboxDesc) return;
+    if (!lightbox) return;
     lastTrigger = trigger;
-    const card = trigger.closest('.project-card');
-    const src = trigger.getAttribute('data-preview-src') || '';
-    const titleEl = card?.querySelector('h3');
-    const descEl = card?.querySelector('p');
-    lightboxImg.src = src;
-    lightboxImg.alt = titleEl?.textContent || 'Project Preview';
-    lightboxTitle.textContent = titleEl?.textContent || '';
-    lightboxDesc.textContent = descEl?.textContent || '';
+    const src = trigger.getAttribute('data-preview-src');
+    const idx = previewItems.findIndex(el => el.getAttribute('data-preview-src') === src);
+    renderLightboxAt(idx >= 0 ? idx : 0);
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -539,9 +833,7 @@
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (lastTrigger && typeof lastTrigger.focus === 'function') {
-      lastTrigger.focus();
-    }
+    if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
     lastTrigger = null;
   }
 
@@ -549,19 +841,147 @@
     btn.addEventListener('click', () => openLightbox(btn));
   });
 
+  lightboxPrev?.addEventListener('click', () => renderLightboxAt(activePreviewIdx - 1));
+  lightboxNext?.addEventListener('click', () => renderLightboxAt(activePreviewIdx + 1));
   lightboxClose?.addEventListener('click', closeLightbox);
-  lightbox?.addEventListener('click', e => {
-    if (e.target === lightbox) closeLightbox();
-  });
+  lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      if (lightbox?.classList.contains('is-open')) closeLightbox();
-      if (drawer?.classList.contains('is-open')) setDrawer(false);
+  /* ========================================================================
+     Command Palette (Ctrl+K / Cmd+K)
+     ======================================================================== */
+  const cmdBackdrop = document.getElementById('cmd-backdrop');
+  const cmdInput = document.getElementById('cmd-input');
+  const cmdList = document.getElementById('cmd-list');
+  const cmdTrigger = document.getElementById('cmd-trigger');
+  let cmdSelectedIdx = 0;
+  let visibleCommands = [];
+
+  function getCommands() {
+    const ar = currentLang === 'ar';
+    return [
+      { label: ar ? 'الانتقال إلى: مشروع Nexus ERP POS' : 'Jump to: Nexus ERP POS Flagship', hint: '#projects', run: () => { location.hash = '#projects'; } },
+      { label: ar ? 'الانتقال إلى: نبذة عني والطرفية التفاعلية' : 'Jump to: About & Engineer Terminal', hint: '#about', run: () => { location.hash = '#about'; } },
+      { label: ar ? 'الانتقال إلى: المهارات التقنية' : 'Jump to: Technical Stack', hint: '#skills', run: () => { location.hash = '#skills'; } },
+      { label: ar ? 'الانتقال إلى: الخبرات والتعليم' : 'Jump to: Experience & Education', hint: '#experience', run: () => { location.hash = '#experience'; } },
+      { label: ar ? 'الانتقال إلى: تواصل معي' : 'Jump to: Contact Form', hint: '#contact', run: () => { location.hash = '#contact'; } },
+      { label: ar ? 'تبديل اللغة (عربي / English)' : 'Switch Language (EN / Arabic RTL)', hint: 'LANG', run: () => applyLang(currentLang === 'en' ? 'ar' : 'en') },
+      { label: ar ? 'تبديل المظهر (داكن / فاتح)' : 'Toggle Theme (Dark / Light)', hint: 'THEME', run: () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark') },
+      { label: ar ? 'نسخ البريد الإلكتروني (support@gergessabry.xyz)' : 'Copy Email (support@gergessabry.xyz)', hint: 'COPY', run: () => copyText('support@gergessabry.xyz', translations[currentLang].copiedEmail) },
+      { label: ar ? 'نسخ رقم الهاتف (+20 1200871167)' : 'Copy Phone (+20 1200871167)', hint: 'COPY', run: () => copyText('+201200871167', translations[currentLang].copiedPhone) },
+      { label: ar ? 'فتح مستودع Nexus ERP POS على GitHub' : 'Open Nexus ERP POS on GitHub', hint: 'GITHUB', run: () => window.open('https://github.com/GergessabryKahool/nexus-erp-pos', '_blank', 'noopener,noreferrer') },
+      { label: ar ? 'فتح السيرة الذاتية (Download CV)' : 'Open / Download CV', hint: 'CV', run: () => window.open('https://drive.google.com/file/d/1H2krislh80V8bNEhWDnDR8QcskormqxM/view?usp=drivesdk', '_blank', 'noopener,noreferrer') },
+    ];
+  }
+
+  function renderCmdList(query) {
+    if (!cmdList) return;
+    const q = query.trim().toLowerCase();
+    visibleCommands = getCommands().filter(c => `${c.label} ${c.hint}`.toLowerCase().includes(q));
+    cmdSelectedIdx = 0;
+    if (!visibleCommands.length) {
+      cmdList.innerHTML = `<div class="cmd-empty">${translations[currentLang].cmdEmpty}</div>`;
+      return;
+    }
+    cmdList.innerHTML = '';
+    visibleCommands.forEach((cmd, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `cmd-item${idx === 0 ? ' is-selected' : ''}`;
+      btn.innerHTML = `<span>${cmd.label}</span><small>${cmd.hint}</small>`;
+      btn.addEventListener('click', () => {
+        closeCmd();
+        cmd.run();
+      });
+      cmdList.appendChild(btn);
+    });
+  }
+
+  function updateCmdSelection(nextIdx) {
+    if (!cmdList || !visibleCommands.length) return;
+    cmdSelectedIdx = (nextIdx + visibleCommands.length) % visibleCommands.length;
+    cmdList.querySelectorAll('.cmd-item').forEach((el, i) => {
+      el.classList.toggle('is-selected', i === cmdSelectedIdx);
+      if (i === cmdSelectedIdx) el.scrollIntoView({ block: 'nearest' });
+    });
+  }
+
+  function openCmd() {
+    if (!cmdBackdrop || !cmdInput) return;
+    cmdInput.value = '';
+    renderCmdList('');
+    cmdBackdrop.classList.add('is-open');
+    cmdBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    cmdInput.focus();
+  }
+
+  function closeCmd() {
+    if (!cmdBackdrop) return;
+    cmdBackdrop.classList.remove('is-open');
+    cmdBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  cmdTrigger?.addEventListener('click', openCmd);
+  cmdBackdrop?.addEventListener('click', e => { if (e.target === cmdBackdrop) closeCmd(); });
+  cmdInput?.addEventListener('input', e => renderCmdList(e.target.value));
+  cmdInput?.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); updateCmdSelection(cmdSelectedIdx + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); updateCmdSelection(cmdSelectedIdx - 1); }
+    else if (e.key === 'Enter' && visibleCommands[cmdSelectedIdx]) {
+      e.preventDefault();
+      const chosen = visibleCommands[cmdSelectedIdx];
+      closeCmd();
+      chosen.run();
     }
   });
 
-  // Single, Bug-Free Formspree Contact Form Handler
+  /* ========================================================================
+     Global Keyboard Shortcuts & Copy Triggers
+     ======================================================================== */
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (cmdBackdrop?.classList.contains('is-open')) closeCmd();
+      else openCmd();
+      return;
+    }
+    if (e.key === 'Escape') {
+      if (cmdBackdrop?.classList.contains('is-open')) closeCmd();
+      if (lightbox?.classList.contains('is-open')) closeLightbox();
+      if (drawer?.classList.contains('is-open')) setDrawer(false);
+    } else if (lightbox?.classList.contains('is-open')) {
+      if (e.key === 'ArrowRight') renderLightboxAt(activePreviewIdx + 1);
+      else if (e.key === 'ArrowLeft') renderLightboxAt(activePreviewIdx - 1);
+    }
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const value = btn.getAttribute('data-copy') || '';
+      const kind = btn.getAttribute('data-copy-kind');
+      const msg = kind === 'phone' ? translations[currentLang].copiedPhone : translations[currentLang].copiedEmail;
+      void copyText(value, msg);
+    });
+  });
+
+  /* ========================================================================
+     Header Controls & Initial Hydration
+     ======================================================================== */
+  document.getElementById('lang-toggle')?.addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'ar' : 'en');
+  });
+
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  });
+
+  applyTheme(currentTheme);
+  applyLang(currentLang);
+
+  /* ========================================================================
+     Single, Bug-Free Formspree Contact Form Handler
+     ======================================================================== */
   const form = document.getElementById('contact-form');
   const statusEl = document.getElementById('form-status');
   const submitBtn = document.getElementById('contact-submit');

@@ -48,7 +48,10 @@
 </head>
 <body id="home">
   <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="cursor-aura" id="cursor-aura" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="site-header" id="site-header">
@@ -75,6 +78,11 @@
       </nav>
 
       <div class="nav-controls">
+        <button type="button" class="icon-control" id="cmd-trigger" aria-label="Open Quick Command Palette (Ctrl+K)" title="Quick Commands (Ctrl+K)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="cmd-kbd">Ctrl K</span>
+        </button>
+
         <button type="button" class="icon-control" id="lang-toggle" aria-label="Switch language">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <span data-i18n="langBtn">عربي</span>
@@ -121,7 +129,10 @@
               <span class="accent" data-i18n="heroName">Gerges Sabry</span>
             </h1>
 
-            <p class="hero-role" data-i18n="heroRole">Full-Stack Software Engineer — Next.js, TypeScript &amp; PostgreSQL</p>
+            <p class="hero-role-row">
+              <span data-i18n="heroRolePrefix">Building as a</span>
+              <span><span class="typewriter-text" id="typewriter-text">Full-Stack Software Engineer</span><span class="typewriter-caret" aria-hidden="true"></span></span>
+            </p>
 
             <p class="hero-lead" data-i18n="heroLead">
               I design and ship production-grade web applications, multi-branch ERP &amp; POS systems, double-entry financial backends, and responsive bilingual user interfaces.
@@ -153,36 +164,69 @@
           </div>
 
           <div class="hero-visual">
-            <div class="portrait-card">
-              <img src="assets/img/section/hero-img.jpg" alt="Portrait of Gerges Sabry" fetchpriority="high" />
-              <div class="portrait-overlay">
-                <div>
-                  <strong data-i18n="portraitRole">Full-Stack Software Engineer</strong>
-                  <span data-i18n="portraitLocation">Cairo, Egypt · ART-Vision</span>
+            <div class="portrait-stage">
+              <div class="floating-chip chip-top" aria-hidden="true">⚡ Next.js 15 · React 19</div>
+              <div class="floating-chip chip-mid" aria-hidden="true">🐘 PostgreSQL ACID</div>
+              <div class="portrait-card" id="hero-tilt">
+                <img src="assets/img/section/hero-img.jpg" alt="Portrait of Gerges Sabry" fetchpriority="high" />
+                <div class="portrait-overlay">
+                  <div>
+                    <strong data-i18n="portraitRole">Full-Stack Software Engineer</strong>
+                    <span data-i18n="portraitLocation">Cairo, Egypt · ART-Vision</span>
+                  </div>
+                  <span class="portrait-tag">TS · NEXT · PG</span>
                 </div>
-                <span class="portrait-tag">TS · NEXT · PG</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="metrics-strip">
-          <div class="metric-card">
-            <div class="metric-value">90+</div>
+          <div class="metric-card glow-card" data-reveal data-delay="0">
+            <div class="metric-value" data-count="90" data-suffix="+">90+</div>
             <div class="metric-label" data-i18n="metric1Label">API Route Modules Shipped</div>
           </div>
-          <div class="metric-card">
-            <div class="metric-value">36</div>
+          <div class="metric-card glow-card" data-reveal data-delay="70">
+            <div class="metric-value" data-count="36" data-suffix="">36</div>
             <div class="metric-label" data-i18n="metric2Label">Versioned SQL Migrations</div>
           </div>
-          <div class="metric-card">
-            <div class="metric-value">84</div>
+          <div class="metric-card glow-card" data-reveal data-delay="140">
+            <div class="metric-value" data-count="84" data-suffix="">84</div>
             <div class="metric-label" data-i18n="metric3Label">Granular RBAC Permissions</div>
           </div>
-          <div class="metric-card">
-            <div class="metric-value">3+</div>
+          <div class="metric-card glow-card" data-reveal data-delay="210">
+            <div class="metric-value" data-count="3" data-suffix="+">3+</div>
             <div class="metric-label" data-i18n="metric4Label">Years Shipping Web Apps</div>
           </div>
+        </div>
+      </div>
+
+      <!-- Smooth Tech Marquee Ribbon -->
+      <div class="marquee-wrap" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-item">Next.js 15 <i class="marquee-sep"></i></span>
+          <span class="marquee-item">React 19 <i class="marquee-sep"></i></span>
+          <span class="marquee-item">TypeScript <i class="marquee-sep"></i></span>
+          <span class="marquee-item">PostgreSQL <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Node.js <i class="marquee-sep"></i></span>
+          <span class="marquee-item">ERP &amp; POS Systems <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Double-Entry Accounting <i class="marquee-sep"></i></span>
+          <span class="marquee-item">RBAC Security <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Playwright E2E <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Docker <i class="marquee-sep"></i></span>
+          <span class="marquee-item">RTL / LTR UI <i class="marquee-sep"></i></span>
+          <!-- Duplicate track for seamless infinite loop -->
+          <span class="marquee-item">Next.js 15 <i class="marquee-sep"></i></span>
+          <span class="marquee-item">React 19 <i class="marquee-sep"></i></span>
+          <span class="marquee-item">TypeScript <i class="marquee-sep"></i></span>
+          <span class="marquee-item">PostgreSQL <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Node.js <i class="marquee-sep"></i></span>
+          <span class="marquee-item">ERP &amp; POS Systems <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Double-Entry Accounting <i class="marquee-sep"></i></span>
+          <span class="marquee-item">RBAC Security <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Playwright E2E <i class="marquee-sep"></i></span>
+          <span class="marquee-item">Docker <i class="marquee-sep"></i></span>
+          <span class="marquee-item">RTL / LTR UI <i class="marquee-sep"></i></span>
         </div>
       </div>
     </section>
@@ -191,11 +235,32 @@
     <section id="about" class="section section-alt">
       <div class="container">
         <div class="about-grid">
-          <div class="about-photo-frame">
-            <img src="assets/img/section/about.jpg" alt="Gerges Sabry professional portrait" loading="lazy" />
+          <div class="about-left-stack" data-reveal>
+            <div class="about-photo-frame">
+              <img src="assets/img/section/about.jpg" alt="Gerges Sabry professional portrait" loading="lazy" />
+            </div>
+
+            <!-- Interactive CLI Engineer Terminal -->
+            <div class="dev-terminal" aria-label="Interactive engineer profile terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dots" aria-hidden="true">
+                  <span style="background:#f87171"></span>
+                  <span style="background:#fbbf24"></span>
+                  <span style="background:#34d399"></span>
+                </div>
+                <span class="terminal-title">gerges@portfolio:~</span>
+              </div>
+              <div class="terminal-tabs" role="group" aria-label="Terminal quick commands">
+                <button type="button" class="term-cmd is-active" data-term="whoami" aria-pressed="true">whoami</button>
+                <button type="button" class="term-cmd" data-term="stack" aria-pressed="false">stack</button>
+                <button type="button" class="term-cmd" data-term="flagship" aria-pressed="false">flagship</button>
+                <button type="button" class="term-cmd" data-term="contact" aria-pressed="false">contact</button>
+              </div>
+              <div class="terminal-body" id="terminal-output" aria-live="polite"></div>
+            </div>
           </div>
 
-          <div class="about-copy">
+          <div class="about-copy" data-reveal data-delay="90">
             <div class="section-head" style="margin-bottom:20px;">
               <div class="eyebrow" data-i18n="aboutEyebrow">About Me</div>
               <h2 class="section-title" data-i18n="aboutTitle">Engineering reliable software from PostgreSQL schema to pixel-sharp UI</h2>
@@ -210,36 +275,58 @@
 
             <div class="about-facts">
               <div class="fact-box">
-                <small data-i18n="factRoleLabel">Role</small>
-                <strong data-i18n="factRoleVal">Full-Stack Software Engineer</strong>
+                <div>
+                  <small data-i18n="factRoleLabel">Role</small>
+                  <strong data-i18n="factRoleVal">Full-Stack Software Engineer</strong>
+                </div>
               </div>
               <div class="fact-box">
-                <small data-i18n="factCompanyLabel">Company</small>
-                <strong data-i18n="factCompanyVal">ART-Vision</strong>
+                <div>
+                  <small data-i18n="factCompanyLabel">Company</small>
+                  <strong data-i18n="factCompanyVal">ART-Vision</strong>
+                </div>
               </div>
               <div class="fact-box">
-                <small data-i18n="factLocationLabel">Location</small>
-                <strong data-i18n="factLocationVal">Cairo, Egypt</strong>
+                <div>
+                  <small data-i18n="factLocationLabel">Location</small>
+                  <strong data-i18n="factLocationVal">Cairo, Egypt</strong>
+                </div>
               </div>
               <div class="fact-box">
-                <small data-i18n="factLanguagesLabel">Languages</small>
-                <strong data-i18n="factLanguagesVal">Arabic (Native), English</strong>
+                <div>
+                  <small data-i18n="factLanguagesLabel">Languages</small>
+                  <strong data-i18n="factLanguagesVal">Arabic (Native), English</strong>
+                </div>
               </div>
               <div class="fact-box">
-                <small data-i18n="factEmailLabel">Email</small>
-                <strong><a href="mailto:support@gergessabry.xyz">support@gergessabry.xyz</a></strong>
+                <div>
+                  <small data-i18n="factEmailLabel">Email</small>
+                  <strong><a href="mailto:support@gergessabry.xyz">support@gergessabry.xyz</a></strong>
+                </div>
+                <button type="button" class="copy-mini" data-copy="support@gergessabry.xyz" data-copy-kind="email" aria-label="Copy email">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
               </div>
               <div class="fact-box">
-                <small data-i18n="factPhoneLabel">Phone</small>
-                <strong dir="ltr"><a href="tel:+201200871167">+20 1200871167</a></strong>
+                <div>
+                  <small data-i18n="factPhoneLabel">Phone</small>
+                  <strong dir="ltr"><a href="tel:+201200871167">+20 1200871167</a></strong>
+                </div>
+                <button type="button" class="copy-mini" data-copy="+201200871167" data-copy-kind="phone" aria-label="Copy phone">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
               </div>
               <div class="fact-box">
-                <small data-i18n="factStatusLabel">Availability</small>
-                <strong data-i18n="factStatusVal">Open to Full-Time &amp; Freelance</strong>
+                <div>
+                  <small data-i18n="factStatusLabel">Availability</small>
+                  <strong data-i18n="factStatusVal">Open to Full-Time &amp; Freelance</strong>
+                </div>
               </div>
               <div class="fact-box">
-                <small data-i18n="factGithubLabel">GitHub</small>
-                <strong><a href="https://github.com/GergessabryKahool" target="_blank" rel="noopener noreferrer">@GergessabryKahool</a></strong>
+                <div>
+                  <small data-i18n="factGithubLabel">GitHub</small>
+                  <strong><a href="https://github.com/GergessabryKahool" target="_blank" rel="noopener noreferrer">@GergessabryKahool</a></strong>
+                </div>
               </div>
             </div>
 
@@ -252,14 +339,14 @@
     <!-- Services Section -->
     <section id="services" class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="servicesEyebrow">Capabilities</div>
           <h2 class="section-title" data-i18n="servicesTitle">What I Build &amp; Deliver</h2>
           <p class="section-desc" data-i18n="servicesDesc">End-to-end architecture, security, performance, and interface craft across the full web stack.</p>
         </div>
 
         <div class="cards-grid-3">
-          <article class="service-card">
+          <article class="service-card glow-card" data-reveal data-delay="0">
             <div class="service-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
@@ -267,7 +354,7 @@
             <p data-i18n="srv1Desc">Production Next.js, React, and TypeScript applications engineered for speed, maintainability, and clean server/client boundaries.</p>
           </article>
 
-          <article class="service-card">
+          <article class="service-card glow-card" data-reveal data-delay="60">
             <div class="service-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
@@ -275,7 +362,7 @@
             <p data-i18n="srv2Desc">Multi-branch retail POS, restaurant kitchen ops, warehouse transfers, supplier purchasing, and online order fulfillment workflows.</p>
           </article>
 
-          <article class="service-card">
+          <article class="service-card glow-card" data-reveal data-delay="120">
             <div class="service-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
             </div>
@@ -283,7 +370,7 @@
             <p data-i18n="srv3Desc">Normalized relational schemas, versioned SQL migrations, atomic transactions, row locking, and strict server-side validation.</p>
           </article>
 
-          <article class="service-card">
+          <article class="service-card glow-card" data-reveal data-delay="0">
             <div class="service-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
             </div>
@@ -291,7 +378,7 @@
             <p data-i18n="srv4Desc">Accessible, responsive interfaces (320px to 1920px+) with seamless Dark/Light themes and Arabic (RTL) / English (LTR) support.</p>
           </article>
 
-          <article class="service-card">
+          <article class="service-card glow-card" data-reveal data-delay="60">
             <div class="service-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
@@ -299,7 +386,7 @@
             <p data-i18n="srv5Desc">Server-enforced RBAC, signed HttpOnly sessions, scrypt credential hashing, CSRF protection, encrypted backups, and audit logs.</p>
           </article>
 
-          <article class="service-card">
+          <article class="service-card glow-card" data-reveal data-delay="120">
             <div class="service-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
@@ -313,14 +400,14 @@
     <!-- Skills Section -->
     <section id="skills" class="section section-alt">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="skillsEyebrow">Technical Stack</div>
           <h2 class="section-title" data-i18n="skillsTitle">Tools &amp; Technologies I Ship With</h2>
           <p class="section-desc" data-i18n="skillsDesc">A practical, battle-tested stack focused on type safety, transactional reliability, and modern web UX.</p>
         </div>
 
         <div class="skills-grid">
-          <div class="skill-group">
+          <div class="skill-group glow-card" data-reveal data-delay="0">
             <div class="skill-group-head">
               <h3 data-i18n="skGroup1">Frontend &amp; UI Engineering</h3>
               <span class="skill-group-tag">UI / UX</span>
@@ -337,7 +424,7 @@
             </div>
           </div>
 
-          <div class="skill-group">
+          <div class="skill-group glow-card" data-reveal data-delay="80">
             <div class="skill-group-head">
               <h3 data-i18n="skGroup2">Backend, Databases &amp; APIs</h3>
               <span class="skill-group-tag">SERVER</span>
@@ -354,7 +441,7 @@
             </div>
           </div>
 
-          <div class="skill-group">
+          <div class="skill-group glow-card" data-reveal data-delay="0">
             <div class="skill-group-head">
               <h3 data-i18n="skGroup3">Testing, Security &amp; DevOps</h3>
               <span class="skill-group-tag">QUALITY</span>
@@ -369,7 +456,7 @@
             </div>
           </div>
 
-          <div class="skill-group">
+          <div class="skill-group glow-card" data-reveal data-delay="80">
             <div class="skill-group-head">
               <h3 data-i18n="skGroup4">CMS, Growth &amp; Digital Craft</h3>
               <span class="skill-group-tag">WEB</span>
@@ -390,19 +477,33 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="projectsEyebrow">Selected Work</div>
           <h2 class="section-title" data-i18n="projectsTitle">Featured Engineering &amp; Web Projects</h2>
           <p class="section-desc" data-i18n="projectsDesc">From enterprise transactional ERP/POS platforms to e-commerce stores and corporate brand websites.</p>
         </div>
 
         <!-- Flagship Project: Nexus ERP POS -->
-        <article class="flagship-card">
+        <article class="flagship-card glow-card" data-reveal>
           <div>
             <span class="flagship-badge" data-i18n="flagshipBadge">Flagship Full-Stack System</span>
             <h3 data-i18n="flagshipTitle">Nexus ERP POS — Enterprise Commerce &amp; Accounting Suite</h3>
-            <p data-i18n="flagshipDesc">
-              A full-stack server-backed business management system covering Retail POS, Cash Shifts, Multi-Warehouse Inventory &amp; Transfers, Purchasing, Restaurant Kitchen Ops, Online Orders &amp; Delivery, Customer Portal, and Double-Entry Financial Accounting (Trial Balance, P&amp;L, Balance Sheet, AR/AP Aging, General Ledger).
+
+            <!-- Interactive Engineering Detail Tabs -->
+            <div class="flagship-tabs" role="tablist" aria-label="Nexus ERP POS details">
+              <button type="button" class="flagship-tab is-active" role="tab" aria-selected="true" data-tab-target="fs-overview" data-i18n="flagshipTabOverview">Overview</button>
+              <button type="button" class="flagship-tab" role="tab" aria-selected="false" data-tab-target="fs-arch" data-i18n="flagshipTabArch">Architecture</button>
+              <button type="button" class="flagship-tab" role="tab" aria-selected="false" data-tab-target="fs-sec" data-i18n="flagshipTabSec">Security &amp; QA</button>
+            </div>
+
+            <p class="flagship-panel" id="fs-overview" role="tabpanel" data-i18n="flagshipOverview">
+              A full-stack server-backed business management system covering Retail POS, Cash Shifts, Multi-Warehouse Inventory &amp; Transfers, Purchasing, Restaurant Kitchen Ops, Online Orders &amp; Delivery, Customer Portal, and Double-Entry Financial Accounting.
+            </p>
+            <p class="flagship-panel" id="fs-arch" role="tabpanel" hidden data-i18n="flagshipArch">
+              Powered by Next.js 15 App Router, React 19, TypeScript, and PostgreSQL with 90+ API routes, 36 SQL migrations, balanced posted-journal triggers, advisory row locking for concurrent sales/stock, and a unified Server-Sent Events (SSE) real-time bus.
+            </p>
+            <p class="flagship-panel" id="fs-sec" role="tabpanel" hidden data-i18n="flagshipSec">
+              Hardened with 84 RBAC permissions, permanent vs temporary permission isolation, scrypt password hashing, SameSite=Strict HttpOnly sessions, Ed25519 licensing, AES-256-GCM backups, and 244+ automated unit, security, integration &amp; Playwright E2E tests.
             </p>
 
             <div class="flagship-metrics">
@@ -439,7 +540,7 @@
             </div>
           </div>
 
-          <!-- Clean Architectural Preview Graphic for Nexus ERP POS -->
+          <!-- Architectural Preview Graphic for Nexus ERP POS -->
           <div class="flagship-visual" aria-hidden="true">
             <svg viewBox="0 0 540 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -455,7 +556,6 @@
               <circle cx="52" cy="18" r="5" fill="#34d399"/>
               <text x="74" y="22" fill="#94a3b8" font-family="monospace" font-size="11">nexus-erp-pos · Production ERP &amp; Double-Entry POS</text>
 
-              <!-- Sidebar -->
               <rect x="14" y="48" width="108" height="298" rx="10" fill="#0f172a" stroke="#1e293b"/>
               <rect x="24" y="62" width="88" height="22" rx="6" fill="rgba(212,168,83,0.18)" stroke="rgba(212,168,83,0.4)"/>
               <text x="34" y="77" fill="#f3ce7f" font-family="sans-serif" font-size="10" font-weight="700">Dashboard</text>
@@ -468,7 +568,6 @@
               <text x="34" y="238" fill="#38bdf8" font-family="sans-serif" font-size="10" font-weight="700">Accounting</text>
               <text x="34" y="260" fill="#94a3b8" font-family="sans-serif" font-size="10">RBAC / Audit</text>
 
-              <!-- Top KPI Cards -->
               <rect x="134" y="48" width="124" height="66" rx="10" fill="#0f172a" stroke="#1e293b"/>
               <text x="146" y="69" fill="#94a3b8" font-family="sans-serif" font-size="9">GROSS SALES</text>
               <text x="146" y="96" fill="#f8fafc" font-family="monospace" font-size="16" font-weight="700">EGP 482.5K</text>
@@ -481,7 +580,6 @@
               <text x="414" y="69" fill="#94a3b8" font-family="sans-serif" font-size="9">ACTIVE SHIFTS</text>
               <text x="414" y="96" fill="#38bdf8" font-family="monospace" font-size="16" font-weight="700">04 OPEN</text>
 
-              <!-- Revenue Chart Panel -->
               <rect x="134" y="126" width="392" height="122" rx="10" fill="#0f172a" stroke="#1e293b"/>
               <text x="148" y="148" fill="#cbd5e1" font-family="sans-serif" font-size="11" font-weight="700">Multi-Branch Revenue &amp; Inventory Flow</text>
               <rect x="156" y="200" width="26" height="34" rx="4" fill="#1e293b"/>
@@ -494,18 +592,17 @@
               <rect x="436" y="148" width="26" height="86" rx="4" fill="url(#gBar)"/>
               <rect x="476" y="160" width="26" height="74" rx="4" fill="#d4a853"/>
 
-              <!-- Ledger Rows Panel -->
               <rect x="134" y="260" width="392" height="86" rx="10" fill="#0f172a" stroke="#1e293b"/>
               <text x="148" y="280" fill="#cbd5e1" font-family="sans-serif" font-size="10" font-weight="700">Posted Journal Entries · PostgreSQL ACID Trigger Verified</text>
               <text x="148" y="302" fill="#94a3b8" font-family="monospace" font-size="10">JE-2026-1041 · SYS-CASH DR 14,250.00 / SYS-SALES CR 12,500.00</text>
               <text x="148" y="320" fill="#94a3b8" font-family="monospace" font-size="10">JE-2026-1042 · SYS-COGS DR  8,100.00 / SYS-INV   CR  8,100.00</text>
-              <text x="148" y="336" fill="#10b981" font-family="monospace" font-size="10">SSE Realtime: Connected · Audit Log: Append-Only</text>
+              <text x="148" y="336" fill="#10b981" font-family="monospace" font-size="10">● SSE Realtime: Connected · Audit Log: Append-Only</text>
             </svg>
           </div>
         </article>
 
         <!-- Category Filters -->
-        <div class="filter-bar" role="group" aria-label="Filter projects by category">
+        <div class="filter-bar" role="group" aria-label="Filter projects by category" data-reveal>
           <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">All Projects</button>
           <button type="button" class="filter-btn" data-filter="systems" aria-pressed="false" data-i18n="filterSystems">Full-Stack Systems</button>
           <button type="button" class="filter-btn" data-filter="ecommerce" aria-pressed="false" data-i18n="filterEcommerce">E-Commerce</button>
@@ -514,8 +611,8 @@
 
         <!-- Projects Grid -->
         <div class="projects-grid">
-          <!-- Dash -->
-          <article class="project-card is-wide" data-category="systems">
+          <!-- Dash (Full-Width Secondary Spotlight) -->
+          <article class="project-card is-wide glow-card" data-category="systems" data-reveal>
             <div class="project-thumb" style="display:grid;place-items:center;padding:18px;">
               <svg viewBox="0 0 320 190" width="100%" height="auto" aria-hidden="true">
                 <rect width="320" height="190" rx="10" fill="#0f172a"/>
@@ -542,7 +639,7 @@
           </article>
 
           <!-- ART-Vision -->
-          <article class="project-card" data-category="brands">
+          <article class="project-card glow-card" data-category="brands" data-reveal data-delay="0">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio5.png" aria-label="Preview ART-Vision Digital Agency">
                 <img src="assets/img/portfolio/portfolio5.png" alt="ART-Vision Digital Agency website screenshot" loading="lazy" />
@@ -561,7 +658,7 @@
           </article>
 
           <!-- JobviaCourse -->
-          <article class="project-card" data-category="systems">
+          <article class="project-card glow-card" data-category="systems" data-reveal data-delay="60">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio3.png" aria-label="Preview JobviaCourse Learning Platform">
                 <img src="assets/img/portfolio/portfolio3.png" alt="JobviaCourse online learning platform screenshot" loading="lazy" />
@@ -580,7 +677,7 @@
           </article>
 
           <!-- Wisdomteller -->
-          <article class="project-card" data-category="ecommerce">
+          <article class="project-card glow-card" data-category="ecommerce" data-reveal data-delay="120">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio1.png" aria-label="Preview Wisdomteller Books Store">
                 <img src="assets/img/portfolio/portfolio1.png" alt="Wisdomteller books and media online store screenshot" loading="lazy" />
@@ -599,7 +696,7 @@
           </article>
 
           <!-- BoomLabels -->
-          <article class="project-card" data-category="ecommerce">
+          <article class="project-card glow-card" data-category="ecommerce" data-reveal data-delay="0">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio6.png" aria-label="Preview BoomLabels Retail Store">
                 <img src="assets/img/portfolio/portfolio6.png" alt="BoomLabels multi-category retail store screenshot" loading="lazy" />
@@ -618,7 +715,7 @@
           </article>
 
           <!-- Blue Loutous Spa -->
-          <article class="project-card" data-category="brands">
+          <article class="project-card glow-card" data-category="brands" data-reveal data-delay="60">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio2.png" aria-label="Preview Blue Loutous Specialty Spa">
                 <img src="assets/img/portfolio/portfolio2.png" alt="Blue Loutous Specialty Spa booking website screenshot" loading="lazy" />
@@ -637,7 +734,7 @@
           </article>
 
           <!-- HonorRanks -->
-          <article class="project-card" data-category="ecommerce">
+          <article class="project-card glow-card" data-category="ecommerce" data-reveal data-delay="120">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio4.png" aria-label="Preview HonorRanks Kids Store">
                 <img src="assets/img/portfolio/portfolio4.png" alt="HonorRanks kids fashion and toys storefront screenshot" loading="lazy" />
@@ -661,19 +758,19 @@
     <!-- Experience & Education Section -->
     <section id="experience" class="section section-alt">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="expEyebrow">Career &amp; Education</div>
           <h2 class="section-title" data-i18n="expTitle">Experience &amp; Academic Background</h2>
         </div>
 
         <div class="timeline-grid">
-          <div>
+          <div data-reveal data-delay="0">
             <h3 class="timeline-col-title">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
               <span data-i18n="expColWork">Work Experience</span>
             </h3>
             <div class="timeline-list">
-              <article class="timeline-item">
+              <article class="timeline-item glow-card">
                 <div class="timeline-meta">
                   <span class="timeline-org" data-i18n="exp1Org">ART-Vision</span>
                   <span class="timeline-date" data-i18n="exp1Date">Jan 2023 – Present</span>
@@ -684,7 +781,7 @@
                 </p>
               </article>
 
-              <article class="timeline-item">
+              <article class="timeline-item glow-card">
                 <div class="timeline-meta">
                   <span class="timeline-org" data-i18n="exp2Org">Iron Gym</span>
                   <span class="timeline-date" data-i18n="exp2Date">Jan 2019 – Dec 2020</span>
@@ -697,13 +794,13 @@
             </div>
           </div>
 
-          <div>
+          <div data-reveal data-delay="90">
             <h3 class="timeline-col-title">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
               <span data-i18n="expColEdu">Education</span>
             </h3>
             <div class="timeline-list">
-              <article class="timeline-item">
+              <article class="timeline-item glow-card">
                 <div class="timeline-meta">
                   <span class="timeline-org" data-i18n="edu1Org">Ain Shams University</span>
                   <span class="timeline-date" data-i18n="edu1Date">Business &amp; Management</span>
@@ -722,13 +819,13 @@
     <!-- Client Reviews Section -->
     <section id="reviews" class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="revEyebrow">Client Feedback</div>
           <h2 class="section-title" data-i18n="revTitle">What Partners &amp; Clients Say</h2>
         </div>
 
         <div class="reviews-grid">
-          <article class="review-card">
+          <article class="review-card glow-card" data-reveal data-delay="0">
             <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
             <blockquote class="review-quote" data-i18n="rev1Quote">
               Exceptional web developer who combines strong engineering fundamentals with a sharp eye for visual design. Every deliverable is fast, responsive, and crafted with attention to user experience.
@@ -742,7 +839,7 @@
             </div>
           </article>
 
-          <article class="review-card">
+          <article class="review-card glow-card" data-reveal data-delay="70">
             <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
             <blockquote class="review-quote" data-i18n="rev2Quote">
               Working with Gerges across multiple web projects consistently exceeded expectations. His full-stack command of React and Node.js, problem-solving mindset, and clean maintainable code make him a reliable partner.
@@ -756,7 +853,7 @@
             </div>
           </article>
 
-          <article class="review-card">
+          <article class="review-card glow-card" data-reveal data-delay="140">
             <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
             <blockquote class="review-quote" data-i18n="rev3Quote">
               A true professional who builds robust, database-backed web applications and communicates complex technical decisions clearly. Collaborating with Gerges is smooth from planning through delivery.
@@ -776,14 +873,14 @@
     <!-- Contact Section -->
     <section id="contact" class="section section-alt">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="contactEyebrow">Get in Touch</div>
           <h2 class="section-title" data-i18n="contactTitle">Let’s Build Something Reliable Together</h2>
           <p class="section-desc" data-i18n="contactDesc">Have a full-stack project, ERP/POS system, or engineering role in mind? Send a message directly below.</p>
         </div>
 
         <div class="contact-grid">
-          <div class="contact-card">
+          <div class="contact-card glow-card" data-reveal>
             <div id="form-status" class="form-status" aria-live="polite"></div>
             <form action="https://formspree.io/f/xdaloywd" method="POST" id="contact-form">
               <div class="form-grid">
@@ -811,36 +908,48 @@
             </form>
           </div>
 
-          <div>
+          <div data-reveal data-delay="90">
             <div class="contact-info-list">
               <div class="contact-item">
-                <div class="contact-item-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <div class="contact-item-main">
+                  <div class="contact-item-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  </div>
+                  <div>
+                    <h4 data-i18n="infoEmailTitle">Email</h4>
+                    <a href="mailto:support@gergessabry.xyz">support@gergessabry.xyz</a>
+                    <a href="mailto:info@gergessabry.xyz">info@gergessabry.xyz</a>
+                  </div>
                 </div>
-                <div>
-                  <h4 data-i18n="infoEmailTitle">Email</h4>
-                  <a href="mailto:support@gergessabry.xyz">support@gergessabry.xyz</a>
-                  <a href="mailto:info@gergessabry.xyz">info@gergessabry.xyz</a>
-                </div>
+                <button type="button" class="copy-mini" data-copy="support@gergessabry.xyz" data-copy-kind="email" aria-label="Copy email address">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
               </div>
 
               <div class="contact-item">
-                <div class="contact-item-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div class="contact-item-main">
+                  <div class="contact-item-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </div>
+                  <div>
+                    <h4 data-i18n="infoPhoneTitle">Phone / WhatsApp</h4>
+                    <a href="tel:+201200871167" dir="ltr">+20 1200871167</a>
+                  </div>
                 </div>
-                <div>
-                  <h4 data-i18n="infoPhoneTitle">Phone / WhatsApp</h4>
-                  <a href="tel:+201200871167" dir="ltr">+20 1200871167</a>
-                </div>
+                <button type="button" class="copy-mini" data-copy="+201200871167" data-copy-kind="phone" aria-label="Copy phone number">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
               </div>
 
               <div class="contact-item">
-                <div class="contact-item-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div>
-                  <h4 data-i18n="infoAddressTitle">Location</h4>
-                  <span data-i18n="infoAddressVal">Cairo, Egypt (11511)</span>
+                <div class="contact-item-main">
+                  <div class="contact-item-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <h4 data-i18n="infoAddressTitle">Location</h4>
+                    <span data-i18n="infoAddressVal">Cairo, Egypt (11511)</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -872,12 +981,44 @@
     </div>
   </footer>
 
-  <!-- Accessible Project Preview Lightbox -->
+  <!-- Floating Quick Actions Dock (WhatsApp + Back to Top) -->
+  <div class="floating-dock">
+    <button type="button" class="dock-btn dock-top" id="dock-top" aria-label="Back to top" title="Back to top">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+    <a href="https://wa.me/201200871167" target="_blank" rel="noopener noreferrer" class="dock-btn dock-whatsapp" aria-label="Chat on WhatsApp" title="WhatsApp">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2Zm5.8 14.07c-.24.68-1.42 1.3-1.95 1.38-.5.08-1.14.11-1.84-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.96-4.4-.15-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.26-.29.58-.36.77-.36h.55c.18 0 .42-.07.66.5.24.58.82 2.01.89 2.15.07.15.12.32.02.51-.1.19-.15.32-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.26 1.64 2.04 1.13 1.01 2.08 1.32 2.37 1.47.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.69.8 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>
+    </a>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Command Palette Modal (Ctrl+K / Cmd+K) -->
+  <div class="cmd-backdrop" id="cmd-backdrop" role="dialog" aria-modal="true" aria-label="Quick Command Palette" aria-hidden="true">
+    <div class="cmd-dialog">
+      <div class="cmd-input-row">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted)" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="cmd-input" placeholder="Type a command or jump to a section…" data-i18n-placeholder="cmdPlaceholder" autocomplete="off" />
+        <span class="cmd-kbd">ESC</span>
+      </div>
+      <div class="cmd-list" id="cmd-list"></div>
+    </div>
+  </div>
+
+  <!-- Upgraded Accessible Project Preview Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
     <div class="lightbox-dialog">
       <div class="lightbox-head">
-        <h3 id="lightbox-title">Project Preview</h3>
-        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close preview">&times;</button>
+        <div class="lightbox-head-meta">
+          <span class="lightbox-counter" id="lightbox-counter">1 / 6</span>
+          <h3 id="lightbox-title">Project Preview</h3>
+        </div>
+        <div class="lightbox-nav">
+          <button type="button" class="lightbox-step" id="lightbox-prev" aria-label="Previous project">‹</button>
+          <button type="button" class="lightbox-step" id="lightbox-next" aria-label="Next project">›</button>
+          <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close preview">&times;</button>
+        </div>
       </div>
       <div class="lightbox-body">
         <img id="lightbox-img" src="" alt="" />
