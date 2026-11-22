@@ -64,6 +64,15 @@
     <div class="aurora-orb aurora-orb-3"></div>
   </div>
   <div class="bg-grid" aria-hidden="true"></div>
+  <!-- Shooting Neon Data Pulses Racing Along Background Grid Lines -->
+  <div class="grid-beams" aria-hidden="true">
+    <span class="grid-beam-h" style="--b-pos:18%;--b-dur:6.2s;--b-delay:-1.2s;"></span>
+    <span class="grid-beam-h" style="--b-pos:52%;--b-dur:8.5s;--b-delay:-4.4s;"></span>
+    <span class="grid-beam-h" style="--b-pos:82%;--b-dur:7.1s;--b-delay:-2.7s;"></span>
+    <span class="grid-beam-v" style="--b-pos:22%;--b-dur:7.6s;--b-delay:-0.8s;"></span>
+    <span class="grid-beam-v" style="--b-pos:56%;--b-dur:9.2s;--b-delay:-5.1s;"></span>
+    <span class="grid-beam-v" style="--b-pos:84%;--b-dur:6.8s;--b-delay:-3.3s;"></span>
+  </div>
 
   <!-- Subtle Floating Ambient Code Tokens -->
   <div class="floating-glyphs" aria-hidden="true">
@@ -268,114 +277,147 @@
         </div>
       </div>
 
-      <!-- Smooth Tech Marquee Ribbon -->
-      <div class="marquee-wrap" aria-hidden="true">
-        <div class="marquee-track">
-          <span class="marquee-item">Next.js 15 <i class="marquee-sep"></i></span>
-          <span class="marquee-item">React 19 <i class="marquee-sep"></i></span>
-          <span class="marquee-item">TypeScript <i class="marquee-sep"></i></span>
-          <span class="marquee-item">PostgreSQL <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Node.js <i class="marquee-sep"></i></span>
-          <span class="marquee-item">ERP &amp; POS Systems <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Double-Entry Accounting <i class="marquee-sep"></i></span>
-          <span class="marquee-item">RBAC Security <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Playwright E2E <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Docker <i class="marquee-sep"></i></span>
-          <span class="marquee-item">RTL / LTR UI <i class="marquee-sep"></i></span>
-          <!-- Duplicate track for seamless infinite loop -->
-          <span class="marquee-item">Next.js 15 <i class="marquee-sep"></i></span>
-          <span class="marquee-item">React 19 <i class="marquee-sep"></i></span>
-          <span class="marquee-item">TypeScript <i class="marquee-sep"></i></span>
-          <span class="marquee-item">PostgreSQL <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Node.js <i class="marquee-sep"></i></span>
-          <span class="marquee-item">ERP &amp; POS Systems <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Double-Entry Accounting <i class="marquee-sep"></i></span>
-          <span class="marquee-item">RBAC Security <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Playwright E2E <i class="marquee-sep"></i></span>
-          <span class="marquee-item">Docker <i class="marquee-sep"></i></span>
-          <span class="marquee-item">RTL / LTR UI <i class="marquee-sep"></i></span>
+      <!-- V5 TRUE 3D Spinning Holographic Tech Orbital Carousel (Drag or Hover!) -->
+      <div class="orbit-section">
+        <div class="orbit-header">
+          <span class="orbit-hint-dot" aria-hidden="true"></span>
+          <span data-i18n="orbitHint">3D Interactive Tech Orbit · Drag to Spin or Click Any Node</span>
+        </div>
+        <div class="orbit-stage" id="orbit-stage" role="region" aria-label="3D Spinning Tech Stack Carousel">
+          <div class="orbit-floor" aria-hidden="true"></div>
+          <div class="orbit-ring" id="orbit-ring">
+            <button type="button" class="orbit-card" style="--i:0" data-tech-info="Next.js 15 App Router — Server &amp; Client Architecture">
+              <span class="orbit-icon">⚡</span>
+              <span class="orbit-meta"><strong>Next.js 15</strong><small>App Router</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:1" data-tech-info="React 19 — Concurrent Interactive Interfaces">
+              <span class="orbit-icon">⚛</span>
+              <span class="orbit-meta"><strong>React 19</strong><small>Server UI</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:2" data-tech-info="TypeScript 5.8 — End-to-End Type Safety">
+              <span class="orbit-icon">TS</span>
+              <span class="orbit-meta"><strong>TypeScript</strong><small>Strict Mode</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:3" data-tech-info="PostgreSQL — ACID Transactions, Row Locks &amp; Triggers">
+              <span class="orbit-icon">🐘</span>
+              <span class="orbit-meta"><strong>PostgreSQL</strong><small>ACID SQL</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:4" data-tech-info="Node.js — High-Throughput APIs &amp; SSE Streams">
+              <span class="orbit-icon">⬢</span>
+              <span class="orbit-meta"><strong>Node.js</strong><small>90+ APIs</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:5" data-tech-info="ERP &amp; POS Systems — Multi-Branch Retail &amp; Kitchen Ops">
+              <span class="orbit-icon">◈</span>
+              <span class="orbit-meta"><strong>ERP &amp; POS</strong><small>Multi-Branch</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:6" data-tech-info="Double-Entry Accounting — Balanced Journal Engine">
+              <span class="orbit-icon">⚖</span>
+              <span class="orbit-meta"><strong>Accounting</strong><small>DR == CR</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:7" data-tech-info="RBAC Security — 84 Granular Rules &amp; Ed25519 Licensing">
+              <span class="orbit-icon">🛡</span>
+              <span class="orbit-meta"><strong>RBAC 84</strong><small>Hardened</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:8" data-tech-info="Playwright E2E — Automated Real-Browser QA Suites">
+              <span class="orbit-icon">🎭</span>
+              <span class="orbit-meta"><strong>Playwright</strong><small>E2E QA</small></span>
+            </button>
+            <button type="button" class="orbit-card" style="--i:9" data-tech-info="Docker &amp; RTL/LTR — Production Deploys &amp; Bilingual UX">
+              <span class="orbit-icon">🐳</span>
+              <span class="orbit-meta"><strong>Docker</strong><small>RTL / LTR</small></span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Code Lab Workspace + Playable Mini-Shell -->
+    <!-- Interactive Code Lab Workspace + Live Animated Typing & Debugger Sweep -->
     <section id="code-lab" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="labEyebrow">Interactive Code Workspace</div>
           <h2 class="section-title" data-i18n="labTitle">Play With Live Code &amp; Mini-Terminal</h2>
-          <p class="section-desc" data-i18n="labDesc">Switch between production snippets, copy code, click quick commands, or type directly into the terminal below.</p>
+          <p class="section-desc" data-i18n="labDesc">Switch between production snippets, click line numbers for breakpoints, run the live debugger beam, or type commands below.</p>
         </div>
 
-        <div class="ide-shell" data-reveal data-delay="70" aria-label="Interactive Code Lab Workspace">
-          <div class="ide-titlebar">
-            <div class="ide-dots" aria-hidden="true">
-              <span style="background:#f87171"></span>
-              <span style="background:#fbbf24"></span>
-              <span style="background:#34d399"></span>
-            </div>
-            <span class="ide-window-title">gerges-workspace — nexus-erp-pos · VS Code</span>
-            <div class="ide-titlebar-actions">
-              <button type="button" class="ide-copy-btn" id="ide-copy-btn" aria-label="Copy active code snippet">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span data-i18n="labCopyBtn">Copy</span>
-              </button>
-              <button type="button" class="ide-run-btn" id="ide-run-btn" data-i18n="labRunBtn">▶ Run Script</button>
-            </div>
-          </div>
-
-          <div class="ide-layout">
-            <aside class="ide-sidebar" role="tablist" aria-label="Workspace files">
-              <div class="ide-explorer-label">EXPLORER</div>
-              <button type="button" class="ide-file-btn is-active" role="tab" aria-selected="true" data-ide-file="architecture.ts">
-                <span class="file-dot" style="background:#38bdf8" aria-hidden="true"></span>
-                <span>architecture.ts</span>
-              </button>
-              <button type="button" class="ide-file-btn" role="tab" aria-selected="false" data-ide-file="nexus-erp.sql">
-                <span class="file-dot" style="background:#e0b354" aria-hidden="true"></span>
-                <span>nexus-erp.sql</span>
-              </button>
-              <button type="button" class="ide-file-btn" role="tab" aria-selected="false" data-ide-file="skills.json">
-                <span class="file-dot" style="background:#a78bfa" aria-hidden="true"></span>
-                <span>skills.json</span>
-              </button>
-              <button type="button" class="ide-file-btn" role="tab" aria-selected="false" data-ide-file="hire-me.sh">
-                <span class="file-dot" style="background:#10b981" aria-hidden="true"></span>
-                <span>hire-me.sh</span>
-              </button>
-            </aside>
-
-            <div class="ide-editor">
-              <pre class="ide-code-pane" id="ide-code" aria-live="polite"></pre>
-
-              <!-- Fun Quick-Command Chips -->
-              <div class="ide-quick-chips" role="group" aria-label="Quick terminal commands">
-                <button type="button" class="ide-chip" data-ide-cmd="help">help</button>
-                <button type="button" class="ide-chip" data-ide-cmd="whoami">whoami</button>
-                <button type="button" class="ide-chip" data-ide-cmd="projects">projects</button>
-                <button type="button" class="ide-chip" data-ide-cmd="joke">joke 😄</button>
-                <button type="button" class="ide-chip" data-ide-cmd="matrix">matrix 🟢</button>
-                <button type="button" class="ide-chip" data-ide-cmd="confetti">confetti 🎉</button>
-                <button type="button" class="ide-chip" data-ide-cmd="hire">hire →</button>
+        <div class="ide-beam-wrap beam-frame" data-reveal data-delay="70">
+          <div class="ide-shell beam-frame-inner" aria-label="Interactive Code Lab Workspace">
+            <div class="ide-titlebar">
+              <div class="ide-dots" aria-hidden="true">
+                <span style="background:#f87171"></span>
+                <span style="background:#fbbf24"></span>
+                <span style="background:#34d399"></span>
               </div>
-
-              <div class="ide-console">
-                <div class="ide-console-head">
-                  <span>TERMINAL · LIVE INTERACTIVE SHELL</span>
-                  <span>EXIT 0</span>
-                </div>
-                <div id="ide-console-body" aria-live="polite"></div>
-                <div class="ide-prompt-row">
-                  <span class="ide-prompt-prefix" aria-hidden="true">gerges@nexus:~$</span>
-                  <input type="text" class="ide-cmd-input" id="ide-cmd-input" placeholder="Type a command (try: help, joke, matrix, confetti, hire)..." data-i18n-placeholder="labCmdPlaceholder" autocomplete="off" aria-label="Interactive terminal command input" />
-                </div>
+              <span class="ide-window-title">gerges-workspace — nexus-erp-pos · VS Code</span>
+              <div class="ide-titlebar-actions">
+                <button type="button" class="ide-copy-btn" id="ide-replay-btn" aria-label="Replay live code typing">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+                  <span data-i18n="labReplayBtn">Replay</span>
+                </button>
+                <button type="button" class="ide-copy-btn" id="ide-copy-btn" aria-label="Copy active code snippet">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span data-i18n="labCopyBtn">Copy</span>
+                </button>
+                <button type="button" class="ide-run-btn" id="ide-run-btn" data-i18n="labRunBtn">▶ Run Script</button>
               </div>
             </div>
-          </div>
 
-          <div class="ide-statusbar">
-            <span>⎇ main · ✓ 0 errors · 0 warnings</span>
-            <span id="ide-status-lang">TypeScript 5.8 · UTF-8</span>
+            <div class="ide-layout">
+              <aside class="ide-sidebar" role="tablist" aria-label="Workspace files">
+                <div class="ide-explorer-label">EXPLORER</div>
+                <button type="button" class="ide-file-btn is-active" role="tab" aria-selected="true" data-ide-file="architecture.ts">
+                  <span class="file-dot" style="background:#38bdf8" aria-hidden="true"></span>
+                  <span>architecture.ts</span>
+                </button>
+                <button type="button" class="ide-file-btn" role="tab" aria-selected="false" data-ide-file="nexus-erp.sql">
+                  <span class="file-dot" style="background:#e0b354" aria-hidden="true"></span>
+                  <span>nexus-erp.sql</span>
+                </button>
+                <button type="button" class="ide-file-btn" role="tab" aria-selected="false" data-ide-file="skills.json">
+                  <span class="file-dot" style="background:#a78bfa" aria-hidden="true"></span>
+                  <span>skills.json</span>
+                </button>
+                <button type="button" class="ide-file-btn" role="tab" aria-selected="false" data-ide-file="hire-me.sh">
+                  <span class="file-dot" style="background:#10b981" aria-hidden="true"></span>
+                  <span>hire-me.sh</span>
+                </button>
+              </aside>
+
+              <div class="ide-editor">
+                <div class="ide-code-wrap" id="ide-code-wrap">
+                  <div class="ide-scanline" aria-hidden="true"></div>
+                  <pre class="ide-code-pane" id="ide-code" aria-live="polite"></pre>
+                </div>
+
+                <!-- Fun Quick-Command Chips -->
+                <div class="ide-quick-chips" role="group" aria-label="Quick terminal commands">
+                  <button type="button" class="ide-chip" data-ide-cmd="help">help</button>
+                  <button type="button" class="ide-chip" data-ide-cmd="whoami">whoami</button>
+                  <button type="button" class="ide-chip" data-ide-cmd="projects">projects</button>
+                  <button type="button" class="ide-chip" data-ide-cmd="joke">joke 😄</button>
+                  <button type="button" class="ide-chip" data-ide-cmd="matrix">matrix 🟢</button>
+                  <button type="button" class="ide-chip" data-ide-cmd="confetti">confetti 🎉</button>
+                  <button type="button" class="ide-chip" data-ide-cmd="hire">hire →</button>
+                </div>
+
+                <div class="ide-console">
+                  <div class="ide-console-head">
+                    <span>TERMINAL · LIVE INTERACTIVE SHELL</span>
+                    <span id="ide-exec-meta">READY · 0ms</span>
+                  </div>
+                  <div id="ide-console-body" aria-live="polite"></div>
+                  <div class="ide-prompt-row">
+                    <span class="ide-prompt-prefix" aria-hidden="true">gerges@nexus:~$</span>
+                    <input type="text" class="ide-cmd-input" id="ide-cmd-input" placeholder="Type a command (try: help, joke, matrix, confetti, hire)..." data-i18n-placeholder="labCmdPlaceholder" autocomplete="off" aria-label="Interactive terminal command input" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ide-statusbar">
+              <span class="ide-live-pill"><i class="ide-live-dot" aria-hidden="true"></i> LIVE · ⎇ main · <span id="ide-bp-count">0 breakpoints</span></span>
+              <span id="ide-status-lang">TypeScript 5.8 · UTF-8</span>
+            </div>
           </div>
         </div>
       </div>

@@ -71,12 +71,14 @@
       metric2Label: 'Versioned SQL Migrations',
       metric3Label: 'Granular RBAC Permissions',
       metric4Label: 'Years Shipping Web Apps',
+      orbitHint: '3D Interactive Tech Orbit · Drag to Spin or Click Any Node',
 
       labEyebrow: 'Interactive Code Workspace',
       labTitle: 'Play With Live Code & Mini-Terminal',
-      labDesc: 'Switch between production snippets, copy code, click quick commands, or type directly into the terminal below.',
+      labDesc: 'Switch between production snippets, click line numbers for breakpoints, run the live debugger beam, or type commands below.',
       labRunBtn: '▶ Run Script',
       labCopyBtn: 'Copy',
+      labReplayBtn: 'Replay',
       labCmdPlaceholder: 'Type a command (try: help, joke, matrix, confetti, hire)...',
       copiedCode: 'Code snippet copied to clipboard!',
 
@@ -302,12 +304,14 @@
       metric2Label: 'ترحيل قاعدة بيانات SQL',
       metric3Label: 'صلاحية دقيقة (RBAC)',
       metric4Label: 'سنوات خبرة تطوير ويب',
+      orbitHint: 'مدار التقنيات ثلاثي الأبعاد 3D · اسحب لتدويره أو اضغط على أي بطاقة',
 
       labEyebrow: 'بيئة كود تفاعلية',
       labTitle: 'جرّب الكود والترمينال التفاعلي بنفسك',
-      labDesc: 'تنقّل بين ملفات الكود الحقيقية، انسخ أي ملف، أو اكتب أوامر مباشرة في الترمينال بالأسفل (مثل joke أو matrix أو confetti).',
+      labDesc: 'شاهد الكود يتكتب ويتنفذ سطر بسطر، اضغط على أرقام الأسطر لوضع Breakpoints، أو اكتب أوامر مباشرة في الترمينال.',
       labRunBtn: '▶ تشغيل السكريبت',
       labCopyBtn: 'نسخ',
+      labReplayBtn: 'إعادة',
       labCmdPlaceholder: 'اكتب أمراً (جرّب: help, joke, matrix, confetti, hire)...',
       copiedCode: 'تم نسخ الكود بنجاح!',
 
@@ -574,22 +578,25 @@
   setInterval(updateClock, 30_000);
 
   /* ========================================================================
-     V4 Interactive Physics Constellation Canvas + Click Ripples + Confetti Sparks
+     V5 Interactive Physics Constellation + Matrix Code Rain + Click Code Bursts
      ======================================================================== */
   const canvas = document.getElementById('neural-canvas');
   let canvasRunning = false;
   let canvasRaf = 0;
   let ripples = [];
   let sparks = [];
+  let glyphBursts = [];
+  const codeTokens = ['</>', '{}', '=>', '01', 'TS', 'SQL', '✓', 'async', '[]'];
+  const rainChars = '01<>{}=/;+$λ#';
 
   function rgbStr(rgb, alpha) {
     return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha.toFixed(3)})`;
   }
 
-  function spawnRippleAndSparks(x, y, count = 14, burstSpeed = 4.2) {
+  function spawnRippleAndSparks(x, y, count = 14, burstSpeed = 4.2, withGlyphs = true) {
     if (!fxEnabled || prefersReducedMotion) return;
     const pal = palettes[currentPalette] || palettes.aurora;
-    ripples.push({ x, y, r: 6, maxR: 96, alpha: 0.72, color: pal.b });
+    ripples.push({ x, y, r: 6, maxR: 108, alpha: 0.78, color: pal.b });
     const colors = [pal.a, pal.b, pal.c];
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.45;
@@ -605,13 +612,31 @@
         color: colors[i % colors.length],
       });
     }
+    if (withGlyphs) {
+      const gCount = count > 24 ? 9 : 5;
+      for (let i = 0; i < gCount; i++) {
+        const angle = -Math.PI / 2 + (Math.random() - 0.5) * 2.2;
+        const speed = 1.6 + Math.random() * 2.6;
+        glyphBursts.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 0.8,
+          text: codeTokens[Math.floor(Math.random() * codeTokens.length)],
+          alpha: 0.95,
+          decay: 0.014 + Math.random() * 0.008,
+          color: colors[i % colors.length],
+        });
+      }
+      if (glyphBursts.length > 48) glyphBursts = glyphBursts.slice(-48);
+    }
     if (sparks.length > 180) sparks = sparks.slice(-180);
   }
 
   function launchConfetti(originX, originY) {
     const x = originX ?? window.innerWidth * 0.5;
     const y = originY ?? window.innerHeight * 0.45;
-    spawnRippleAndSparks(x, y, 36, 7.2);
+    spawnRippleAndSparks(x, y, 36, 7.2, true);
   }
 
   function initNeuralCanvas() {
@@ -622,6 +647,7 @@
     let w = 0;
     let h = 0;
     let nodes = [];
+    let rainCols = [];
     let tick = 0;
     const pointer = { x: -9999, y: -9999 };
 
@@ -636,11 +662,19 @@
       nodes = Array.from({ length: count }, (_, i) => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.68,
-        vy: (Math.random() - 0.5) * 0.68,
+        vx: (Math.random() - 0.5) * 0.72,
+        vy: (Math.random() - 0.5) * 0.72,
         r: Math.random() * 1.9 + 1.2,
         phase: Math.random() * Math.PI * 2,
         kind: i % 3,
+      }));
+      const colCount = w < 640 ? 10 : w < 1024 ? 16 : 24;
+      rainCols = Array.from({ length: colCount }, (_, i) => ({
+        x: ((i + 0.5) / colCount) * w + (Math.random() - 0.5) * 24,
+        y: Math.random() * h,
+        speed: 0.75 + Math.random() * 1.25,
+        len: 4 + Math.floor(Math.random() * 5),
+        seed: Math.floor(Math.random() * rainChars.length),
       }));
     }
 
@@ -656,7 +690,7 @@
       'pointerdown',
       e => {
         if (!fxEnabled) return;
-        spawnRippleAndSparks(e.clientX, e.clientY, 12, 3.8);
+        spawnRippleAndSparks(e.clientX, e.clientY, 12, 3.8, true);
       },
       { passive: true }
     );
@@ -666,12 +700,34 @@
         canvasRaf = 0;
         return;
       }
-      tick += 0.025;
+      tick += 0.028;
       ctx.clearRect(0, 0, w, h);
       const isLight = currentTheme === 'light';
       const pal = palettes[currentPalette] || palettes.aurora;
       const maxDist = w < 640 ? 115 : 156;
 
+      // 1. Subtle Falling Matrix / Binary Code Rain Streams
+      ctx.font = '600 12px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      const speedMul = currentPalette === 'matrix' ? 1.45 : 1;
+      for (let i = 0; i < rainCols.length; i++) {
+        const col = rainCols[i];
+        col.y += col.speed * speedMul;
+        if (col.y - col.len * 18 > h) {
+          col.y = -20;
+          col.seed = Math.floor(Math.random() * rainChars.length);
+        }
+        for (let k = 0; k < col.len; k++) {
+          const cy = col.y - k * 18;
+          if (cy < -10 || cy > h + 10) continue;
+          const ch = rainChars[(col.seed + k + Math.floor(tick * 1.4)) % rainChars.length];
+          const fade = (1 - k / col.len) * (isLight ? 0.13 : 0.22);
+          ctx.fillStyle = rgbStr(k === 0 ? pal.a : pal.b, k === 0 ? fade * 1.4 : fade);
+          ctx.fillText(ch, col.x, cy);
+        }
+      }
+
+      // 2. Interactive Magnetic Neural Constellation
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         a.x += a.vx;
@@ -679,16 +735,15 @@
         if (a.x < 0 || a.x > w) a.vx *= -1;
         if (a.y < 0 || a.y > h) a.vy *= -1;
 
-        // Magnetic gentle orbit & glowing link toward pointer
         const dxp = pointer.x - a.x;
         const dyp = pointer.y - a.y;
         const distP = Math.hypot(dxp, dyp);
         if (distP < 200 && distP > 1) {
           if (distP > 46) {
-            a.x += (dxp / distP) * 0.32;
-            a.y += (dyp / distP) * 0.32;
+            a.x += (dxp / distP) * 0.34;
+            a.y += (dyp / distP) * 0.34;
           }
-          const alpha = (1 - distP / 200) * (isLight ? 0.34 : 0.52);
+          const alpha = (1 - distP / 200) * (isLight ? 0.34 : 0.54);
           ctx.strokeStyle = rgbStr(a.kind === 0 ? pal.a : pal.b, alpha);
           ctx.lineWidth = 1.1;
           ctx.beginPath();
@@ -697,7 +752,6 @@
           ctx.stroke();
         }
 
-        // Connect neighboring nodes
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
@@ -712,19 +766,18 @@
           }
         }
 
-        // Pulsing node + soft glow halo
         const pulse = 0.72 + Math.sin(tick * 2 + a.phase) * 0.28;
         const col = a.kind === 0 ? pal.a : a.kind === 1 ? pal.b : pal.c;
-        ctx.fillStyle = rgbStr(col, (isLight ? 0.45 : 0.85) * pulse);
+        ctx.fillStyle = rgbStr(col, (isLight ? 0.45 : 0.86) * pulse);
         ctx.beginPath();
         ctx.arc(a.x, a.y, a.r * (0.9 + pulse * 0.25), 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Draw expanding click ripples
+      // 3. Expanding Neon Click Ripples
       for (let i = ripples.length - 1; i >= 0; i--) {
         const rp = ripples[i];
-        rp.r += 3.6;
+        rp.r += 3.8;
         rp.alpha *= 0.92;
         if (rp.alpha < 0.02 || rp.r > rp.maxR) {
           ripples.splice(i, 1);
@@ -737,7 +790,7 @@
         ctx.stroke();
       }
 
-      // Draw spark / confetti particles
+      // 4. Spark / Confetti Particles
       for (let i = sparks.length - 1; i >= 0; i--) {
         const sp = sparks[i];
         sp.x += sp.vx;
@@ -755,6 +808,22 @@
         ctx.fill();
       }
 
+      // 5. Flying Code Token Click Bursts (</>, {}, =>, TS, SQL)
+      ctx.font = '700 12px "JetBrains Mono", monospace';
+      for (let i = glyphBursts.length - 1; i >= 0; i--) {
+        const gb = glyphBursts[i];
+        gb.x += gb.vx;
+        gb.y += gb.vy;
+        gb.vy += 0.045;
+        gb.alpha -= gb.decay;
+        if (gb.alpha <= 0.02) {
+          glyphBursts.splice(i, 1);
+          continue;
+        }
+        ctx.fillStyle = rgbStr(gb.color, gb.alpha);
+        ctx.fillText(gb.text, gb.x, gb.y);
+      }
+
       canvasRaf = requestAnimationFrame(frame);
     }
 
@@ -770,6 +839,96 @@
     window.__startNeuralCanvas = () => {
       if (!canvasRaf && fxEnabled) canvasRaf = requestAnimationFrame(frame);
     };
+  }
+
+  /* ========================================================================
+     V5 TRUE 3D Spinning Holographic Tech Orbital Carousel (Auto + Drag!)
+     ======================================================================== */
+  function initTechOrbit() {
+    const stage = document.getElementById('orbit-stage');
+    const ring = document.getElementById('orbit-ring');
+    if (!stage || !ring) return;
+
+    let angleY = 0;
+    let tiltX = -9;
+    let targetTiltX = -9;
+    let velocity = 0.24;
+    let hovered = false;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragMoved = false;
+
+    const cards = Array.from(ring.querySelectorAll('.orbit-card'));
+    const stepDeg = 360 / Math.max(1, cards.length);
+
+    function tickOrbit() {
+      if (!document.hidden) {
+        if (!dragging) {
+          if (fxEnabled && !prefersReducedMotion) {
+            const baseSpeed = hovered ? 0.05 : 0.24;
+            velocity += (baseSpeed - velocity) * 0.04;
+            angleY += velocity;
+          }
+        }
+        tiltX += (targetTiltX - tiltX) * 0.08;
+        ring.style.transform = `rotateX(${tiltX.toFixed(2)}deg) rotateY(${angleY.toFixed(2)}deg)`;
+
+        // Real 3D Depth-of-Field: crisp glowing front cards, soft holographic rear silhouette
+        for (let i = 0; i < cards.length; i++) {
+          const rad = ((i * stepDeg + angleY) * Math.PI) / 180;
+          const depth = Math.cos(rad); // +1 = closest front, -1 = farthest back
+          const opacity = depth > 0 ? 0.52 + depth * 0.48 : 0.16 + (depth + 1) * 0.18;
+          cards[i].style.opacity = opacity.toFixed(2);
+          cards[i].style.filter = depth < -0.15 ? 'blur(1.4px)' : 'none';
+          cards[i].style.pointerEvents = depth > -0.1 ? 'auto' : 'none';
+        }
+      }
+      requestAnimationFrame(tickOrbit);
+    }
+    requestAnimationFrame(tickOrbit);
+
+    stage.addEventListener('pointerenter', () => { hovered = true; });
+    stage.addEventListener('pointerleave', () => {
+      hovered = false;
+      dragging = false;
+      targetTiltX = -9;
+    });
+
+    stage.addEventListener('pointerdown', e => {
+      dragging = true;
+      dragMoved = false;
+      dragStartX = e.clientX;
+      velocity = 0;
+    });
+
+    window.addEventListener(
+      'pointermove',
+      e => {
+        if (dragging) {
+          const dx = e.clientX - dragStartX;
+          if (Math.abs(dx) > 4) dragMoved = true;
+          dragStartX = e.clientX;
+          angleY += dx * 0.42;
+          velocity = dx * 0.34;
+        } else if (hovered && fxEnabled && !prefersReducedMotion) {
+          const rect = stage.getBoundingClientRect();
+          const ny = (e.clientY - rect.top) / rect.height - 0.5;
+          targetTiltX = -9 - ny * 12;
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener('pointerup', () => { dragging = false; });
+
+    ring.querySelectorAll('.orbit-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (dragMoved) return;
+        const info = card.getAttribute('data-tech-info') || card.textContent?.trim() || '';
+        showToast(`⚡ ${info}`);
+        spawnRippleAndSparks(e.clientX, e.clientY, 18, 4.6, true);
+      });
+    });
   }
 
   /* ========================================================================
@@ -1035,6 +1194,29 @@ echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
     },
   };
 
+  const ideCodeWrap = document.getElementById('ide-code-wrap');
+  const ideReplayBtn = document.getElementById('ide-replay-btn');
+  const ideBpCountEl = document.getElementById('ide-bp-count');
+  const ideExecMetaEl = document.getElementById('ide-exec-meta');
+  let typeTimers = [];
+  let execTimers = [];
+  const fileBreakpoints = {};
+
+  function updateBpCount() {
+    if (!ideBpCountEl) return;
+    const set = fileBreakpoints[activeIdeFile];
+    const n = set ? set.size : 0;
+    ideBpCountEl.textContent = `${n} breakpoint${n === 1 ? '' : 's'}`;
+  }
+
+  function clearIdeAnimations() {
+    typeTimers.forEach(t => clearTimeout(t));
+    typeTimers = [];
+    execTimers.forEach(t => clearTimeout(t));
+    execTimers = [];
+    ideCodeWrap?.classList.remove('is-running');
+  }
+
   function printConsoleLines(lines) {
     if (!ideConsoleEl) return;
     runTimers.forEach(t => clearTimeout(t));
@@ -1051,20 +1233,121 @@ echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
     });
   }
 
-  function renderIdeFile(fileName, autoRun = false) {
+  function attachLineBreakpointHandlers() {
+    if (!ideCodeEl) return;
+    const bps = fileBreakpoints[activeIdeFile] || (fileBreakpoints[activeIdeFile] = new Set());
+    ideCodeEl.querySelectorAll('.ide-line').forEach((row, idx) => {
+      const lineNum = idx + 1;
+      if (bps.has(lineNum)) row.classList.add('has-bp');
+      const lnEl = row.querySelector('.ln');
+      lnEl?.addEventListener('click', e => {
+        e.stopPropagation();
+        if (bps.has(lineNum)) {
+          bps.delete(lineNum);
+          row.classList.remove('has-bp');
+          printConsoleLines([
+            `<span class="ide-log-cyan">$ debug --clear ${activeIdeFile}:${lineNum}</span>`,
+            `<span class="ide-log-gold">○</span> Breakpoint removed at <strong>${activeIdeFile}:${lineNum}</strong>.`,
+          ]);
+        } else {
+          bps.add(lineNum);
+          row.classList.add('has-bp');
+          printConsoleLines([
+            `<span class="ide-log-cyan">$ debug --break ${activeIdeFile}:${lineNum}</span>`,
+            `<span class="ide-log-ok">●</span> Breakpoint set at <strong>${activeIdeFile}:${lineNum}</strong> · click ▶ Run Script to step.`,
+          ]);
+          spawnRippleAndSparks(e.clientX, e.clientY, 10, 3.2, false);
+        }
+        updateBpCount();
+      });
+    });
+    updateBpCount();
+  }
+
+  function runIdeExecution(withSpark = true) {
+    const file = ideFiles[activeIdeFile];
+    if (!file || !ideCodeEl) return;
+    execTimers.forEach(t => clearTimeout(t));
+    execTimers = [];
+    const rows = Array.from(ideCodeEl.querySelectorAll('.ide-line'));
+    rows.forEach(r => r.classList.remove('is-exec'));
+    if (ideExecMetaEl) ideExecMetaEl.textContent = 'RUNNING…';
+
+    if (prefersReducedMotion || !fxEnabled) {
+      printConsoleLines(file.logs);
+      if (ideExecMetaEl) ideExecMetaEl.textContent = 'PASS · 14ms';
+      return;
+    }
+
+    ideCodeWrap?.classList.add('is-running');
+    printConsoleLines(file.logs);
+
+    rows.forEach((row, idx) => {
+      const t = setTimeout(() => {
+        rows.forEach(r => r.classList.remove('is-exec'));
+        row.classList.add('is-exec');
+      }, idx * 95);
+      execTimers.push(t);
+    });
+
+    const finishTimer = setTimeout(() => {
+      rows.forEach(r => r.classList.remove('is-exec'));
+      ideCodeWrap?.classList.remove('is-running');
+      if (ideExecMetaEl) ideExecMetaEl.textContent = `PASS · ${11 + (rows.length % 7)}ms`;
+      if (withSpark && ideRunBtn) {
+        const rect = ideRunBtn.getBoundingClientRect();
+        spawnRippleAndSparks(rect.left + rect.width / 2, rect.top + rect.height / 2, 16, 4.4, true);
+      }
+    }, rows.length * 95 + 220);
+    execTimers.push(finishTimer);
+  }
+
+  function renderIdeFile(fileName, autoRun = false, animateTyping = true) {
     const file = ideFiles[fileName];
     if (!file || !ideCodeEl) return;
+    clearIdeAnimations();
     activeIdeFile = fileName;
-    ideCodeEl.innerHTML = file.code
-      .map((line, i) => `<div><span class="ln">${String(i + 1).padStart(2, ' ')}</span>${line || '&nbsp;'}</div>`)
-      .join('');
-    if (ideStatusLang) ideStatusLang.textContent = file.lang;
+    if (ideStatusLang) ideStatusLang.textContent = `${file.code.length} lines · ${file.lang}`;
     document.querySelectorAll('.ide-file-btn').forEach(btn => {
       const active = btn.getAttribute('data-ide-file') === fileName;
       btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-selected', String(active));
     });
-    if (autoRun) printConsoleLines(file.logs);
+
+    ideCodeEl.innerHTML = file.code
+      .map(
+        (line, i) =>
+          `<div class="ide-line${animateTyping && !prefersReducedMotion && fxEnabled ? ' is-entering' : ''}"><span class="ln" title="Toggle breakpoint"><i class="bp-dot" aria-hidden="true"></i>${String(i + 1).padStart(2, ' ')}</span><span class="ide-line-code">${line || '&nbsp;'}</span></div>`
+      )
+      .join('');
+
+    attachLineBreakpointHandlers();
+
+    if (animateTyping && !prefersReducedMotion && fxEnabled) {
+      const rows = Array.from(ideCodeEl.querySelectorAll('.ide-line'));
+      const caret = document.createElement('span');
+      caret.className = 'ide-caret';
+      caret.setAttribute('aria-hidden', 'true');
+
+      rows.forEach((row, idx) => {
+        const t = setTimeout(() => {
+          rows.forEach(r => r.classList.remove('is-typing'));
+          row.classList.remove('is-entering');
+          row.classList.add('is-typing');
+          row.querySelector('.ide-line-code')?.appendChild(caret);
+        }, idx * 75);
+        typeTimers.push(t);
+      });
+
+      const doneT = setTimeout(() => {
+        rows.forEach(r => r.classList.remove('is-typing'));
+        if (autoRun) runIdeExecution(false);
+      }, rows.length * 75 + 160);
+      typeTimers.push(doneT);
+    } else if (autoRun) {
+      printConsoleLines(file.logs);
+      if (ideExecMetaEl) ideExecMetaEl.textContent = 'PASS · 14ms';
+    }
   }
 
   function runIdeCommand(rawCmd) {
@@ -1111,7 +1394,7 @@ echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
       launchConfetti();
       printConsoleLines([
         `<span class="ide-log-cyan">$ ${cmd}</span>`,
-        `<span class="ide-log-ok">🎉</span> Boom! Particle celebration launched across the viewport.`,
+        `<span class="ide-log-ok">🎉</span> Boom! Code-token celebration launched across the viewport.`,
       ]);
       return;
     }
@@ -1146,12 +1429,10 @@ echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
   }
 
   document.querySelectorAll('.ide-file-btn').forEach(btn => {
-    btn.addEventListener('click', () => renderIdeFile(btn.getAttribute('data-ide-file') || 'architecture.ts', true));
+    btn.addEventListener('click', () => renderIdeFile(btn.getAttribute('data-ide-file') || 'architecture.ts', true, true));
   });
-  ideRunBtn?.addEventListener('click', () => {
-    const file = ideFiles[activeIdeFile];
-    if (file) printConsoleLines(file.logs);
-  });
+  ideRunBtn?.addEventListener('click', () => runIdeExecution(true));
+  ideReplayBtn?.addEventListener('click', () => renderIdeFile(activeIdeFile, true, true));
   ideCopyBtn?.addEventListener('click', () => {
     const file = ideFiles[activeIdeFile];
     if (file) void copyText(file.raw, translations[currentLang].copiedCode);
@@ -1167,7 +1448,24 @@ echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
       runIdeCommand(val);
     }
   });
-  renderIdeFile('architecture.ts', true);
+  renderIdeFile('architecture.ts', true, false);
+
+  // Trigger live code typing + debugger sweep the first time user scrolls to #code-lab
+  const codeLabSec = document.getElementById('code-lab');
+  if (codeLabSec && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    let labPlayed = false;
+    const labObs = new IntersectionObserver(
+      entries => {
+        if (!labPlayed && entries.some(e => e.isIntersecting)) {
+          labPlayed = true;
+          renderIdeFile(activeIdeFile, true, true);
+          labObs.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+    labObs.observe(codeLabSec);
+  }
 
   /* ========================================================================
      V4 Interactive Project Scope & Timeline Estimator
@@ -1881,6 +2179,7 @@ echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
   applyLang(currentLang);
   applyFx(fxEnabled);
   initNeuralCanvas();
+  initTechOrbit();
 
   /* ========================================================================
      Single, Bug-Free Formspree Contact Form Handler
