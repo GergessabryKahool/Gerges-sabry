@@ -6,6 +6,37 @@
   const finePointer =
     window.matchMedia && window.matchMedia('(pointer: fine)').matches;
 
+  const palettes = {
+    aurora: {
+      nameEn: 'Aurora Gold',
+      nameAr: 'ذهبي أورورا',
+      a: [224, 179, 84],
+      b: [56, 189, 248],
+      c: [167, 139, 250],
+    },
+    matrix: {
+      nameEn: 'Matrix Emerald',
+      nameAr: 'ماتريكس أخضر',
+      a: [16, 185, 129],
+      b: [34, 211, 238],
+      c: [110, 231, 183],
+    },
+    synth: {
+      nameEn: 'Cyber Violet',
+      nameAr: 'سايبر بنفسجي',
+      a: [192, 132, 252],
+      b: [244, 114, 182],
+      c: [56, 189, 248],
+    },
+    ember: {
+      nameEn: 'Sunset Ember',
+      nameAr: 'وهج برتقالي',
+      a: [251, 146, 60],
+      b: [244, 63, 94],
+      c: [250, 204, 21],
+    },
+  };
+
   const translations = {
     en: {
       pageTitle: 'Gerges Sabry — Full-Stack Software Engineer',
@@ -15,12 +46,14 @@
       navServices: 'Services',
       navSkills: 'Skills',
       navProjects: 'Projects',
+      navEstimator: 'Estimate',
       navExperience: 'Experience',
       navContact: 'Contact',
       brandSub: 'FULL-STACK ENGINEER',
       langBtn: 'عربي',
       themeLight: 'Light',
       themeDark: 'Dark',
+      vibeLabel: 'VIBE',
       availability: 'Available for Full-Stack Roles & Select Projects',
       heroGreeting: 'Hi, I am',
       heroName: 'Gerges Sabry',
@@ -40,9 +73,12 @@
       metric4Label: 'Years Shipping Web Apps',
 
       labEyebrow: 'Interactive Code Workspace',
-      labTitle: 'Inspect How I Architect Production Systems',
-      labDesc: 'Click through real TypeScript, PostgreSQL ACID triggers, stack config, or run the interactive script below.',
+      labTitle: 'Play With Live Code & Mini-Terminal',
+      labDesc: 'Switch between production snippets, copy code, click quick commands, or type directly into the terminal below.',
       labRunBtn: '▶ Run Script',
+      labCopyBtn: 'Copy',
+      labCmdPlaceholder: 'Type a command (try: help, joke, matrix, confetti, hire)...',
+      copiedCode: 'Code snippet copied to clipboard!',
 
       aboutEyebrow: 'About Me',
       aboutTitle: 'Engineering reliable software from PostgreSQL schema to pixel-sharp UI',
@@ -113,6 +149,8 @@
       filterSystems: 'Full-Stack Systems',
       filterEcommerce: 'E-Commerce',
       filterBrands: 'Web & Brands',
+      searchProjectsPh: 'Search projects or tech…',
+      projectsEmpty: 'No projects match your search yet — try another keyword.',
       zoomLabel: 'Preview',
       openPreview: 'Full Preview',
       viewRepo: 'GitHub Repo',
@@ -138,6 +176,32 @@
       projHonorCat: 'E-Commerce · Retail',
       projHonorTitle: 'HonorRanks — Kids Fashion Store',
       projHonorDesc: 'Clean editorial children fashion and toys online store with category collections, wishlist, and responsive merchandising.',
+
+      estEyebrow: 'Interactive Blueprint',
+      estTitle: 'Configure Your Project & Estimate Scope',
+      estDesc: 'Pick your project type and features below to preview the recommended architecture, timeline, and auto-fill your brief.',
+      estStep1: '01 // Choose Project Type',
+      estStep2: '02 // Toggle Key Capabilities',
+      estType1Title: 'Brand / Landing Site',
+      estType1Sub: 'Fast editorial site & lead capture',
+      estType2Title: 'E-Commerce Storefront',
+      estType2Sub: 'Catalog, cart, checkout & orders',
+      estType3Title: 'Full-Stack Web App',
+      estType3Sub: 'Next.js, PostgreSQL & live APIs',
+      estType4Title: 'Custom ERP / POS System',
+      estType4Sub: 'Multi-branch ops & accounting',
+      estAddonBilingual: 'Bilingual AR / EN (RTL)',
+      estAddonRbac: 'Admin Dashboard & RBAC',
+      estAddonAccounting: 'Accounting / Payments',
+      estAddonQa: 'Playwright Automated QA',
+      estAddonFast: 'Priority Fast-Track',
+      estOutBadge: 'LIVE ARCHITECTURE BLUEPRINT',
+      estOutTimelineLabel: 'Estimated Delivery',
+      estOutTierLabel: 'System Tier',
+      estOutComplexLabel: 'Engineering Complexity',
+      estOutStackLabel: 'Recommended Stack',
+      estApplyBtn: 'Send This Brief to Contact Form →',
+      estAppliedToast: 'Project brief loaded into the contact form! ✨',
 
       expEyebrow: 'Career & Education',
       expTitle: 'Experience & Academic Background',
@@ -201,8 +265,9 @@
       cmdEmpty: 'No matching commands found.',
       copiedEmail: 'Email copied to clipboard!',
       copiedPhone: 'Phone number copied to clipboard!',
-      fxOnToast: 'Visual FX enabled ✨',
+      fxOnToast: 'Interactive FX enabled ✨',
       fxOffToast: 'Visual FX minimized',
+      kudosToast: 'Thanks for the kudos! 🎉',
     },
     ar: {
       pageTitle: 'جرجس صبري — مهندس برمجيات Full-Stack',
@@ -212,12 +277,14 @@
       navServices: 'الخدمات',
       navSkills: 'المهارات',
       navProjects: 'الأعمال',
+      navEstimator: 'تقدير مشروع',
       navExperience: 'الخبرات',
       navContact: 'تواصل معي',
       brandSub: 'مهندس برمجيات FULL-STACK',
       langBtn: 'EN',
       themeLight: 'فاتح',
       themeDark: 'داكن',
+      vibeLabel: 'الألوان',
       availability: 'متاح لفرص عمل Full-Stack ومشاريع مختارة',
       heroGreeting: 'أهلاً، أنا',
       heroName: 'جرجس صبري',
@@ -237,9 +304,12 @@
       metric4Label: 'سنوات خبرة تطوير ويب',
 
       labEyebrow: 'بيئة كود تفاعلية',
-      labTitle: 'تصفح أسلوب هندستي للأنظمة الإنتاجية',
-      labDesc: 'تنقّل بين ملفات TypeScript وتريجرز PostgreSQL وملف المهارات، أو اضغط تشغيل لاختبار السكريبت التفاعلي.',
+      labTitle: 'جرّب الكود والترمينال التفاعلي بنفسك',
+      labDesc: 'تنقّل بين ملفات الكود الحقيقية، انسخ أي ملف، أو اكتب أوامر مباشرة في الترمينال بالأسفل (مثل joke أو matrix أو confetti).',
       labRunBtn: '▶ تشغيل السكريبت',
+      labCopyBtn: 'نسخ',
+      labCmdPlaceholder: 'اكتب أمراً (جرّب: help, joke, matrix, confetti, hire)...',
+      copiedCode: 'تم نسخ الكود بنجاح!',
 
       aboutEyebrow: 'نبذة عني',
       aboutTitle: 'هندسة برمجيات موثوقة من تصميم قواعد بيانات PostgreSQL حتى أدق تفاصيل الواجهة',
@@ -310,6 +380,8 @@
       filterSystems: 'أنظمة Full-Stack',
       filterEcommerce: 'متاجر إلكترونية',
       filterBrands: 'مواقع وشركات',
+      searchProjectsPh: 'ابحث في المشاريع أو التقنيات…',
+      projectsEmpty: 'لا توجد مشاريع مطابقة لبحثك — جرّب كلمة أخرى.',
       zoomLabel: 'معاينة',
       openPreview: 'معاينة كاملة',
       viewRepo: 'مستودع GitHub',
@@ -335,6 +407,32 @@
       projHonorCat: 'متجر إلكتروني · أزياء أطفال',
       projHonorTitle: 'HonorRanks — متجر أزياء وألعاب الأطفال',
       projHonorDesc: 'متجر عصري لملابس وألعاب الأطفال بتصميم نظيف، تصفح حسب الفئات، قائمة مفضلة، وتجربة شراء سلسة.',
+
+      estEyebrow: 'مخطط مشروع تفاعلي',
+      estTitle: 'صمّم مواصفات مشروعك واعرف خطة التنفيذ فوراً',
+      estDesc: 'اختر نوع المشروع والمميزات المطلوبة لمشاهدة التقنيات المقترحة والمدة التقديرية وتعبئة نموذج التواصل تلقائياً.',
+      estStep1: '01 // اختر نوع المشروع',
+      estStep2: '02 // أضف المميزات المطلوبة',
+      estType1Title: 'موقع شركة / صفحة هبوط',
+      estType1Sub: 'تصميم سريع وهوية بصرية قوية',
+      estType2Title: 'متجر إلكتروني متكامل',
+      estType2Sub: 'منتجات، سلة مشتريات وطلبات',
+      estType3Title: 'تطبيق ويب Full-Stack',
+      estType3Sub: 'Next.js وPostgreSQL وAPIs حية',
+      estType4Title: 'نظام ERP / كاشير POS مخصص',
+      estType4Sub: 'فروع، مخازن ومحاسبة مالية',
+      estAddonBilingual: 'ثنائي اللغة (عربي RTL / إنجليزي)',
+      estAddonRbac: 'لوحة تحكم وصلاحيات RBAC',
+      estAddonAccounting: 'محاسبة مالية / دفع أونلاين',
+      estAddonQa: 'اختبارات آلية Playwright',
+      estAddonFast: 'تسليم سريع (أولوية)',
+      estOutBadge: 'مخطط هندسي مباشر',
+      estOutTimelineLabel: 'المدة التقديرية',
+      estOutTierLabel: 'مستوى النظام',
+      estOutComplexLabel: 'درجة التعقيد الهندسي',
+      estOutStackLabel: 'التقنيات المقترحة',
+      estApplyBtn: 'انقل هذا الملخص لنموذج التواصل ←',
+      estAppliedToast: 'تم تجهيز ملخص مشروعك داخل نموذج التواصل بنجاح! ✨',
 
       expEyebrow: 'المسيرة المهنية والتعليم',
       expTitle: 'الخبرات العملية والخلفية الأكاديمية',
@@ -398,22 +496,31 @@
       cmdEmpty: 'لا توجد أوامر مطابقة.',
       copiedEmail: 'تم نسخ البريد الإلكتروني!',
       copiedPhone: 'تم نسخ رقم الهاتف!',
-      fxOnToast: 'تم تفعيل المؤثرات البصرية ✨',
+      fxOnToast: 'تم تفعيل المؤثرات التفاعلية ✨',
       fxOffToast: 'تم تقليل المؤثرات البصرية',
+      kudosToast: 'شكراً لتشجيعك! 🎉',
     },
   };
 
   let currentLang = 'en';
   let currentTheme = 'dark';
+  let currentPalette = 'aurora';
   let fxEnabled = !prefersReducedMotion;
+  let kudosCount = 42;
 
   try {
     const savedLang = localStorage.getItem('gs-lang');
     if (savedLang === 'ar' || savedLang === 'en') currentLang = savedLang;
     const savedTheme = localStorage.getItem('gs-theme');
     if (savedTheme === 'light' || savedTheme === 'dark') currentTheme = savedTheme;
+    const savedPalette = localStorage.getItem('gs-palette');
+    if (savedPalette && Object.prototype.hasOwnProperty.call(palettes, savedPalette)) {
+      currentPalette = savedPalette;
+    }
     const savedFx = localStorage.getItem('gs-fx');
     if (savedFx === 'off') fxEnabled = false;
+    const savedKudos = Number(localStorage.getItem('gs-kudos'));
+    if (Number.isFinite(savedKudos) && savedKudos >= 42) kudosCount = savedKudos;
   } catch {}
 
   /* ========================================================================
@@ -467,11 +574,45 @@
   setInterval(updateClock, 30_000);
 
   /* ========================================================================
-     Interactive Neural / Code-Node Constellation Canvas (60fps GPU-friendly)
+     V4 Interactive Physics Constellation Canvas + Click Ripples + Confetti Sparks
      ======================================================================== */
   const canvas = document.getElementById('neural-canvas');
   let canvasRunning = false;
   let canvasRaf = 0;
+  let ripples = [];
+  let sparks = [];
+
+  function rgbStr(rgb, alpha) {
+    return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha.toFixed(3)})`;
+  }
+
+  function spawnRippleAndSparks(x, y, count = 14, burstSpeed = 4.2) {
+    if (!fxEnabled || prefersReducedMotion) return;
+    const pal = palettes[currentPalette] || palettes.aurora;
+    ripples.push({ x, y, r: 6, maxR: 96, alpha: 0.72, color: pal.b });
+    const colors = [pal.a, pal.b, pal.c];
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.45;
+      const speed = (0.45 + Math.random() * 0.85) * burstSpeed;
+      sparks.push({
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 0.6,
+        r: Math.random() * 2.4 + 1.4,
+        alpha: 1,
+        decay: 0.018 + Math.random() * 0.016,
+        color: colors[i % colors.length],
+      });
+    }
+    if (sparks.length > 180) sparks = sparks.slice(-180);
+  }
+
+  function launchConfetti(originX, originY) {
+    const x = originX ?? window.innerWidth * 0.5;
+    const y = originY ?? window.innerHeight * 0.45;
+    spawnRippleAndSparks(x, y, 36, 7.2);
+  }
 
   function initNeuralCanvas() {
     if (!canvas || prefersReducedMotion) return;
@@ -481,6 +622,7 @@
     let w = 0;
     let h = 0;
     let nodes = [];
+    let tick = 0;
     const pointer = { x: -9999, y: -9999 };
 
     function resize() {
@@ -490,14 +632,15 @@
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = w < 640 ? 22 : w < 1024 ? 38 : 58;
+      const count = w < 640 ? 28 : w < 1024 ? 46 : 70;
       nodes = Array.from({ length: count }, (_, i) => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.42,
-        vy: (Math.random() - 0.5) * 0.42,
-        r: Math.random() * 1.6 + 1.1,
-        gold: i % 3 === 0,
+        vx: (Math.random() - 0.5) * 0.68,
+        vy: (Math.random() - 0.5) * 0.68,
+        r: Math.random() * 1.9 + 1.2,
+        phase: Math.random() * Math.PI * 2,
+        kind: i % 3,
       }));
     }
 
@@ -509,15 +652,25 @@
       { passive: true }
     );
     window.addEventListener('pointerleave', () => { pointer.x = -9999; pointer.y = -9999; });
+    window.addEventListener(
+      'pointerdown',
+      e => {
+        if (!fxEnabled) return;
+        spawnRippleAndSparks(e.clientX, e.clientY, 12, 3.8);
+      },
+      { passive: true }
+    );
 
     function frame() {
       if (!canvasRunning || !fxEnabled || document.hidden) {
         canvasRaf = 0;
         return;
       }
+      tick += 0.025;
       ctx.clearRect(0, 0, w, h);
       const isLight = currentTheme === 'light';
-      const maxDist = w < 640 ? 110 : 148;
+      const pal = palettes[currentPalette] || palettes.aurora;
+      const maxDist = w < 640 ? 115 : 156;
 
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
@@ -526,16 +679,18 @@
         if (a.x < 0 || a.x > w) a.vx *= -1;
         if (a.y < 0 || a.y > h) a.vy *= -1;
 
-        // Subtle attraction toward cursor
+        // Magnetic gentle orbit & glowing link toward pointer
         const dxp = pointer.x - a.x;
         const dyp = pointer.y - a.y;
         const distP = Math.hypot(dxp, dyp);
-        if (distP < 180 && distP > 1) {
-          const alpha = (1 - distP / 180) * (isLight ? 0.3 : 0.42);
-          ctx.strokeStyle = a.gold
-            ? `rgba(224, 179, 84, ${alpha.toFixed(3)})`
-            : `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
-          ctx.lineWidth = 1;
+        if (distP < 200 && distP > 1) {
+          if (distP > 46) {
+            a.x += (dxp / distP) * 0.32;
+            a.y += (dyp / distP) * 0.32;
+          }
+          const alpha = (1 - distP / 200) * (isLight ? 0.34 : 0.52);
+          ctx.strokeStyle = rgbStr(a.kind === 0 ? pal.a : pal.b, alpha);
+          ctx.lineWidth = 1.1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(pointer.x, pointer.y);
@@ -547,9 +702,9 @@
           const b = nodes[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * (isLight ? 0.14 : 0.2);
-            ctx.strokeStyle = `rgba(148, 163, 184, ${alpha.toFixed(3)})`;
-            ctx.lineWidth = 0.8;
+            const alpha = (1 - dist / maxDist) * (isLight ? 0.16 : 0.24);
+            ctx.strokeStyle = rgbStr(pal.b, alpha * 0.72);
+            ctx.lineWidth = 0.85;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -557,12 +712,46 @@
           }
         }
 
-        // Draw node
-        ctx.fillStyle = a.gold
-          ? (isLight ? 'rgba(180, 125, 30, 0.55)' : 'rgba(224, 179, 84, 0.85)')
-          : (isLight ? 'rgba(2, 132, 199, 0.5)' : 'rgba(56, 189, 248, 0.85)');
+        // Pulsing node + soft glow halo
+        const pulse = 0.72 + Math.sin(tick * 2 + a.phase) * 0.28;
+        const col = a.kind === 0 ? pal.a : a.kind === 1 ? pal.b : pal.c;
+        ctx.fillStyle = rgbStr(col, (isLight ? 0.45 : 0.85) * pulse);
         ctx.beginPath();
-        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.arc(a.x, a.y, a.r * (0.9 + pulse * 0.25), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Draw expanding click ripples
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const rp = ripples[i];
+        rp.r += 3.6;
+        rp.alpha *= 0.92;
+        if (rp.alpha < 0.02 || rp.r > rp.maxR) {
+          ripples.splice(i, 1);
+          continue;
+        }
+        ctx.strokeStyle = rgbStr(rp.color, rp.alpha);
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Draw spark / confetti particles
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const sp = sparks[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.vy += 0.08;
+        sp.vx *= 0.985;
+        sp.alpha -= sp.decay;
+        if (sp.alpha <= 0.02) {
+          sparks.splice(i, 1);
+          continue;
+        }
+        ctx.fillStyle = rgbStr(sp.color, sp.alpha);
+        ctx.beginPath();
+        ctx.arc(sp.x, sp.y, sp.r, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -584,6 +773,33 @@
   }
 
   /* ========================================================================
+     Live Accent Vibe Palette Engine
+     ======================================================================== */
+  function applyPalette(paletteName, notify = false) {
+    if (!Object.prototype.hasOwnProperty.call(palettes, paletteName)) return;
+    currentPalette = paletteName;
+    document.documentElement.dataset.palette = paletteName;
+    try { localStorage.setItem('gs-palette', paletteName); } catch {}
+    document.querySelectorAll('[data-set-palette]').forEach(btn => {
+      const active = btn.getAttribute('data-set-palette') === paletteName;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+    if (notify) {
+      const p = palettes[paletteName];
+      showToast(currentLang === 'ar' ? `تم التبديل إلى نمط: ${p.nameAr} ✨` : `Theme Vibe: ${p.nameEn} ✨`);
+    }
+  }
+
+  document.querySelectorAll('[data-set-palette]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const next = btn.getAttribute('data-set-palette') || 'aurora';
+      applyPalette(next, true);
+      spawnRippleAndSparks(e.clientX, e.clientY, 18, 4.8);
+    });
+  });
+
+  /* ========================================================================
      FX Toggle (Navbar Button)
      ======================================================================== */
   const fxBtn = document.getElementById('fx-toggle');
@@ -600,6 +816,38 @@
   fxBtn?.addEventListener('click', () => {
     applyFx(!fxEnabled);
     showToast(fxEnabled ? translations[currentLang].fxOnToast : translations[currentLang].fxOffToast);
+  });
+
+  /* ========================================================================
+     Hero Hacker Text Scramble (Click-to-Decode Fun Easter Egg!)
+     ======================================================================== */
+  const scrambleEl = document.getElementById('hero-scramble');
+  let scrambleTimer = null;
+  function runScramble(el) {
+    if (!el || prefersReducedMotion || !fxEnabled) return;
+    const finalText = translations[currentLang].heroName;
+    const glyphs = currentLang === 'ar' ? 'أبجدهوزحطيكلمنسعفصقرشتثخذضظغ01<>' : '01<>/{}*#abcdefghijklmnopqrstuvwxyz';
+    let iteration = 0;
+    if (scrambleTimer) clearInterval(scrambleTimer);
+    scrambleTimer = setInterval(() => {
+      el.textContent = finalText
+        .split('')
+        .map((ch, idx) => {
+          if (ch === ' ') return ' ';
+          if (idx < iteration) return finalText[idx];
+          return glyphs[Math.floor(Math.random() * glyphs.length)];
+        })
+        .join('');
+      iteration += 0.5;
+      if (iteration >= finalText.length) {
+        clearInterval(scrambleTimer);
+        el.textContent = finalText;
+      }
+    }, 30);
+  }
+  scrambleEl?.addEventListener('click', e => {
+    runScramble(scrambleEl);
+    spawnRippleAndSparks(e.clientX, e.clientY, 22, 5.2);
   });
 
   /* ========================================================================
@@ -637,33 +885,61 @@
         twTimer = setTimeout(tickTypewriter, 1950);
         return;
       }
-      twTimer = setTimeout(tickTypewriter, 50);
+      twTimer = setTimeout(tickTypewriter, 48);
     } else {
       charIndex--;
       typewriterEl.textContent = target.slice(0, Math.max(0, charIndex));
       if (charIndex <= 0) {
         deleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        twTimer = setTimeout(tickTypewriter, 300);
+        twTimer = setTimeout(tickTypewriter, 280);
         return;
       }
-      twTimer = setTimeout(tickTypewriter, 26);
+      twTimer = setTimeout(tickTypewriter, 24);
     }
   }
 
   /* ========================================================================
-     Interactive VS Code / Cursor Code Lab Showcase
+     V4 Interactive VS Code Code Lab + Playable Mini-Shell + Copy Snippet
      ======================================================================== */
   const ideCodeEl = document.getElementById('ide-code');
   const ideConsoleEl = document.getElementById('ide-console-body');
   const ideStatusLang = document.getElementById('ide-status-lang');
   const ideRunBtn = document.getElementById('ide-run-btn');
+  const ideCopyBtn = document.getElementById('ide-copy-btn');
+  const ideCmdInput = document.getElementById('ide-cmd-input');
   let activeIdeFile = 'architecture.ts';
   let runTimers = [];
+  let jokeIdx = 0;
+
+  const devJokes = {
+    en: [
+      'Why do programmers prefer dark mode? Because light attracts bugs!',
+      'A SQL query walks into a bar, sees two tables, and asks: "Can I JOIN you?"',
+      'There are 10 types of people: those who understand binary, and those who do not.',
+      'PostgreSQL ACID rule #1: Never trust a client-side balance check.',
+    ],
+    ar: [
+      'ليه المبرمجين بيحبوا الـ Dark Mode؟ عشان النور بيجيب Bugs! 🐛',
+      'استعلام SQL دخل مطعم لقى جدولين سألهم: ينفع أعمل JOIN معاكم؟ 😄',
+      'أهم قاعدة في قواعد البيانات: متثقش أبداً في حسابات الواجهة بدون Transaction على الخادم!',
+      'في 10 أنواع من الناس: اللي بيفهموا النظام الثنائي (Binary)، واللي لأ! 😉',
+    ],
+  };
 
   const ideFiles = {
     'architecture.ts': {
       lang: 'TypeScript 5.8 · UTF-8',
+      raw: `// Nexus ERP POS — Production Full-Stack Request Boundary
+export async function executeCheckout(req: Request) {
+  const actor = await requirePermission('sales.create');
+  return transaction(async (client) => {
+    await lockInventoryRows(client, items); // FOR UPDATE
+    const sale = await postBalancedJournal(client, actor);
+    publishRealtime('sale:completed', { branchId: sale.branchId });
+    return { status: 201, saleNumber: sale.saleNumber };
+  });
+}`,
       code: [
         `<span class="syn-com">// Nexus ERP POS — Production Full-Stack Request Boundary</span>`,
         `<span class="syn-kw">export async function</span> <span class="syn-fn">executeCheckout</span>(req: <span class="syn-type">Request</span>) {`,
@@ -684,6 +960,14 @@
     },
     'nexus-erp.sql': {
       lang: 'PostgreSQL 18 · ACID Trigger',
+      raw: `-- Migration 036: Enforced Double-Entry Balanced Journal Trigger
+CREATE CONSTRAINT TRIGGER trg_journal_balanced
+  AFTER INSERT OR UPDATE ON journal_entries
+  DEFERRABLE INITIALLY DEFERRED
+  FOR EACH ROW EXECUTE FUNCTION enforce_balanced_posted_journal();
+
+SELECT sum(debit) = sum(credit) AS balanced
+  FROM journal_lines WHERE journal_entry_id = NEW.id;`,
       code: [
         `<span class="syn-com">-- Migration 036: Enforced Double-Entry Balanced Journal Trigger</span>`,
         `<span class="syn-kw">CREATE CONSTRAINT TRIGGER</span> trg_journal_balanced`,
@@ -703,6 +987,13 @@
     },
     'skills.json': {
       lang: 'JSON · Stack Manifest',
+      raw: `{
+  "engineer": "Gerges Sabry",
+  "frontend": ["Next.js 15", "React 19", "TypeScript", "RTL/LTR UX"],
+  "backend": ["Node.js", "PostgreSQL", "REST APIs", "SSE"],
+  "security": ["84-Rule RBAC", "scrypt", "AES-256-GCM", "Ed25519"],
+  "qa": ["Playwright E2E", "Isolated PG Suites", "Docker"]
+}`,
       code: [
         `{`,
         `  <span class="syn-fn">"engineer"</span>: <span class="syn-str">"Gerges Sabry"</span>,`,
@@ -720,6 +1011,13 @@
     },
     'hire-me.sh': {
       lang: 'Shell · Interactive CLI',
+      raw: `#!/usr/bin/env bash
+echo "Initializing collaboration with Gerges Sabry..."
+LOCATION="Cairo, Egypt (Remote & Onsite)"
+EMAIL="support@gergessabry.xyz"
+PHONE="+20 1200871167"
+FLAGSHIP="github.com/GergessabryKahool/nexus-erp-pos"
+echo "Status: OPEN FOR FULL-STACK ROLES & PROJECTS"`,
       code: [
         `<span class="syn-com">#!/usr/bin/env bash</span>`,
         `<span class="syn-fn">echo</span> <span class="syn-str">"Initializing collaboration with Gerges Sabry..."</span>`,
@@ -737,6 +1035,22 @@
     },
   };
 
+  function printConsoleLines(lines) {
+    if (!ideConsoleEl) return;
+    runTimers.forEach(t => clearTimeout(t));
+    runTimers = [];
+    ideConsoleEl.innerHTML = '';
+    lines.forEach((line, idx) => {
+      const delay = prefersReducedMotion ? 0 : idx * 170;
+      const timer = setTimeout(() => {
+        const row = document.createElement('div');
+        row.innerHTML = line;
+        ideConsoleEl.appendChild(row);
+      }, delay);
+      runTimers.push(timer);
+    });
+  }
+
   function renderIdeFile(fileName, autoRun = false) {
     const file = ideFiles[fileName];
     if (!file || !ideCodeEl) return;
@@ -750,31 +1064,275 @@
       btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-selected', String(active));
     });
-    if (autoRun) runIdeScript();
+    if (autoRun) printConsoleLines(file.logs);
   }
 
-  function runIdeScript() {
-    const file = ideFiles[activeIdeFile];
-    if (!file || !ideConsoleEl) return;
-    runTimers.forEach(t => clearTimeout(t));
-    runTimers = [];
-    ideConsoleEl.innerHTML = '';
-    file.logs.forEach((line, idx) => {
-      const delay = prefersReducedMotion ? 0 : idx * 240;
-      const timer = setTimeout(() => {
-        const row = document.createElement('div');
-        row.innerHTML = line;
-        ideConsoleEl.appendChild(row);
-      }, delay);
-      runTimers.push(timer);
-    });
+  function runIdeCommand(rawCmd) {
+    const cmd = rawCmd.trim().toLowerCase();
+    if (!cmd) return;
+    if (cmd === 'clear') {
+      if (ideConsoleEl) ideConsoleEl.innerHTML = '';
+      return;
+    }
+    if (cmd === 'help') {
+      printConsoleLines([
+        `<span class="ide-log-cyan">$ help</span>`,
+        `<span class="ide-log-ok">Commands:</span> whoami · projects · joke · matrix · synth · ember · aurora · confetti · hire · clear`,
+      ]);
+      return;
+    }
+    if (cmd === 'whoami') {
+      printConsoleLines([
+        `<span class="ide-log-cyan">$ whoami</span>`,
+        `<span class="ide-log-ok">✓</span> Gerges Sabry · Full-Stack Software Engineer @ ART-Vision (Cairo, Egypt)`,
+        `<span class="ide-log-gold">→</span> Next.js 15 · React 19 · TypeScript · Node.js · PostgreSQL · Playwright`,
+      ]);
+      return;
+    }
+    if (cmd === 'projects') {
+      printConsoleLines([
+        `<span class="ide-log-cyan">$ ls ./featured-projects</span>`,
+        `<span class="ide-log-ok">★</span> nexus-erp-pos/  (90+ APIs · 36 SQL migrations · 84 RBAC rules)`,
+        `<span class="ide-log-gold">•</span> Dash/ · ART-Vision/ · JobviaCourse/ · Wisdomteller/ · BoomLabels/`,
+      ]);
+      return;
+    }
+    if (cmd === 'joke') {
+      const pool = devJokes[currentLang] || devJokes.en;
+      const joke = pool[jokeIdx % pool.length];
+      jokeIdx++;
+      printConsoleLines([
+        `<span class="ide-log-cyan">$ joke --dev</span>`,
+        `<span class="ide-log-gold">😄</span> ${joke}`,
+      ]);
+      return;
+    }
+    if (cmd === 'confetti' || cmd === 'party') {
+      launchConfetti();
+      printConsoleLines([
+        `<span class="ide-log-cyan">$ ${cmd}</span>`,
+        `<span class="ide-log-ok">🎉</span> Boom! Particle celebration launched across the viewport.`,
+      ]);
+      return;
+    }
+    if (['aurora', 'matrix', 'synth', 'ember'].includes(cmd) || cmd.startsWith('theme ')) {
+      const targetPal = cmd.startsWith('theme ') ? cmd.replace('theme ', '').trim() : cmd;
+      if (Object.prototype.hasOwnProperty.call(palettes, targetPal)) {
+        applyPalette(targetPal, true);
+        launchConfetti();
+        printConsoleLines([
+          `<span class="ide-log-cyan">$ theme ${targetPal}</span>`,
+          `<span class="ide-log-ok">✓</span> Palette switched live to <strong>${palettes[targetPal].nameEn}</strong>.`,
+        ]);
+        return;
+      }
+    }
+    if (cmd === 'hire' || cmd === 'contact') {
+      printConsoleLines([
+        `<span class="ide-log-cyan">$ ./hire-me.sh --redirect</span>`,
+        `<span class="ide-log-ok">✓</span> Opening contact form &amp; pre-filling subject...`,
+      ]);
+      const subjectInput = document.getElementById('subject');
+      if (subjectInput && !subjectInput.value) {
+        subjectInput.value = currentLang === 'ar' ? 'فرصة عمل / مشروع جديد من الموقع' : 'New Project / Role Inquiry via Code Lab';
+      }
+      document.getElementById('contact')?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      return;
+    }
+    printConsoleLines([
+      `<span class="ide-log-cyan">$ ${rawCmd.replace(/</g, '&lt;')}</span>`,
+      `<span class="ide-log-gold">!</span> Unknown command. Type <strong>help</strong> to see all interactive commands.`,
+    ]);
   }
 
   document.querySelectorAll('.ide-file-btn').forEach(btn => {
     btn.addEventListener('click', () => renderIdeFile(btn.getAttribute('data-ide-file') || 'architecture.ts', true));
   });
-  ideRunBtn?.addEventListener('click', runIdeScript);
+  ideRunBtn?.addEventListener('click', () => {
+    const file = ideFiles[activeIdeFile];
+    if (file) printConsoleLines(file.logs);
+  });
+  ideCopyBtn?.addEventListener('click', () => {
+    const file = ideFiles[activeIdeFile];
+    if (file) void copyText(file.raw, translations[currentLang].copiedCode);
+  });
+  document.querySelectorAll('.ide-chip').forEach(chip => {
+    chip.addEventListener('click', () => runIdeCommand(chip.getAttribute('data-ide-cmd') || 'help'));
+  });
+  ideCmdInput?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = ideCmdInput.value;
+      ideCmdInput.value = '';
+      runIdeCommand(val);
+    }
+  });
   renderIdeFile('architecture.ts', true);
+
+  /* ========================================================================
+     V4 Interactive Project Scope & Timeline Estimator
+     ======================================================================== */
+  const estConfig = {
+    landing: {
+      daysMin: 5,
+      daysMax: 10,
+      complexity: 32,
+      tierEn: 'Starter / Brand',
+      tierAr: 'تعريفي / سريع',
+      stack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'SEO'],
+      labelEn: 'Brand / Landing Website',
+      labelAr: 'موقع شركة / صفحة هبوط',
+    },
+    ecommerce: {
+      daysMin: 14,
+      daysMax: 24,
+      complexity: 58,
+      tierEn: 'Growth Storefront',
+      tierAr: 'متجر إلكتروني متكامل',
+      stack: ['Next.js 15', 'TypeScript', 'PostgreSQL', 'Checkout API'],
+      labelEn: 'E-Commerce Storefront',
+      labelAr: 'متجر إلكتروني متكامل',
+    },
+    webapp: {
+      daysMin: 21,
+      daysMax: 35,
+      complexity: 74,
+      tierEn: 'Production SaaS / App',
+      tierAr: 'تطبيق ويب متكامل',
+      stack: ['Next.js 15', 'React 19', 'Node.js', 'PostgreSQL', 'REST / SSE'],
+      labelEn: 'Full-Stack Web Application',
+      labelAr: 'تطبيق ويب Full-Stack',
+    },
+    erp: {
+      daysMin: 35,
+      daysMax: 60,
+      complexity: 92,
+      tierEn: 'Enterprise Suite',
+      tierAr: 'منظومة مؤسسية ERP/POS',
+      stack: ['Next.js 15', 'PostgreSQL ACID', 'Double-Entry Ledger', '84 RBAC', 'Docker'],
+      labelEn: 'Custom ERP / POS System',
+      labelAr: 'نظام ERP / كاشير POS مخصص',
+    },
+  };
+
+  let estType = 'webapp';
+  const estAddons = new Set(['bilingual', 'rbac']);
+
+  function updateEstimator() {
+    const base = estConfig[estType] || estConfig.webapp;
+    let minD = base.daysMin;
+    let maxD = base.daysMax;
+    let score = base.complexity;
+    const stack = [...base.stack];
+
+    if (estAddons.has('bilingual')) { minD += 2; maxD += 4; score += 5; stack.push('RTL / LTR'); }
+    if (estAddons.has('rbac')) { minD += 3; maxD += 5; score += 8; if (!stack.includes('84 RBAC')) stack.push('RBAC Auth'); }
+    if (estAddons.has('accounting')) { minD += 5; maxD += 10; score += 10; if (!stack.includes('Double-Entry Ledger')) stack.push('Financial Ledger'); }
+    if (estAddons.has('qa')) { minD += 3; maxD += 5; score += 6; stack.push('Playwright E2E'); }
+    if (estAddons.has('fast')) { minD = Math.max(4, Math.round(minD * 0.78)); maxD = Math.max(7, Math.round(maxD * 0.78)); }
+
+    score = Math.min(100, score);
+    const ar = currentLang === 'ar';
+    const minW = Math.max(1, Math.round(minD / 7));
+    const maxW = Math.max(minW + 1, Math.round(maxD / 7));
+
+    const timelineEl = document.getElementById('est-out-timeline');
+    const tierEl = document.getElementById('est-out-tier');
+    const pctEl = document.getElementById('est-out-pct');
+    const fillEl = document.getElementById('est-meter-fill');
+    const stackEl = document.getElementById('est-stack-pills');
+
+    if (timelineEl) {
+      timelineEl.textContent = minD < 14
+        ? (ar ? `${minD}–${maxD} أيام` : `${minD}–${maxD} Days`)
+        : (ar ? `${minW}–${maxW} أسابيع` : `${minW}–${maxW} Weeks`);
+    }
+    if (tierEl) tierEl.textContent = ar ? base.tierAr : base.tierEn;
+    if (pctEl) pctEl.textContent = `${score}%`;
+    if (fillEl) fillEl.style.width = `${score}%`;
+    if (stackEl) {
+      stackEl.innerHTML = Array.from(new Set(stack))
+        .map(item => `<span class="tech-pill">${item}</span>`)
+        .join('');
+    }
+  }
+
+  document.querySelectorAll('.est-type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      estType = btn.getAttribute('data-est-type') || 'webapp';
+      document.querySelectorAll('.est-type-btn').forEach(b => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
+      updateEstimator();
+    });
+  });
+
+  document.querySelectorAll('.est-addon-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-est-addon');
+      if (!key) return;
+      if (estAddons.has(key)) estAddons.delete(key);
+      else estAddons.add(key);
+      const active = estAddons.has(key);
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+      updateEstimator();
+    });
+  });
+
+  document.getElementById('est-apply-btn')?.addEventListener('click', e => {
+    const base = estConfig[estType] || estConfig.webapp;
+    const ar = currentLang === 'ar';
+    const addonLabels = Array.from(estAddons).map(k => {
+      const el = document.querySelector(`.est-addon-btn[data-est-addon="${k}"]`);
+      return el ? el.textContent.trim() : k;
+    });
+    const timelineText = document.getElementById('est-out-timeline')?.textContent || '';
+    const subjectInput = document.getElementById('subject');
+    const msgInput = document.getElementById('msg');
+    if (subjectInput) {
+      subjectInput.value = ar
+        ? `طلب تنفيذ مشروع: ${base.labelAr}`
+        : `Project Inquiry: ${base.labelEn}`;
+    }
+    if (msgInput) {
+      msgInput.value = ar
+        ? `مرحباً جرجس،\nأرغب في مناقشة مشروع (${base.labelAr}).\nالمميزات المطلوبة: ${addonLabels.join('، ') || 'الباقة الأساسية'}.\nالمدة التقديرية المقترحة: ${timelineText}.\n\nتفاصيل إضافية:`
+        : `Hi Gerges,\nI would like to discuss building a ${base.labelEn}.\nSelected capabilities: ${addonLabels.join(', ') || 'Core scope'}.\nEstimated timeline: ${timelineText}.\n\nAdditional details:`;
+    }
+    launchConfetti(e.clientX, e.clientY);
+    showToast(translations[currentLang].estAppliedToast);
+    document.getElementById('contact')?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    setTimeout(() => document.getElementById('name')?.focus(), 450);
+  });
+
+  /* ========================================================================
+     Floating Playful Kudos / Applause Button
+     ======================================================================== */
+  const kudosBtn = document.getElementById('dock-kudos');
+  const kudosBadge = document.getElementById('kudos-badge');
+  if (kudosBadge) kudosBadge.textContent = String(kudosCount);
+
+  function triggerKudos(clientX, clientY) {
+    kudosCount++;
+    if (kudosBadge) kudosBadge.textContent = String(kudosCount);
+    try { localStorage.setItem('gs-kudos', String(kudosCount)); } catch {}
+    const rect = kudosBtn?.getBoundingClientRect();
+    const x = clientX || (rect ? rect.left + rect.width / 2 : window.innerWidth - 40);
+    const y = clientY || (rect ? rect.top : window.innerHeight - 140);
+    launchConfetti(x, y);
+    const pop = document.createElement('span');
+    pop.className = 'kudos-pop';
+    pop.textContent = '+1 ✨';
+    pop.style.left = `${x}px`;
+    pop.style.top = `${y - 14}px`;
+    document.body.appendChild(pop);
+    setTimeout(() => pop.remove(), 950);
+    showToast(translations[currentLang].kudosToast);
+  }
+  kudosBtn?.addEventListener('click', e => triggerKudos(e.clientX, e.clientY));
 
   /* ========================================================================
      Theme & Language Engine
@@ -818,11 +1376,20 @@
       }
     });
 
+    document.querySelectorAll('[data-rail-i18n]').forEach(el => {
+      const key = el.getAttribute('data-rail-i18n');
+      if (key && Object.prototype.hasOwnProperty.call(t, key)) {
+        el.setAttribute('data-rail-label', t[key]);
+        el.setAttribute('aria-label', t[key]);
+      }
+    });
+
     const themeLabel = document.getElementById('theme-label');
     if (themeLabel) {
       themeLabel.textContent = currentTheme === 'dark' ? t.themeLight : t.themeDark;
     }
 
+    updateEstimator();
     restartTypewriter();
     renderCmdList(cmdInput?.value || '');
   }
@@ -901,17 +1468,30 @@
       }
     });
 
-    // Card Spotlight Glow
+    // Card Spotlight Glow + Tactile 3D Micro-Tilt on Service & Project Cards
     document.querySelectorAll('.glow-card').forEach(card => {
+      const tiltable = card.classList.contains('service-card') || card.classList.contains('project-card');
       card.addEventListener(
         'pointermove',
         e => {
           const rect = card.getBoundingClientRect();
-          card.style.setProperty('--mx', `${Math.round(e.clientX - rect.left)}px`);
-          card.style.setProperty('--my', `${Math.round(e.clientY - rect.top)}px`);
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mx', `${Math.round(x)}px`);
+          card.style.setProperty('--my', `${Math.round(y)}px`);
+          if (tiltable && fxEnabled) {
+            const rx = -((y / rect.height) - 0.5) * 6;
+            const ry = ((x / rect.width) - 0.5) * 6;
+            card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-5px)`;
+          }
         },
         { passive: true }
       );
+      if (tiltable) {
+        card.addEventListener('pointerleave', () => {
+          card.style.transform = '';
+        });
+      }
     });
 
     // Magnetic Buttons
@@ -1028,7 +1608,7 @@
   });
 
   /* ========================================================================
-     Mobile Drawer & Active Section Highlighting
+     Mobile Drawer & Active Section Highlighting (Navbar + Section Rail)
      ======================================================================== */
   const menuBtn = document.getElementById('menu-toggle');
   const drawer = document.getElementById('mobile-drawer');
@@ -1044,14 +1624,25 @@
   drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setDrawer(false)));
 
   const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-  const sections = navLinks.map(link => document.querySelector(link.getAttribute('href') || '')).filter(Boolean);
+  const railDots = Array.from(document.querySelectorAll('.section-rail a[href^="#"]'));
+  const trackedIds = Array.from(new Set([
+    ...navLinks.map(a => a.getAttribute('href')),
+    ...railDots.map(a => a.getAttribute('href')),
+  ].filter(Boolean)));
+  const sections = trackedIds.map(sel => document.querySelector(sel)).filter(Boolean);
+
+  function setActiveSection(id) {
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+    railDots.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === `#${id}`));
+  }
+
   if ('IntersectionObserver' in window && sections.length) {
     const secObserver = new IntersectionObserver(
       entries => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
-            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+            if (id) setActiveSection(id);
           }
         }
       },
@@ -1062,33 +1653,48 @@
   window.addEventListener(
     'scroll',
     () => {
-      if (window.scrollY < 100) {
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#home'));
-      }
+      if (window.scrollY < 100) setActiveSection('home');
     },
     { passive: true }
   );
 
   /* ========================================================================
-     Portfolio Filter & Upgraded Lightbox (Prev/Next + Arrows)
+     Portfolio Filter + Live Search + Upgraded Lightbox
      ======================================================================== */
   const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
   const projectCards = Array.from(document.querySelectorAll('.project-card'));
+  const projectSearchInput = document.getElementById('project-search');
+  const projectsEmptyEl = document.getElementById('projects-empty');
+  let activeFilter = 'all';
+
+  function applyProjectFilters() {
+    const q = (projectSearchInput?.value || '').trim().toLowerCase();
+    let visibleCount = 0;
+    projectCards.forEach(card => {
+      const cat = card.getAttribute('data-category') || '';
+      const text = (card.textContent || '').toLowerCase();
+      const matchCat = activeFilter === 'all' || cat === activeFilter;
+      const matchQuery = !q || text.includes(q);
+      const show = matchCat && matchQuery;
+      card.hidden = !show;
+      if (show) visibleCount++;
+    });
+    if (projectsEmptyEl) projectsEmptyEl.hidden = visibleCount > 0;
+  }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter') || 'all';
+      activeFilter = btn.getAttribute('data-filter') || 'all';
       filterBtns.forEach(b => {
         const active = b === btn;
         b.classList.toggle('is-active', active);
         b.setAttribute('aria-pressed', String(active));
       });
-      projectCards.forEach(card => {
-        const cat = card.getAttribute('data-category') || '';
-        card.hidden = filter !== 'all' && cat !== filter;
-      });
+      applyProjectFilters();
     });
   });
+
+  projectSearchInput?.addEventListener('input', applyProjectFilters);
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
@@ -1158,15 +1764,18 @@
     const ar = currentLang === 'ar';
     return [
       { label: ar ? 'الانتقال إلى: معمل الكود التفاعلي (IDE)' : 'Jump to: Interactive Code Lab (IDE)', hint: '#code-lab', run: () => { location.hash = '#code-lab'; } },
+      { label: ar ? 'الانتقال إلى: حاسبة وتخطيط المشروع' : 'Jump to: Interactive Project Estimator', hint: '#estimator', run: () => { location.hash = '#estimator'; } },
       { label: ar ? 'الانتقال إلى: مشروع Nexus ERP POS' : 'Jump to: Nexus ERP POS Flagship', hint: '#projects', run: () => { location.hash = '#projects'; } },
+      { label: ar ? 'إطلاق احتفالية ألعاب نارية 🎉' : 'Launch Confetti Spark Celebration 🎉', hint: 'FUN', run: () => launchConfetti() },
+      { label: ar ? 'تبديل الألوان: ماتريكس أخضر (Matrix)' : 'Switch Color Vibe: Matrix Emerald', hint: 'VIBE', run: () => applyPalette('matrix', true) },
+      { label: ar ? 'تبديل الألوان: سايبر بنفسجي (Synth)' : 'Switch Color Vibe: Cyber Violet', hint: 'VIBE', run: () => applyPalette('synth', true) },
+      { label: ar ? 'تبديل الألوان: وهج برتقالي (Ember)' : 'Switch Color Vibe: Sunset Ember', hint: 'VIBE', run: () => applyPalette('ember', true) },
+      { label: ar ? 'تبديل الألوان: ذهبي أورورا (Aurora)' : 'Switch Color Vibe: Aurora Gold', hint: 'VIBE', run: () => applyPalette('aurora', true) },
       { label: ar ? 'تشغيل سكريبت hire-me.sh داخل المعمل' : 'Run hire-me.sh inside Code Lab', hint: 'RUN', run: () => { location.hash = '#code-lab'; renderIdeFile('hire-me.sh', true); } },
-      { label: ar ? 'الانتقال إلى: المهارات التقنية' : 'Jump to: Technical Stack', hint: '#skills', run: () => { location.hash = '#skills'; } },
-      { label: ar ? 'الانتقال إلى: تواصل معي' : 'Jump to: Contact Form', hint: '#contact', run: () => { location.hash = '#contact'; } },
       { label: ar ? 'تبديل اللغة (عربي / English)' : 'Switch Language (EN / Arabic RTL)', hint: 'LANG', run: () => applyLang(currentLang === 'en' ? 'ar' : 'en') },
       { label: ar ? 'تبديل المظهر (داكن / فاتح)' : 'Toggle Theme (Dark / Light)', hint: 'THEME', run: () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark') },
       { label: ar ? 'تشغيل / إيقاف المؤثرات البصرية (FX)' : 'Toggle Visual Effects (FX)', hint: 'FX', run: () => applyFx(!fxEnabled) },
       { label: ar ? 'نسخ البريد الإلكتروني (support@gergessabry.xyz)' : 'Copy Email (support@gergessabry.xyz)', hint: 'COPY', run: () => copyText('support@gergessabry.xyz', translations[currentLang].copiedEmail) },
-      { label: ar ? 'نسخ رقم الهاتف (+20 1200871167)' : 'Copy Phone (+20 1200871167)', hint: 'COPY', run: () => copyText('+201200871167', translations[currentLang].copiedPhone) },
       { label: ar ? 'فتح مستودع Nexus ERP POS على GitHub' : 'Open Nexus ERP POS on GitHub', hint: 'GITHUB', run: () => window.open('https://github.com/GergessabryKahool/nexus-erp-pos', '_blank', 'noopener,noreferrer') },
       { label: ar ? 'تحميل السيرة الذاتية (CV)' : 'Open / Download CV', hint: 'CV', run: () => window.open('https://drive.google.com/file/d/1H2krislh80V8bNEhWDnDR8QcskormqxM/view?usp=drivesdk', '_blank', 'noopener,noreferrer') },
     ];
@@ -1267,6 +1876,7 @@
   });
 
   // Boot all systems
+  applyPalette(currentPalette, false);
   applyTheme(currentTheme);
   applyLang(currentLang);
   applyFx(fxEnabled);
@@ -1307,6 +1917,7 @@
           statusEl.setAttribute('role', 'status');
           statusEl.textContent = t.sendOk;
         }
+        launchConfetti();
         form.reset();
       } else {
         const data = await res.json().catch(() => ({}));

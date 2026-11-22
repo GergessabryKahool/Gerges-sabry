@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="en" dir="ltr" data-theme="dark" data-palette="aurora">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,6 +22,10 @@
       try {
         var t = localStorage.getItem('gs-theme');
         if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        var p = localStorage.getItem('gs-palette');
+        if (p === 'aurora' || p === 'matrix' || p === 'synth' || p === 'ember') {
+          document.documentElement.dataset.palette = p;
+        }
         var l = localStorage.getItem('gs-lang');
         if (l === 'ar' || l === 'en') {
           document.documentElement.lang = l;
@@ -52,11 +56,41 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-  <div class="bg-mesh" aria-hidden="true"></div>
+
+  <!-- Living Aurora Mesh Orbs -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="aurora-orb aurora-orb-1"></div>
+    <div class="aurora-orb aurora-orb-2"></div>
+    <div class="aurora-orb aurora-orb-3"></div>
+  </div>
   <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Subtle Floating Ambient Code Tokens -->
+  <div class="floating-glyphs" aria-hidden="true">
+    <span class="code-glyph" style="--g-x:6%;--g-y:18%;--g-dur:15s;--g-delay:-2s;--g-size:1rem;">&lt;/&gt;</span>
+    <span class="code-glyph" style="--g-x:90%;--g-y:24%;--g-dur:18s;--g-delay:-5s;--g-size:0.9rem;">=&gt;</span>
+    <span class="code-glyph" style="--g-x:14%;--g-y:72%;--g-dur:20s;--g-delay:-7s;--g-size:0.82rem;">ACID</span>
+    <span class="code-glyph" style="--g-x:84%;--g-y:66%;--g-dur:16s;--g-delay:-3s;--g-size:1.05rem;">{ }</span>
+    <span class="code-glyph" style="--g-x:48%;--g-y:14%;--g-dur:22s;--g-delay:-9s;--g-size:0.78rem;">async</span>
+    <span class="code-glyph" style="--g-x:54%;--g-y:84%;--g-dur:17s;--g-delay:-4s;--g-size:0.84rem;">SQL</span>
+  </div>
+
+  <!-- Interactive Physics Constellation + Click Ripples + Confetti Canvas -->
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
   <div class="cursor-aura" id="cursor-aura" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Floating Vertical Section Minimap Rail (Desktop) -->
+  <aside class="section-rail" aria-label="Quick section navigation">
+    <a href="#home" class="rail-dot is-active" data-rail-i18n="navHome" data-rail-label="Home" aria-label="Home"></a>
+    <a href="#code-lab" class="rail-dot" data-rail-i18n="navLab" data-rail-label="Code Lab" aria-label="Code Lab"></a>
+    <a href="#about" class="rail-dot" data-rail-i18n="navAbout" data-rail-label="About" aria-label="About"></a>
+    <a href="#services" class="rail-dot" data-rail-i18n="navServices" data-rail-label="Services" aria-label="Services"></a>
+    <a href="#skills" class="rail-dot" data-rail-i18n="navSkills" data-rail-label="Skills" aria-label="Skills"></a>
+    <a href="#projects" class="rail-dot" data-rail-i18n="navProjects" data-rail-label="Projects" aria-label="Projects"></a>
+    <a href="#estimator" class="rail-dot" data-rail-i18n="navEstimator" data-rail-label="Estimate" aria-label="Estimate"></a>
+    <a href="#contact" class="rail-dot" data-rail-i18n="navContact" data-rail-label="Contact" aria-label="Contact"></a>
+  </aside>
 
   <!-- Header -->
   <header class="site-header" id="site-header">
@@ -75,15 +109,15 @@
           <li><a href="#code-lab" data-i18n="navLab">Code Lab</a></li>
           <li><a href="#about" data-i18n="navAbout">About</a></li>
           <li><a href="#services" data-i18n="navServices">Services</a></li>
-          <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
           <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+          <li><a href="#estimator" data-i18n="navEstimator">Estimate</a></li>
           <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
           <li><a href="#contact" data-i18n="navContact">Contact</a></li>
         </ul>
       </nav>
 
       <div class="nav-controls">
-        <button type="button" class="icon-control fx-active" id="fx-toggle" aria-label="Toggle visual effects" aria-pressed="true" title="Toggle Visual FX">
+        <button type="button" class="icon-control fx-active" id="fx-toggle" aria-label="Toggle visual effects" aria-pressed="true" title="Toggle Interactive FX">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
           <span>FX</span>
         </button>
@@ -119,6 +153,7 @@
     <a href="#services" data-i18n="navServices">Services</a>
     <a href="#skills" data-i18n="navSkills">Skills</a>
     <a href="#projects" data-i18n="navProjects">Projects</a>
+    <a href="#estimator" data-i18n="navEstimator">Estimate</a>
     <a href="#experience" data-i18n="navExperience">Experience</a>
     <a href="#contact" data-i18n="navContact">Contact</a>
   </nav>
@@ -138,11 +173,19 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span id="cairo-clock">Cairo · UTC+2</span>
               </div>
+              <!-- Live Interactive Color Vibe Switcher -->
+              <div class="palette-bar" role="group" aria-label="Switch Accent Palette">
+                <span class="palette-label" data-i18n="vibeLabel">VIBE</span>
+                <button type="button" class="palette-dot is-active" data-set-palette="aurora" aria-label="Aurora Gold theme" aria-pressed="true" title="Aurora Gold"></button>
+                <button type="button" class="palette-dot" data-set-palette="matrix" aria-label="Matrix Emerald theme" aria-pressed="false" title="Matrix Emerald"></button>
+                <button type="button" class="palette-dot" data-set-palette="synth" aria-label="Cyber Violet theme" aria-pressed="false" title="Cyber Violet"></button>
+                <button type="button" class="palette-dot" data-set-palette="ember" aria-label="Sunset Ember theme" aria-pressed="false" title="Sunset Ember"></button>
+              </div>
             </div>
 
             <h1 class="hero-title">
               <span data-i18n="heroGreeting">Hi, I am</span>
-              <span class="accent" data-i18n="heroName">Gerges Sabry</span>
+              <span class="accent" id="hero-scramble" data-i18n="heroName" title="Click to scramble ✨">Gerges Sabry</span>
             </h1>
 
             <div class="code-role-pill">
@@ -255,13 +298,13 @@
       </div>
     </section>
 
-    <!-- NEW V3 Showstopper: Interactive Code Lab Workspace (VS Code / Cursor Style) -->
+    <!-- Interactive Code Lab Workspace + Playable Mini-Shell -->
     <section id="code-lab" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="labEyebrow">Interactive Code Workspace</div>
-          <h2 class="section-title" data-i18n="labTitle">Inspect How I Architect Production Systems</h2>
-          <p class="section-desc" data-i18n="labDesc">Click through real TypeScript, PostgreSQL ACID triggers, stack config, or run the interactive script below.</p>
+          <h2 class="section-title" data-i18n="labTitle">Play With Live Code &amp; Mini-Terminal</h2>
+          <p class="section-desc" data-i18n="labDesc">Switch between production snippets, copy code, click quick commands, or type directly into the terminal below.</p>
         </div>
 
         <div class="ide-shell" data-reveal data-delay="70" aria-label="Interactive Code Lab Workspace">
@@ -272,7 +315,13 @@
               <span style="background:#34d399"></span>
             </div>
             <span class="ide-window-title">gerges-workspace — nexus-erp-pos · VS Code</span>
-            <button type="button" class="ide-run-btn" id="ide-run-btn" data-i18n="labRunBtn">▶ Run Script</button>
+            <div class="ide-titlebar-actions">
+              <button type="button" class="ide-copy-btn" id="ide-copy-btn" aria-label="Copy active code snippet">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span data-i18n="labCopyBtn">Copy</span>
+              </button>
+              <button type="button" class="ide-run-btn" id="ide-run-btn" data-i18n="labRunBtn">▶ Run Script</button>
+            </div>
           </div>
 
           <div class="ide-layout">
@@ -298,12 +347,28 @@
 
             <div class="ide-editor">
               <pre class="ide-code-pane" id="ide-code" aria-live="polite"></pre>
+
+              <!-- Fun Quick-Command Chips -->
+              <div class="ide-quick-chips" role="group" aria-label="Quick terminal commands">
+                <button type="button" class="ide-chip" data-ide-cmd="help">help</button>
+                <button type="button" class="ide-chip" data-ide-cmd="whoami">whoami</button>
+                <button type="button" class="ide-chip" data-ide-cmd="projects">projects</button>
+                <button type="button" class="ide-chip" data-ide-cmd="joke">joke 😄</button>
+                <button type="button" class="ide-chip" data-ide-cmd="matrix">matrix 🟢</button>
+                <button type="button" class="ide-chip" data-ide-cmd="confetti">confetti 🎉</button>
+                <button type="button" class="ide-chip" data-ide-cmd="hire">hire →</button>
+              </div>
+
               <div class="ide-console">
                 <div class="ide-console-head">
-                  <span>TERMINAL · LIVE OUTPUT</span>
+                  <span>TERMINAL · LIVE INTERACTIVE SHELL</span>
                   <span>EXIT 0</span>
                 </div>
                 <div id="ide-console-body" aria-live="polite"></div>
+                <div class="ide-prompt-row">
+                  <span class="ide-prompt-prefix" aria-hidden="true">gerges@nexus:~$</span>
+                  <input type="text" class="ide-cmd-input" id="ide-cmd-input" placeholder="Type a command (try: help, joke, matrix, confetti, hire)..." data-i18n-placeholder="labCmdPlaceholder" autocomplete="off" aria-label="Interactive terminal command input" />
+                </div>
               </div>
             </div>
           </div>
@@ -402,7 +467,7 @@
       </div>
     </section>
 
-    <!-- Services Section (Upgraded Bento Grid) -->
+    <!-- Services Section (Upgraded Bento Grid with 3D Tactile Micro-Tilt) -->
     <section id="services" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
@@ -621,7 +686,7 @@
 
               <div class="hero-actions" style="margin-bottom:0;">
                 <a href="https://github.com/GergessabryKahool/nexus-erp-pos" target="_blank" rel="noopener noreferrer" class="btn btn-primary magnetic" data-i18n="flagshipGithub">View Source on GitHub</a>
-                <a href="#contact" class="btn btn-secondary magnetic" data-i18n="flagshipContact">Request a Demo</a>
+                <a href="#estimator" class="btn btn-secondary magnetic" data-i18n="flagshipContact">Request a Demo</a>
               </div>
             </div>
 
@@ -629,10 +694,6 @@
             <div class="flagship-visual" aria-hidden="true">
               <svg viewBox="0 0 540 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="gBar" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#38bdf8"/>
-                    <stop offset="100%" stop-color="#e0b354"/>
-                  </linearGradient>
                   <linearGradient id="gPulse" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stop-color="#38bdf8"/>
                     <stop offset="50%" stop-color="#a78bfa"/>
@@ -646,7 +707,6 @@
                 <circle cx="52" cy="18" r="5" fill="#34d399"/>
                 <text x="74" y="22" fill="#94a3b8" font-family="monospace" font-size="11">nexus-erp-pos · Live Transaction &amp; Double-Entry Engine</text>
 
-                <!-- Left Module Column -->
                 <rect x="14" y="48" width="118" height="298" rx="10" fill="#0d1529" stroke="#1e293b"/>
                 <rect x="24" y="60" width="98" height="24" rx="6" fill="rgba(224,179,84,0.16)" stroke="rgba(224,179,84,0.45)"/>
                 <text x="34" y="76" fill="#fde68a" font-family="monospace" font-size="10" font-weight="700">Retail POS</text>
@@ -663,7 +723,6 @@
                 <text x="48" y="305" fill="#10b981" font-family="monospace" font-size="9" font-weight="700">SSE STREAM</text>
                 <text x="34" y="321" fill="#64748b" font-family="monospace" font-size="8.5">latency: 14ms</text>
 
-                <!-- Top Telemetry Cards -->
                 <rect x="146" y="48" width="120" height="62" rx="10" fill="#0d1529" stroke="#1e293b"/>
                 <text x="158" y="67" fill="#64748b" font-family="monospace" font-size="8.5">GROSS SALES</text>
                 <text x="158" y="94" fill="#f8fafc" font-family="monospace" font-size="15" font-weight="700">EGP 482.5K</text>
@@ -676,11 +735,9 @@
                 <text x="418" y="67" fill="#64748b" font-family="monospace" font-size="8.5">DB TRIGGERS</text>
                 <text x="418" y="94" fill="#38bdf8" font-family="monospace" font-size="14" font-weight="700">ACID LOCK</text>
 
-                <!-- Animated Data Flow Pipeline Box -->
                 <rect x="146" y="122" width="380" height="122" rx="10" fill="#0d1529" stroke="#1e293b"/>
                 <text x="160" y="143" fill="#cbd5e1" font-family="monospace" font-size="10" font-weight="700">Live Request Pipeline · Next.js API → PostgreSQL</text>
 
-                <!-- Pipeline Nodes + Animated Flow Connectors -->
                 <rect x="160" y="158" width="96" height="44" rx="8" fill="#111d38" stroke="rgba(56,189,248,0.45)"/>
                 <text x="172" y="177" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="700">POS / WEB</text>
                 <text x="172" y="192" fill="#94a3b8" font-family="monospace" font-size="8">idempotent</text>
@@ -697,10 +754,8 @@
                 <text x="443" y="177" fill="#fde68a" font-family="monospace" font-size="9.5" font-weight="700">PG ACID</text>
                 <text x="443" y="192" fill="#94a3b8" font-family="monospace" font-size="8">DR == CR</text>
 
-                <!-- Mini Animated Sparkline -->
                 <polyline class="svg-flow-line" points="164,230 212,222 256,226 304,214 356,220 410,210 462,216 510,206" fill="none" stroke="url(#gPulse)" stroke-width="2.2" stroke-linecap="round"/>
 
-                <!-- Bottom Posted Ledger Console -->
                 <rect x="146" y="256" width="380" height="90" rx="10" fill="#0d1529" stroke="#1e293b"/>
                 <text x="160" y="276" fill="#cbd5e1" font-family="monospace" font-size="9.5" font-weight="700">Posted Journal Entries · Constraint Trigger Verified</text>
                 <text x="160" y="298" fill="#94a3b8" font-family="monospace" font-size="9.5">JE-2026-1041 · SYS-CASH DR 14,250 / SYS-SALES CR 12,500</text>
@@ -711,17 +766,22 @@
           </article>
         </div>
 
-        <!-- Category Filters -->
-        <div class="filter-bar" role="group" aria-label="Filter projects by category" data-reveal>
-          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">All Projects</button>
-          <button type="button" class="filter-btn" data-filter="systems" aria-pressed="false" data-i18n="filterSystems">Full-Stack Systems</button>
-          <button type="button" class="filter-btn" data-filter="ecommerce" aria-pressed="false" data-i18n="filterEcommerce">E-Commerce</button>
-          <button type="button" class="filter-btn" data-filter="brands" aria-pressed="false" data-i18n="filterBrands">Web &amp; Brands</button>
+        <!-- Category Filters + Live Search Bar -->
+        <div class="projects-toolbar" data-reveal>
+          <div class="filter-bar" role="group" aria-label="Filter projects by category">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">All Projects</button>
+            <button type="button" class="filter-btn" data-filter="systems" aria-pressed="false" data-i18n="filterSystems">Full-Stack Systems</button>
+            <button type="button" class="filter-btn" data-filter="ecommerce" aria-pressed="false" data-i18n="filterEcommerce">E-Commerce</button>
+            <button type="button" class="filter-btn" data-filter="brands" aria-pressed="false" data-i18n="filterBrands">Web &amp; Brands</button>
+          </div>
+          <div class="project-search-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="search" id="project-search" placeholder="Search projects or tech…" data-i18n-placeholder="searchProjectsPh" aria-label="Search projects" />
+          </div>
         </div>
 
         <!-- Projects Grid -->
         <div class="projects-grid">
-          <!-- Dash (Full-Width Secondary Spotlight) -->
           <article class="project-card is-wide glow-card" data-category="systems" data-reveal>
             <div class="project-thumb" style="display:grid;place-items:center;padding:18px;">
               <svg viewBox="0 0 320 190" width="100%" height="auto" aria-hidden="true">
@@ -748,7 +808,6 @@
             </div>
           </article>
 
-          <!-- ART-Vision -->
           <article class="project-card glow-card" data-category="brands" data-reveal data-delay="0">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio5.png" aria-label="Preview ART-Vision Digital Agency">
@@ -767,7 +826,6 @@
             </div>
           </article>
 
-          <!-- JobviaCourse -->
           <article class="project-card glow-card" data-category="systems" data-reveal data-delay="60">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio3.png" aria-label="Preview JobviaCourse Learning Platform">
@@ -786,7 +844,6 @@
             </div>
           </article>
 
-          <!-- Wisdomteller -->
           <article class="project-card glow-card" data-category="ecommerce" data-reveal data-delay="120">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio1.png" aria-label="Preview Wisdomteller Books Store">
@@ -805,7 +862,6 @@
             </div>
           </article>
 
-          <!-- BoomLabels -->
           <article class="project-card glow-card" data-category="ecommerce" data-reveal data-delay="0">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio6.png" aria-label="Preview BoomLabels Retail Store">
@@ -824,7 +880,6 @@
             </div>
           </article>
 
-          <!-- Blue Loutous Spa -->
           <article class="project-card glow-card" data-category="brands" data-reveal data-delay="60">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio2.png" aria-label="Preview Blue Loutous Specialty Spa">
@@ -843,7 +898,6 @@
             </div>
           </article>
 
-          <!-- HonorRanks -->
           <article class="project-card glow-card" data-category="ecommerce" data-reveal data-delay="120">
             <div class="project-thumb">
               <button type="button" class="project-thumb-btn" data-preview-src="assets/img/portfolio/portfolio4.png" aria-label="Preview HonorRanks Kids Store">
@@ -861,6 +915,10 @@
               </div>
             </div>
           </article>
+
+          <div class="projects-empty" id="projects-empty" hidden data-i18n="projectsEmpty">
+            No projects match your search yet — try another keyword.
+          </div>
         </div>
       </div>
     </section>
@@ -980,8 +1038,89 @@
       </div>
     </section>
 
+    <!-- NEW V4 Feature: Interactive Project Scope & Timeline Estimator -->
+    <section id="estimator" class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="eyebrow" data-i18n="estEyebrow">Interactive Blueprint</div>
+          <h2 class="section-title" data-i18n="estTitle">Configure Your Project &amp; Estimate Scope</h2>
+          <p class="section-desc" data-i18n="estDesc">Pick your project type and features below to preview the recommended architecture, timeline, and auto-fill your brief.</p>
+        </div>
+
+        <div class="estimator-grid" data-reveal data-delay="60">
+          <div class="estimator-panel glow-card">
+            <h3 class="est-step-label" data-i18n="estStep1">01 // Choose Project Type</h3>
+            <div class="est-types" role="group" aria-label="Project type">
+              <button type="button" class="est-type-btn" data-est-type="landing" aria-pressed="false">
+                <strong data-i18n="estType1Title">Brand / Landing Site</strong>
+                <span data-i18n="estType1Sub">Fast editorial site &amp; lead capture</span>
+              </button>
+              <button type="button" class="est-type-btn" data-est-type="ecommerce" aria-pressed="false">
+                <strong data-i18n="estType2Title">E-Commerce Storefront</strong>
+                <span data-i18n="estType2Sub">Catalog, cart, checkout &amp; orders</span>
+              </button>
+              <button type="button" class="est-type-btn is-active" data-est-type="webapp" aria-pressed="true">
+                <strong data-i18n="estType3Title">Full-Stack Web App</strong>
+                <span data-i18n="estType3Sub">Next.js, PostgreSQL &amp; live APIs</span>
+              </button>
+              <button type="button" class="est-type-btn" data-est-type="erp" aria-pressed="false">
+                <strong data-i18n="estType4Title">Custom ERP / POS System</strong>
+                <span data-i18n="estType4Sub">Multi-branch ops &amp; accounting</span>
+              </button>
+            </div>
+
+            <h3 class="est-step-label" data-i18n="estStep2">02 // Toggle Key Capabilities</h3>
+            <div class="est-addons" role="group" aria-label="Project capabilities">
+              <button type="button" class="est-addon-btn is-active" data-est-addon="bilingual" aria-pressed="true" data-i18n="estAddonBilingual">Bilingual AR / EN (RTL)</button>
+              <button type="button" class="est-addon-btn is-active" data-est-addon="rbac" aria-pressed="true" data-i18n="estAddonRbac">Admin Dashboard &amp; RBAC</button>
+              <button type="button" class="est-addon-btn" data-est-addon="accounting" aria-pressed="false" data-i18n="estAddonAccounting">Accounting / Payments</button>
+              <button type="button" class="est-addon-btn" data-est-addon="qa" aria-pressed="false" data-i18n="estAddonQa">Playwright Automated QA</button>
+              <button type="button" class="est-addon-btn" data-est-addon="fast" aria-pressed="false" data-i18n="estAddonFast">Priority Fast-Track</button>
+            </div>
+          </div>
+
+          <div class="beam-frame">
+            <div class="beam-frame-inner estimator-summary">
+              <div>
+                <span class="flagship-badge" data-i18n="estOutBadge">LIVE ARCHITECTURE BLUEPRINT</span>
+                <div class="est-kpi-row">
+                  <div class="est-kpi">
+                    <small data-i18n="estOutTimelineLabel">Estimated Delivery</small>
+                    <strong id="est-out-timeline">4–6 Weeks</strong>
+                  </div>
+                  <div class="est-kpi">
+                    <small data-i18n="estOutTierLabel">System Tier</small>
+                    <strong id="est-out-tier">Production SaaS / App</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="est-meter-wrap">
+                <div class="est-meter-head">
+                  <span data-i18n="estOutComplexLabel">Engineering Complexity</span>
+                  <span id="est-out-pct">87%</span>
+                </div>
+                <div class="est-meter-track">
+                  <div class="est-meter-fill" id="est-meter-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="est-step-label" style="margin-bottom:10px;" data-i18n="estOutStackLabel">Recommended Stack</div>
+                <div class="pill-list" id="est-stack-pills"></div>
+              </div>
+
+              <button type="button" class="btn btn-primary magnetic" id="est-apply-btn" style="width:100%;" data-i18n="estApplyBtn">
+                Send This Brief to Contact Form →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
           <div class="eyebrow" data-i18n="contactEyebrow">Get in Touch</div>
@@ -1091,10 +1230,14 @@
     </div>
   </footer>
 
-  <!-- Floating Quick Actions Dock (WhatsApp + Back to Top) -->
+  <!-- Floating Quick Actions Dock (Back to Top + Playful Kudos + WhatsApp) -->
   <div class="floating-dock">
     <button type="button" class="dock-btn dock-top" id="dock-top" aria-label="Back to top" title="Back to top">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+    <button type="button" class="dock-btn dock-kudos" id="dock-kudos" aria-label="Send kudos applause" title="Send Kudos 👏">
+      <span aria-hidden="true">👏</span>
+      <span class="kudos-badge" id="kudos-badge">42</span>
     </button>
     <a href="https://wa.me/201200871167" target="_blank" rel="noopener noreferrer" class="dock-btn dock-whatsapp" aria-label="Chat on WhatsApp" title="WhatsApp">
       <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2Zm5.8 14.07c-.24.68-1.42 1.3-1.95 1.38-.5.08-1.14.11-1.84-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.96-4.4-.15-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.26-.29.58-.36.77-.36h.55c.18 0 .42-.07.66.5.24.58.82 2.01.89 2.15.07.15.12.32.02.51-.1.19-.15.32-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.26 1.64 2.04 1.13 1.01 2.08 1.32 2.37 1.47.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.69.8 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>
